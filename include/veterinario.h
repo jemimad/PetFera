@@ -20,8 +20,6 @@ class Veterinario : public Funcionario{
 
 		friend ostream& operator<<(ostream& os,  Veterinario& v);
 
-	private:
-		string cmrv;
 };
 
 

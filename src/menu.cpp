@@ -48,6 +48,7 @@ void Controlador::exibirMenu(){
 						case 1:
 							cout << "--------- Listagem por classe ----------\n " <<
 								"Insira a classe dos animais a serem listados:" << endl;
+								listarAnimais();
 						break;
 						case 2:
 							cout << "--------- Listagem por sexo ----------\n " << 

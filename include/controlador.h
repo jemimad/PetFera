@@ -23,6 +23,7 @@ class Controlador{
 		void listarFuncionarios(int opc);
 
 		void addAnimal();
+		void listarAnimais();
 		//void listarDadosFuncionarios();
 	
 
