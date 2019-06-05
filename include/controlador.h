@@ -13,7 +13,7 @@ class Controlador{
 	protected:
 		//map<int,Animal> map8_animais;
 		map<int, Funcionario*> lista_funcionarios;
-		//map<int, Animal*> lista_animais;
+		map<int, Animal*> lista_animais;
 		//map<int, Veterinario> lista_veterinarios;
 
 	public:

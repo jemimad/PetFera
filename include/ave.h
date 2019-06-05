@@ -7,9 +7,13 @@
 
 class Ave : public Animal{
 	protected:
-		double m_tamanho_do_bico_cm;
-		double m_envergadura_das_asas;
+		double m_tamanho_bico_cm;
+		double m_envergadura_asas;
 	public:
+
+		Ave(int id, string classe, string nome_cientifico,char sexo, 
+			double tamanho, string dieta, int tem_veterinario, int tem_tratador,
+			string nome_batismo, double tamanho_bico_cm, double envergadura_asas);
 		Ave();
 		~Ave();
 };

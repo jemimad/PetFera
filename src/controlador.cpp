@@ -2,15 +2,12 @@
 #include <map>
 #include <utility>
 #include <iterator>
-//#include "../include/animal.h"
-#include "../include/funcionario.h"
-#include "../include/tratador.h"
-#include "../include/veterinario.h"
-#include "../include/controlador.h"
 
 #include "../include/animal.h"
+#include "../include/funcionario.h"
+#include "../include/controlador.h"
 
-
+#include "construtores.cpp"
 using namespace std;
 using std::string;
 
@@ -32,53 +29,6 @@ Classes resolveOption(string input) {
 
     return Classe_invalida;
  }
-
-
-//CONSTRUTORES
-
-Controlador::Controlador(){}
-
-Funcionario::Funcionario(int id, string funcao, string nome, string cpf, short idade, short tipoSanguineo,
-					char fatorRH, string especialidade):m_id(id), m_funcao(funcao), m_nome(nome), m_cpf(cpf),
-					m_idade(idade), m_tipoSanguineo(tipoSanguineo), m_fatorRH(fatorRH),
-					m_especialidade(especialidade){
-
-	//Funcionario(nome):m_nome(nome);
-	//lista_funcionarios.insert(pair<int, func>(chave, objeto));
-}
-
-Tratador::Tratador(int id, string funcao, string nome, string cpf, short idade, char tipoSanguineo,
-					char fatorRH, string especialidade, int nivelSeguranca):
-					Funcionario(id, funcao, nome, cpf, idade, 
-					tipoSanguineo, fatorRH, especialidade), 
-					m_nivelSeguranca(nivelSeguranca){
-}
-
-
-Veterinario::Veterinario(int id, string funcao, string nome, string cpf, short idade, char tipoSanguineo,
-					char fatorRH, string especialidade, string cmrv):
-					Funcionario(id, funcao, nome, cpf, idade, 
-					tipoSanguineo, fatorRH, especialidade),  
-					m_cmrv(cmrv){
-}
-
-
-
-Animal::Animal(int id, string classe, string nome_cientifico,char sexo, 
-			double tamanho, string dieta, int tem_veterinario, int tem_tratador,
-			string nome_batismo): m_id(id), m_classe(classe), m_nome_cientifico(nome_cientifico),
-			m_sexo(sexo), m_tamanho(tamanho), m_dieta(dieta), m_tem_veterinario(tem_veterinario),
-			m_tem_tratador(tem_tratador), m_nome_batismo(nome_batismo){
-}
-
-
-//DESTRUTORES
-
-Funcionario::~Funcionario(){}
-Tratador::~Tratador(){}
-Veterinario::~Veterinario(){}
-Controlador::~Controlador(){}
-Animal::~Animal(){}
 
 
 void Controlador::addFuncionario(int opc){
@@ -138,6 +88,8 @@ void Controlador::addFuncionario(int opc){
 /*void Controlador::removerFuncionario(){
 }*/
 
+
+//	AJEITAR USANDO FUNCTOR
 void Controlador::listarFuncionarios(int opc){
 	map<int, Funcionario*>::iterator it;
 
@@ -165,10 +117,11 @@ void Controlador::addAnimal(){
 	char sexo;
 	double tamanho;
 	string dieta;
-	//Veterinario veterinario;
-	//Tratador tratador;
+	int tem_veterinario;
+	int tem_tratador;
 	string nome_batismo;
-
+	
+	bool nativo;
 	int opc;
 
 	//Silvestre:
@@ -192,13 +145,52 @@ void Controlador::addAnimal(){
 	cout << "Dieta: " << endl;
 	cin >> dieta;
 
-	/*cout << "ID do Veterinario: " << endl;
-	cin >> veterinario;
-	cout << "ID do Tratador: " << endl;
-	cin >> tratador;*/
+	cout << "Possui veterinário? 0 - Não | 1 - Sim  " << endl;
+	cin >> tem_veterinario;
+
+	cout << "Possui tratador? 0 - Não | 1 - Sim " << endl;
+	cin >> tem_tratador;
 
 	cout << "Nome de batismo: " << endl;
 	cin >> nome_batismo;
+
+	cout << "Autorização do IBAMA: " << endl;
+	cin >> autorizacao_ibama;
+
+	cout << "Este animal é:" << endl << 
+		"1- Nativo" << endl <<
+		"2- Exotico" << endl;
+	cin >> opc;
+
+	/*ohnanananannanana ohnananananana ohnananana*/
+	string uf_origem;
+	string pais_origem;
+	string cidade_origem;
+
+
+	switch(opc){
+		case 1: {
+			cout << "UF de Origem:" << endl;
+			cin >> uf_origem;
+
+			nativo = true;
+
+			break;
+		}
+		case 2: {	
+			cout << "País de Origem:" << endl;
+			cin >> pais_origem;
+
+			cout << "Cidade de Origem:" << endl;
+			cin >> cidade_origem;
+
+			nativo = false;
+
+			break;	
+		}
+	}
+
+
 
 
 	switch(resolveOption(classe)){
@@ -206,6 +198,22 @@ void Controlador::addAnimal(){
 	       	string cor_pelo;
 			cout << "Cor do Pelo:" << endl;
 			cin >> cor_pelo;
+
+			if(nativo == true){
+				Animal* animal = new MamiferoNativo(id, classe, nome_cientifico, sexo, tamanho, dieta, tem_veterinario, 
+													tem_tratador, nome_batismo, cor_pelo, autorizacao_ibama, uf_origem);
+				lista_animais.insert({id, animal});
+				
+
+			} else {
+
+				Animal* animal = new MamiferoExotico(id, classe, nome_cientifico, sexo, tamanho, dieta, tem_veterinario, 
+									tem_tratador, nome_batismo, cor_pelo, autorizacao_ibama, pais_origem, cidade_origem);
+				lista_animais.insert({id, animal});
+			}
+
+			
+			
 	    	break;
 	    }
 
@@ -252,36 +260,9 @@ void Controlador::addAnimal(){
     	}
 	}
 
-	cout << "Este animal é:" << endl << 
-		"1- Nativo" << endl <<
-		"2- Exotico" << endl;
-	cin >> opc;
-	switch(opc){
-		case 1: {
-			string uf_origem;
-			string autorizacao;
+	
 
-			cout << "UF de Origem" << endl;
-			cin >> uf_origem;
-
-			cout << "Autorização" << endl;
-			cin >> autorizacao;
-
-			break;
-		}
-		case 2: {
-			string pais_origem;
-			cout << "País de Origem" << endl;
-			cin >> pais_origem;
-
-			break;	
-		}
-	}
-
-	cout << "Autorização do IBAMA: " << endl;
-	cin >> autorizacao_ibama;
-
-	cout << "FIM";
+	cout << "Animal adicionado com sucesso!";
 
 
 } 

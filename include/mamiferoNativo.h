@@ -3,10 +3,13 @@
 
 #include <iostream>
 #include "mamifero.h"
-#include "animalNativo"
+#include "animalNativo.h"
 
 class MamiferoNativo : public Mamifero, AnimalNativo{
 	public:
+		MamiferoNativo(int id, string classe, string nome_cientifico,char sexo, 
+			double tamanho, string dieta, int tem_veterinario, int tem_tratador,
+			string nome_batismo, string cor_pelo, string autorizacao_ibama, string uf_origem);
 		MamiferoNativo();
 		~MamiferoNativo();
 };

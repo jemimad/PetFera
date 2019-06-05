@@ -7,8 +7,9 @@
 class AnimalNativo : public AnimalSilvestre{
 	protected:
 		string m_uf_origem;
-		string m_autorizacao;
 	public:
+
+		AnimalNativo(string autorizacao_ibama, string uf_origem);
 		AnimalNativo();
 		~AnimalNativo();
 };
