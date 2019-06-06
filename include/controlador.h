@@ -11,19 +11,22 @@ using std::map;
 class Controlador{
 
 	protected:
-		//map<int,Animal> map8_animais;
 		map<int, Funcionario*> lista_funcionarios;
 		map<int, Animal*> lista_animais;
-		//map<int, Veterinario> lista_veterinarios;
+
+		bool verificarId(int id);
 
 	public:
-		
+		void abrirPetshop();
+
 		void addFuncionario(int opc);
 		void exibirMenu();
 		void listarFuncionarios(int opc);
+		void removerFuncionario();
 
 		void addAnimal();
 		void listarAnimais();
+		void removerAnimal();
 		//void listarDadosFuncionarios();
 	
 

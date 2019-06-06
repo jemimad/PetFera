@@ -106,8 +106,8 @@ void Controlador::exibirMenu(){
 						}
 				break;
 				case 2:
-					cout << "--------- Remover funcionário ----------\n " <<
-						"Insira o id do funcionário a ser removido:" << endl;
+					cout << "--------- Remover funcionário ----------\n " << endl;
+					removerFuncionario();
 				break;
 				case 3:
 					cout << "--------- Consultar funcionário ----------\n " <<
