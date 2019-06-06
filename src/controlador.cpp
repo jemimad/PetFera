@@ -2,17 +2,19 @@
 #include <map>
 #include <utility>
 #include <iterator>
+#include <fstream>
+
 
 #include "../include/animal.h"
 #include "../include/funcionario.h"
 #include "../include/controlador.h"
 
 #include "construtores.cpp"
+
 using namespace std;
 using std::string;
 
-
-//
+ 
 enum Classes{
     Classe_invalida,
     Mamifero,
@@ -32,6 +34,7 @@ Classes resolveOption(string input) {
 
 
 void Controlador::addFuncionario(int opc){
+
 	int id;
 	string nome, cpf, especialidade;
 	short idade;
@@ -60,6 +63,7 @@ void Controlador::addFuncionario(int opc){
 	cout << "Especialidade: " << endl;
 	cin >> especialidade;
 
+
 	if(opc == 1){
 		int nivelSeguranca;
 		string funcao = "Tratador";
@@ -70,7 +74,18 @@ void Controlador::addFuncionario(int opc){
 		Funcionario* func = new Tratador(id, funcao, nome, cpf, idade, tipoSanguineo, 
 							fatorRH, especialidade, nivelSeguranca);
 		lista_funcionarios.insert({id, func});
+		
+		ofstream outfile; 
+		outfile.open("funcionarios.csv"); 
+   		if (outfile.is_open() && outfile.good()){ 
+			outfile << id << ";" << funcao << ";" << nome << ";" 
+					<< cpf << ";" << idade << ";" << tipoSanguineo 
+					<< ";" << fatorRH << ";" << especialidade << ";"
+					<< nivelSeguranca << endl;
+
+		}
 		cout << "Tratador adicionado com sucesso!" << endl;
+		outfile.close();
 
 	} else {
 		string cmrv;
@@ -82,8 +97,22 @@ void Controlador::addFuncionario(int opc){
 		Funcionario* func = new Veterinario(id, funcao, nome, cpf, idade, 
 							tipoSanguineo, fatorRH, especialidade, cmrv);
 		lista_funcionarios.insert({id, func});
+
+		ofstream outfile; 
+   		outfile.open("funcionarios.csv"); 
+		if (outfile.is_open() && outfile.good()){ // verificamos se está tudo bem
+			cout << "Writing to the file" << endl;
+			cout << "===================" << endl;  
+			outfile << id << ";" << funcao << ";" << nome << ";" 
+					<< cpf << ";" << idade << ";" << tipoSanguineo 
+					<< ";" << fatorRH << ";" << especialidade << ";"
+					<< cmrv << endl;
+		}
+		
 		cout << "Veterinário adicionado com sucesso!" << endl;
+		outfile.close(); 	
 	}
+
 }
 
 
@@ -195,9 +224,9 @@ void Controlador::addAnimal(){
 		}
 	}
 
-
-
-
+	ofstream outfile; 
+   	outfile.open("animais.csv"); 
+	   
 	switch(resolveOption(classe)){
 	    case Mamifero: {
 	       	string cor_pelo;
@@ -209,8 +238,15 @@ void Controlador::addAnimal(){
 													dieta, tem_veterinario, tem_tratador, nome_batismo,
 													cor_pelo, autorizacao_ibama, uf_origem);
 				lista_animais.insert({id, animal});
-				
 
+				if (outfile.is_open() && outfile.good()){ // verificamos se está tudo bem
+				cout << "Writing to the file" << endl;
+				cout << "===================" << endl;  
+				outfile << id << ";" << classe << ";" << nome_cientifico << ";" 
+						<< sexo << ";" << tamanho << ";" << dieta << ";" << tem_veterinario 
+						<< ";" << tem_tratador << ";" << nome_batismo << ";" << cor_pelo <<
+						<< ";" << autorizacao_ibama << ";" << uf_origem << endl;
+				}
 			} else {
 
 				Animal* animal = new MamiferoExotico(id, classe, nome_cientifico, sexo, tamanho,

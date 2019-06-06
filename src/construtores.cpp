@@ -16,7 +16,7 @@
 #include "../include/aveNativo.h"
 
 
-//CONSTRUTORES
+//CONSTRUTORES PRONTO.
 Controlador::Controlador(){}
 
 Funcionario::Funcionario(int id, string funcao, string nome, string cpf, short idade, short tipoSanguineo,
