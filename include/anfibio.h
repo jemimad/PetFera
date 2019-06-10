@@ -7,7 +7,7 @@
 class Anfibio : public Animal{
 	protected:
 		int m_total_mudas;
-		ostream& listar_animais(ostream& os) const;
+		ostream& listar_animais(ostream& os) const = 0;
 		//date m_ultima_muda; procurar classe date
 	public:
 
@@ -16,16 +16,16 @@ class Anfibio : public Animal{
 			string nome_batismo, int total_mudas);
 		Anfibio();
 		~Anfibio();
+
+		string getClasse();
+		char getSexo();
 };
 
-ostream& Anfibio::listar_animais(ostream& os) const{
-	os << "ID:" << m_id << "\nClasse: " << m_classe << "\nNome Científico: " <<  
-	m_nome_cientifico << "\nSexo: " << m_sexo << "\nTamanho em metros: " << m_tamanho << 
-	"\nDieta: " << m_dieta << "\nID Veterinário: " << m_tem_veterinario << 
-	"\nID Tratador: " << m_tem_tratador << "\nNome de Batismo: " << m_nome_batismo << 
-	"\nTotal de Mudas: " << m_total_mudas << "\n\n";
-
-	return os;
+string Anfibio::getClasse(){
+	return "Amphibia";
 }
 
+char Anfibio::getSexo(){
+	return m_sexo;
+}
 #endif

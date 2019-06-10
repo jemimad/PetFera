@@ -9,7 +9,7 @@
 class Mamifero : public Animal{
 	protected:
 		string m_cor_pelo;
-		ostream& listar_animais(ostream& os) const;
+		ostream& listar_animais(ostream& os) const = 0;
 	public:
 
 		Mamifero(int id, string classe, string nome_cientifico,char sexo, 
@@ -17,16 +17,19 @@ class Mamifero : public Animal{
 			string nome_batismo, string cor_pelo);
 		Mamifero();
 		~Mamifero();
+
+		string getClasse();
+		char getSexo();
 };
 
-ostream& Mamifero::listar_animais(ostream& os) const{
-	os << "ID:" << m_id << "\nClasse: " << m_classe << "\nNome Científico: " <<  
-	m_nome_cientifico << "\nSexo: " << m_sexo << "\nTamanho em metros: " << m_tamanho << 
-	"\nDieta: " << m_dieta << "\nID Veterinário: " << m_tem_veterinario << 
-	"\nID Tratador: " << m_tem_tratador << "\nNome de Batismo: " << m_nome_batismo << 
-	"\nCor do Pelo: " << m_cor_pelo << "\n\n";
-
-	return os;
+string Mamifero::getClasse(){
+	return "Mammalia";
 }
+
+char Mamifero::getSexo(){
+	return m_sexo;
+}
+
+
 
 #endif

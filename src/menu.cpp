@@ -50,6 +50,7 @@ void Controlador::exibirMenuAnimais(){
 			cout << "--------- Adicionar animal----------\n " <<
 				"Informe os dados sobre o seu animal:" << endl;
 				addAnimal();
+				exibirMenuAnimais();
 		break;
 
 		case 2:
@@ -71,11 +72,14 @@ void Controlador::exibirMenuAnimais(){
 				case 1:
 					cout << "--------- Listagem por classe ----------\n " <<
 						"Insira a classe dos animais a serem listados:" << endl;
-						listarAnimais();
+					listarAnimais(opc_Menu_Animal_Listagem);
+					exibirMenuAnimais();
 				break;
+
 				case 2:
-					cout << "--------- Listagem por sexo ----------\n " << 
-						"Insira o sexo dos animais a serem listados:\n(M ou F)" << endl;
+					cout << "--------- Listagem por sexo ----------\n " << endl;
+					listarAnimais(opc_Menu_Animal_Listagem);
+					exibirMenuAnimais();
 				break;
 				default:
 					cout << "Não existe essa opção no menu." << endl;
@@ -95,6 +99,7 @@ void Controlador::exibirMenuAnimais(){
 			cout << "Não existe essa opção no menu." << endl;
 			exibirMenuAnimais();
 		break;
+
 	}
 }
 

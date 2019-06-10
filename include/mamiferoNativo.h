@@ -6,6 +6,9 @@
 #include "animalNativo.h"
 
 class MamiferoNativo : public Mamifero, AnimalNativo{
+	protected: 
+		ostream& listar_animais(ostream& os) const;
+
 	public:
 		MamiferoNativo(int id, string classe, string nome_cientifico,char sexo, 
 			double tamanho, string dieta, int tem_veterinario, int tem_tratador,
@@ -13,12 +16,21 @@ class MamiferoNativo : public Mamifero, AnimalNativo{
 		MamiferoNativo();
 		~MamiferoNativo();
 
-		friend ostream& operator<<(ostream& os,  MamiferoNativo& mn);
+		//friend ostream& operator<<(ostream& os,  MamiferoNativo& mn);
 
 };
 
+ostream& MamiferoNativo::listar_animais(ostream& os) const{
+	os << "ID:" << m_id << "\nClasse: " << m_classe << "\nNome Científico: " <<  
+	m_nome_cientifico << "\nSexo: " << m_sexo << "\nTamanho em metros: " << m_tamanho << 
+	"\nDieta: " << m_dieta << "\nID Veterinário: " << m_tem_veterinario << 
+	"\nID Tratador: " << m_tem_tratador << "\nNome de Batismo: " << m_nome_batismo << 
+	"\nCor do Pelo: " << m_cor_pelo << "\nAutorização do IBAMA: " << m_autorizacao_ibama << 
+	"\nUF de Origem: " << m_uf_origem << "\n\n";
 
-//SOBRECARGA(
+	return os;
+}
+/*
 ostream& operator<<(ostream& o,  MamiferoNativo& mn){
 	o << "ID:" << mn.m_id << 
 	"\nClasse" << mn.m_classe << 
@@ -34,7 +46,9 @@ ostream& operator<<(ostream& o,  MamiferoNativo& mn){
 	"\nUF de Origem: " << mn.m_uf_origem;
 
 	return o;
-}
+}*/
+
+
 
 
 #endif

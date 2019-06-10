@@ -12,7 +12,8 @@ class Controlador{
 	private:
 		void exibirMenuAnimais();
 		void exibirMenuFuncionarios();
-		bool verificarId(int id);
+		bool verificarIdFuncionario(int id);
+		bool verificarIdAnimal(int id);
 
 	protected:
 		map<int, Funcionario*> lista_funcionarios;
@@ -28,7 +29,7 @@ class Controlador{
 		void consultarFuncionario();
 
 		void addAnimal();
-		void listarAnimais();
+		void listarAnimais(int opc);
 		void removerAnimal();
 
 		~Controlador();

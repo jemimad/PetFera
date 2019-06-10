@@ -27,18 +27,22 @@ class Animal{
 			string nome_batismo);
 		~Animal();
 
+
+		virtual string getClasse() = 0;
+		virtual char getSexo() = 0;
+		
 		int getId();
-		string getClasse();
 		string getNomeCientifico();
-		char getSexo();
 		double getTamanho();
 		string getDieta();
 		string getNomeBatismo();
 
 		friend ostream& operator<<(ostream& os, const Animal& a);
-
-
 };
+
+ostream& operator<<(ostream& os, const Animal& a){
+	return a.listar_animais(os);
+}
 
 
 #endif

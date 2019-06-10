@@ -76,7 +76,7 @@ void Controlador::abrirPetshop(){
 }
 
 
-bool Controlador::verificarId(int id){
+bool Controlador::verificarIdFuncionario(int id){
 	map<int, Funcionario*>::iterator it;
 
   	it = lista_funcionarios.find(id);
@@ -86,6 +86,15 @@ bool Controlador::verificarId(int id){
 	return true;
 }
 
+bool Controlador::verificarIdAnimal(int id){
+	map<int, Animal*>::iterator it;
+
+  	it = lista_animais.find(id);
+	if (it != lista_animais.end()){
+		return false;
+	} 
+	return true;
+}
 
 void Controlador::addFuncionario(int opc){
 	ofstream outfile; 
@@ -101,11 +110,11 @@ void Controlador::addFuncionario(int opc){
 	cout << "ID: " << endl;
 	cin >> id;
 	
-	id_disponivel = verificarId(id);
+	id_disponivel = verificarIdFuncionario(id);
 	while(id_disponivel == false){
 		cout << "Já existe um funcionário com esse ID, escolha um outro." << endl;
 		cin >> id;
-		id_disponivel = verificarId(id);
+		id_disponivel = verificarIdFuncionario(id);
 	}
 
 
@@ -247,6 +256,7 @@ void Controlador::addAnimal(){
 	string cidade_origem;
 
 	bool nativo;
+	bool id_disponivel = true;
 	int opc;
 
 	//Silvestre:
@@ -258,9 +268,16 @@ void Controlador::addAnimal(){
 
 	cout << "ID: " << endl;
 	cin >> id;
+	
+	id_disponivel = verificarIdAnimal(id);
+	while(id_disponivel == false){
+		cout << "Já existe um animal com esse ID, escolha um outro." << endl;
+		cin >> id;
+		id_disponivel = verificarIdAnimal(id);
+	}
 
-	cout << "Classe:\n "
-	<<"Amphibia, Reptilia, Ave ou Mammalia" << endl;
+	cout << "Classe:\n"
+	<<"Amphibia, Ave, Reptilia ou Mammalia" << endl;
 	cin >> classe;
 
 	cout << "Nome Científico: " << endl;
@@ -492,22 +509,41 @@ void Controlador::addAnimal(){
 
 } 
 
-void Controlador::listarAnimais(){
+void Controlador::listarAnimais(int opc){
 	map<int, Animal*>::iterator it;
+	string opc_classe;
+	char opc_sexo;
+	//fazer um tolower aqui
 
-		for(it = lista_animais.begin(); it != lista_animais.end(); it++){
-			Animal* animal = it->second;
-			//if(it->m_funcao == "Tratador"){
+	switch(opc){
+		case 1:
+			cout << "Amphibia, Ave, Reptilia ou Mammalia\n";
+			cin >> opc_classe;
 
-				//Tratador t = *(it);
-				//aqui tem que fazer um cast
-			//lalalalalal
-				//TA IMPRIMINDO O ENDEREÇO
-				cout << animal;
-			//}
-		}
+			for(it = lista_animais.begin(); it != lista_animais.end(); it++){
+				if(it->second->getClasse() == opc_classe){
+					cout << "\n" << *it->second;	
+				}
+			}
+		break;
 
+		case 2:
+			cout << "M ou F\n";
+			cin >> opc_sexo;
+
+			for(it = lista_animais.begin(); it != lista_animais.end(); it++){
+				if(it->second->getSexo() == opc_sexo){
+					cout << "\n" << *it->second;	
+				}
+			}
+		break;
+
+		default:
+		break;
 	}
+
+
+}
 
 void Controlador::removerFuncionario(){
 	map<int, Funcionario*>::iterator it_func;
