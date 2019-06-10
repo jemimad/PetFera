@@ -16,6 +16,9 @@ class Animal{
 		int m_tem_tratador;
 		string m_nome_batismo;
 
+		virtual ostream& listar_animais(ostream& os) const = 0;
+
+
 	public:
 
 		Animal();
@@ -31,6 +34,8 @@ class Animal{
 		double getTamanho();
 		string getDieta();
 		string getNomeBatismo();
+
+		friend ostream& operator<<(ostream& os, const Animal& a);
 
 
 };

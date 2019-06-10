@@ -7,7 +7,7 @@ class Tratador : public Funcionario{
 
 	protected:
 		int m_nivelSeguranca;
-
+		ostream& listar(ostream& os) const;
 
 	public:
 		Tratador(int id, string funcao, string nome, string cpf, short idade, char tipoSanguineo,
@@ -16,14 +16,29 @@ class Tratador : public Funcionario{
 		Tratador();
 		~Tratador();
 
-		friend ostream& operator<<(ostream& os,  Tratador& t);
+		string getFuncao();
+
 
 
 };
 
 
 //SOBRECARGA(
-ostream& operator<<(ostream& o,  Tratador& t){
+ostream& Tratador::listar(ostream& os) const{
+	os << "ID:" << m_id << "\nFunção: " << m_funcao << "\nNome: " <<  
+	m_nome << "\nCPF: " << m_cpf << "\nIdade: " << m_idade << 
+	"\nTipo Sanguineo: " << m_tipoSanguineo << "\nFator RH: " << 
+	m_fatorRH << "\nEspecialidade: " << m_especialidade << 
+	"\nNível de Seguranca: " << m_nivelSeguranca << "\n\n";
+
+	return os;
+}
+
+string Tratador::getFuncao(){
+	return "Tratador";
+}
+
+/*ostream& operator<<(ostream& o,  Tratador& t){
 	o << "ID:" << t.m_id << "\nFuncao" << t.m_funcao << "\nNome: " <<  
 	t.m_nome << "\nCPF: " << t.m_cpf << "\nIdade: " << t.m_idade << 
 	"\nTipo Sanguineo: " << t.m_tipoSanguineo << "\nFator RH: " << 
@@ -31,7 +46,7 @@ ostream& operator<<(ostream& o,  Tratador& t){
 	"\nNível de Seguranca: " << t.m_nivelSeguranca;
 
 	return o;
-}
+}*/
 
 
 

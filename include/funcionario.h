@@ -6,7 +6,6 @@
 
 
 class Funcionario{
-
 	protected:
 		int m_id;
 		string m_funcao;
@@ -16,7 +15,8 @@ class Funcionario{
 		short m_tipoSanguineo;
 		char m_fatorRH;
 		string m_especialidade;
-		map<int, Funcionario*> lista_funcionarios;
+
+		virtual ostream& listar(ostream&) const = 0;
 
 	public:
 
@@ -24,8 +24,15 @@ class Funcionario{
 		Funcionario(int id, string funcao, string nome, string cpf, short idade, short tipoSanguineo,
 					char fatorRH, string m_especialidade);
 		~Funcionario();
-	
+
+
+		virtual string getFuncao() = 0;
+		friend ostream& operator<<(ostream& os, const Funcionario& f);
 };
+
+ostream& operator<<(ostream& os, const Funcionario& f){
+	return f.listar(os);
+}
 
 
 

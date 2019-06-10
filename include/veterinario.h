@@ -7,9 +7,9 @@ using std::string;
 #include "funcionario.h"
 
 class Veterinario : public Funcionario{
-
 	protected:
 		string m_cmrv;
+		ostream& listar(ostream& os) const;
 
 	public:
 
@@ -17,21 +17,23 @@ class Veterinario : public Funcionario{
 					char fatorRH, string especialidade, string cmrv);		
 		Veterinario();
 		~Veterinario();
+		string getFuncao();
 
-		friend ostream& operator<<(ostream& os,  Veterinario& v);
 
 };
 
+ostream& Veterinario::listar(ostream& os) const{
+	os << "ID:" << m_id << "\nFunção: " << m_funcao << "\nNome: " <<  
+	m_nome << "\nCPF: " << m_cpf << "\nIdade: " << m_idade << 
+	"\nTipo Sanguineo: " << m_tipoSanguineo << "\nFator RH: " << 
+	m_fatorRH << "\nEspecialidade: " << m_especialidade << 
+	"\nCMRV: " << m_cmrv << "\n\n";
 
-//SOBRECARGA(
-ostream& operator<<(ostream& o,  Veterinario& v){
-	o << "ID:" << v.m_id << "\nFuncao" << v.m_funcao << "\nNome: " <<  
-	v.m_nome << "\nCPF: " << v.m_cpf << "\nIdade: " << v.m_idade << 
-	"\nTipo Sanguineo: " << v.m_tipoSanguineo << "\nFator RH: " << 
-	v.m_fatorRH << "\nEspecialidade: " << v.m_especialidade << 
-	"\nCMRV: " << v.m_cmrv;
+	return os;
+}
 
-	return o;
+string Veterinario::getFuncao(){
+	return "Veterinario";
 }
 
 
