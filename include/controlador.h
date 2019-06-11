@@ -21,9 +21,11 @@ class Controlador{
 
 	public:
 		void abrirPetshop();
+		void exibirMenu();
+		void salvarDadosAnimais();
+		void salvarDadosFuncionarios();
 
 		void addFuncionario(int opc);
-		void exibirMenu();
 		void listarFuncionarios(int opc);
 		void removerFuncionario();
 		void consultarFuncionario();
@@ -31,6 +33,7 @@ class Controlador{
 		void addAnimal();
 		void listarAnimais(int opc);
 		void removerAnimal();
+		void consultarAnimal();
 
 		~Controlador();
 		Controlador();

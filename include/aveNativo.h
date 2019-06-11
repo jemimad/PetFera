@@ -8,6 +8,7 @@
 class AveNativo : public Ave, AnimalNativo{
 	protected:
 		ostream& listar_animais(ostream& os) const;
+		ofstream& salvar_animais(ofstream& out) const;
 
 
 	public:
@@ -29,5 +30,13 @@ ostream& AveNativo::listar_animais(ostream& os) const{
 	return os;
 }
 
+ofstream& AveNativo::salvar_animais(ofstream& out) const{
+	out << m_id << ";" << m_classe << ";" <<  m_nome_cientifico << ";" << m_sexo 
+	<< ";" << m_tamanho << ";" << m_dieta << ";" << m_tem_veterinario << ";" << m_tem_tratador 
+	<< ";" << m_nome_batismo << ";" << m_tamanho_bico_cm << ";" << m_envergadura_asas << 
+	";" << m_autorizacao_ibama << ";" << m_uf_origem << "\n";
+
+	return out;
+}
 
 #endif

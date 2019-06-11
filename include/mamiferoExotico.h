@@ -8,7 +8,7 @@
 class MamiferoExotico : public Mamifero, AnimalExotico{
 	protected: 
 		ostream& listar_animais(ostream& os) const;
-
+		ofstream& salvar_animais(ofstream& out) const;
 	public:
 
 		MamiferoExotico(int id, string classe, string nome_cientifico,char sexo, 
@@ -26,6 +26,15 @@ ostream& MamiferoExotico::listar_animais(ostream& os) const{
 	"\nCor do Pelo: " << m_cor_pelo << "\nAutorização do IBAMA: " << m_autorizacao_ibama << 
 	"\nPaís de Origem: " << m_pais_origem << "\nCidade de Origem: " << m_cidade_origem << "\n\n";
 	return os;
+}
+
+ofstream& MamiferoExotico::salvar_animais(ofstream& out) const{
+	out << m_id << ";" << m_classe << ";" <<  m_nome_cientifico << ";" << m_sexo 
+	<< ";" << m_tamanho << ";" << m_dieta << ";" << m_tem_veterinario << ";" << m_tem_tratador 
+	<< ";" << m_nome_batismo << ";" << m_cor_pelo << 
+	";" << m_autorizacao_ibama << ";" << m_pais_origem << ";" << m_cidade_origem << "\n";
+
+	return out;
 }
 
 

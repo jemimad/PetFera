@@ -8,7 +8,7 @@
 class AveExotico : public Ave, AnimalExotico{
 	protected:
 		ostream& listar_animais(ostream& os) const;
-
+		ofstream& salvar_animais(ofstream& out) const;
 
 	public:
 		AveExotico(int id, string classe, string nome_cientifico,char sexo, 
@@ -28,6 +28,15 @@ ostream& AveExotico::listar_animais(ostream& os) const{
 	m_envergadura_asas << "\nAutorização do IBAMA: " << m_autorizacao_ibama << "\nPaís de Origem: " << m_pais_origem << 
 	"\nCidade de Origem: " << m_cidade_origem << "\n\n";
 	return os;
+}
+
+ofstream& AveExotico::salvar_animais(ofstream& out) const{
+	out << m_id << ";" << m_classe << ";" <<  m_nome_cientifico << ";" << m_sexo 
+	<< ";" << m_tamanho << ";" << m_dieta << ";" << m_tem_veterinario << ";" << m_tem_tratador 
+	<< ";" << m_nome_batismo << ";" << m_tamanho_bico_cm << ";" << m_envergadura_asas << 
+	";" << m_autorizacao_ibama << ";" << m_pais_origem << ";" << m_cidade_origem << "\n";
+
+	return out;
 }
 
 

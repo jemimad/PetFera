@@ -8,6 +8,8 @@
 class MamiferoNativo : public Mamifero, AnimalNativo{
 	protected: 
 		ostream& listar_animais(ostream& os) const;
+		ofstream& salvar_animais(ofstream& out) const;
+
 
 	public:
 		MamiferoNativo(int id, string classe, string nome_cientifico,char sexo, 
@@ -29,6 +31,15 @@ ostream& MamiferoNativo::listar_animais(ostream& os) const{
 	"\nUF de Origem: " << m_uf_origem << "\n\n";
 
 	return os;
+}
+
+ofstream& MamiferoNativo::salvar_animais(ofstream& out) const{
+	out << m_id << ";" << m_classe << ";" <<  m_nome_cientifico << ";" << m_sexo 
+	<< ";" << m_tamanho << ";" << m_dieta << ";" << m_tem_veterinario << ";" << m_tem_tratador 
+	<< ";" << m_nome_batismo << ";" << m_cor_pelo << 
+	";" << m_autorizacao_ibama << ";" << m_uf_origem << "\n";
+
+	return out;
 }
 /*
 ostream& operator<<(ostream& o,  MamiferoNativo& mn){

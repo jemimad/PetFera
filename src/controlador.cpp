@@ -14,7 +14,9 @@
 
 using namespace std;
 using std::string;
- 
+
+
+//ENUM 
 enum Classes{
     Classe_invalida,
     Mamifero,
@@ -24,16 +26,18 @@ enum Classes{
 };
 
 Classes resolveOption(string input) {
-
     if( input == "Mammalia" || input == "mammalia") return Mamifero;
     if( input == "Amphibia" || input == "amphibia") return Anfibio;
     if( input == "Reptilia" || input == "reptilia") return Reptil;
     if( input == "Ave" || input == "ave") return Ave;
-
     return Classe_invalida;
  }
 
 
+/*Essa função vai servir pra ler os dados dos arquivos (tanto de animais quanto de funcionarios)
+e guardar esses dados no map, como objeto, para que as operações possam ser realizadas neles.
+Não ta dando certo pois: tem que saber como pega cada palavra entre os ; e salva no atributo certo
+pra poder construir o objeto certo e depois guardar o objeto certo no map.*/
 void Controlador::abrirPetshop(){
 	ifstream inputfile_animais;
 	string linha;
@@ -45,20 +49,18 @@ void Controlador::abrirPetshop(){
 		}
 		inputfile_animais.close();
 	}else{
-		cout << "Não foi possível abrir o arquivo" << endl;
+		cout << "Arquivo vazio ou inexistente" << endl;
 	}
 
 	ifstream inputfile_funcionarios;
 	inputfile_funcionarios.open("funcionarios.csv");
 	stringstream ss;
 
-
 	int id;
 	string nome, cpf, especialidade, funcao;
 	short idade;
 	char tipoSanguineo;
 	char fatorRH;
-
 	string valor;
 
 	if(inputfile_funcionarios.is_open()){
@@ -68,14 +70,14 @@ void Controlador::abrirPetshop(){
 				tipoSanguineo >> fatorRH >> especialidade;
 			
 			cout << valor << endl;
-		}
+		} 
 		inputfile_funcionarios.close();
 	}else{
-		cout << "Não foi possível abrir o arquivo" << endl;
+		cout << "Arquivo vazio ou inexistente" << endl;
 	}
 }
 
-
+/*Essa função retorna falso se o ID estiver indisponível (já existir um funcionário com esse id)*/
 bool Controlador::verificarIdFuncionario(int id){
 	map<int, Funcionario*>::iterator it;
 
@@ -86,19 +88,21 @@ bool Controlador::verificarIdFuncionario(int id){
 	return true;
 }
 
-bool Controlador::verificarIdAnimal(int id){
-	map<int, Animal*>::iterator it;
+void Controlador::salvarDadosFuncionarios(){
+	ofstream outfile; 
+	outfile.open("funcionarios.csv");
 
-  	it = lista_animais.find(id);
-	if (it != lista_animais.end()){
-		return false;
-	} 
-	return true;
+	for(auto it = lista_funcionarios.begin(); it != lista_funcionarios.end(); it++){
+        outfile << *it->second;
+    }
+
+	outfile.close();
+	cout << "Funcionário adicionado com sucesso!" << endl;
 }
 
+
 void Controlador::addFuncionario(int opc){
-	ofstream outfile; 
-	outfile.open("funcionarios.csv", ios::app);
+
 
 	int id;
 	string nome, cpf, especialidade;
@@ -152,13 +156,6 @@ void Controlador::addFuncionario(int opc){
 							fatorRH, especialidade, nivelSeguranca);
 		lista_funcionarios.insert({id, func});
 		
-   		
-		outfile << id << ";" << funcao << ";" << nome << ";" 
-				<< cpf << ";" << idade << ";" << tipoSanguineo 
-				<< ";" << fatorRH << ";" << especialidade << ";"
-				<< nivelSeguranca << endl;
-		
-			cout << "Tratador adicionado com sucesso!" << endl;
 
 	} else {
 		string cmrv;
@@ -170,15 +167,9 @@ void Controlador::addFuncionario(int opc){
 		Funcionario* func = new Veterinario(id, funcao, nome, cpf, idade, 
 							tipoSanguineo, fatorRH, especialidade, cmrv);
 		lista_funcionarios.insert({id, func});
-
-		outfile << id << ";" << funcao << ";" << nome << ";" 
-			<< cpf << ";" << idade << ";" << tipoSanguineo 
-			<< ";" << fatorRH << ";" << especialidade << ";"
-			<< cmrv << endl;
-
-		cout << "Veterinário adicionado com sucesso!" << endl;	
 	}
-	outfile.close();
+
+	salvarDadosFuncionarios();
 }
 
 
@@ -234,8 +225,55 @@ void Controlador::consultarFuncionario(){
 	}
 }
 
+/*Não foi apagado funcionário diretamente do arquivo, aqui, porque todas as operações vao
+ser feitas no map. Ou seja, ao fim do programa (ou ao fim dessa função), o map vai ser
+percorrido de modo que seus dados sejam salvos no arquivo, sobrescrevendo os que ja existem
+e assim atualizando os dados que foram modificados.*/
+void Controlador::removerFuncionario(){
+	map<int, Funcionario*>::iterator it_func;
+	int id;
+	
+	cout << "Digite o ID do usuário que você deseja remover" << endl;
+	cin >> id;
 
-		
+
+  	it_func = lista_funcionarios.find(id);
+	if (it_func != lista_funcionarios.end()){
+		lista_funcionarios.erase(id);
+		cout << "Funcionário Removido" << endl; 
+
+	} else {
+		cout << "Não foi encontrado Funcionário com esse id" << endl;
+	}
+}
+
+	
+
+
+
+//ANIMAL
+bool Controlador::verificarIdAnimal(int id){
+	map<int, Animal*>::iterator it;
+
+  	it = lista_animais.find(id);
+	if (it != lista_animais.end()){
+		return false;
+	} 
+	return true;
+}
+
+void Controlador::salvarDadosAnimais(){
+	//preenchendo arquivo de animais
+	ofstream outfile_; 
+	outfile_.open("animais.csv");
+
+    for(auto it = lista_animais.begin(); it != lista_animais.end(); it++){
+        outfile_ << *it->second;
+    }
+
+	outfile_.close();
+	cout << "Animal adicionado com sucesso!" << endl;
+}
 
 void Controlador::addAnimal(){
 	int id;
@@ -262,9 +300,7 @@ void Controlador::addAnimal(){
 	//Silvestre:
 	string autorizacao_ibama;
 
-	//iniciando arquivo
-	ofstream outfile_; 
-	outfile_.open("animais.csv", ios::app);
+
 
 	cout << "ID: " << endl;
 	cin >> id;
@@ -330,9 +366,6 @@ void Controlador::addAnimal(){
 			break;	
 		}
 	}
-
-	ofstream outfile; 
-   	outfile.open("animais.csv", ios::app); 
 	   
 	switch(resolveOption(classe)){
 	    case Mamifero: {
@@ -346,25 +379,14 @@ void Controlador::addAnimal(){
 													cor_pelo, autorizacao_ibama, uf_origem);
 				lista_animais.insert({id, animal});
 
-				if (outfile_.is_open() && outfile_.good()){ // verificamos se está tudo bem
-					outfile_ << id << ";" << classe << ";" << nome_cientifico << ";" 
-						<< sexo << ";" << tamanho << ";" << dieta << ";" << tem_veterinario 
-						<< ";" << tem_tratador << ";" << nome_batismo << ";" << cor_pelo
-						<< ";" << autorizacao_ibama << ";" << uf_origem << endl;
-				}
+
+        cout << "Cadastro efetuado com sucesso!!" << endl;
 			} else {
 
 				Animal* animal = new MamiferoExotico(id, classe, nome_cientifico, sexo, tamanho,
 													dieta, tem_veterinario, tem_tratador, nome_batismo, 
 													cor_pelo, autorizacao_ibama, pais_origem, cidade_origem);
 				lista_animais.insert({id, animal});
-
-				if (outfile_.is_open() && outfile_.good()){ // verificamos se está tudo bem
-					outfile_ << id << ";" << classe << ";" << nome_cientifico << ";" 
-						<< sexo << ";" << tamanho << ";" << dieta << ";" << tem_veterinario 
-						<< ";" << tem_tratador << ";" << nome_batismo << ";" << cor_pelo
-						<< ";" << autorizacao_ibama << ";" << pais_origem << ";" << cidade_origem << endl;
-				}		
 			}
 	
 	    	break;
@@ -381,25 +403,12 @@ void Controlador::addAnimal(){
 													total_de_mudas, autorizacao_ibama, uf_origem);
 				lista_animais.insert({id, animal});
 
-				if (outfile_.is_open() && outfile_.good()){ // verificamos se está tudo bem
-					outfile_ << id << ";" << classe << ";" << nome_cientifico << ";" 
-						<< sexo << ";" << tamanho << ";" << dieta << ";" << tem_veterinario 
-						<< ";" << tem_tratador << ";" << nome_batismo << ";" << total_de_mudas
-						<< ";" << autorizacao_ibama << ";" << uf_origem << endl;
-				}
 			} else {
 
 				Animal* animal = new AnfibioExotico(id, classe, nome_cientifico, sexo, tamanho,
 													dieta, tem_veterinario, tem_tratador, nome_batismo, 
 													total_de_mudas, autorizacao_ibama, pais_origem, cidade_origem);
 				lista_animais.insert({id, animal});
-
-				if (outfile_.is_open() && outfile_.good()){ // verificamos se está tudo bem
-					outfile_ << id << ";" << classe << ";" << nome_cientifico << ";" 
-						<< sexo << ";" << tamanho << ";" << dieta << ";" << tem_veterinario 
-						<< ";" << tem_tratador << ";" << nome_batismo << ";" << total_de_mudas
-						<< ";" << autorizacao_ibama << ";" << pais_origem << ";" << cidade_origem << endl;
-				}	
 			}
 
 
@@ -426,14 +435,6 @@ void Controlador::addAnimal(){
 											venenoso, tipo_veneno, autorizacao_ibama, uf_origem);
 				lista_animais.insert({id, animal});
 
-				if (outfile_.is_open() && outfile_.good()){ // verificamos se está tudo bem
-					outfile_ << id << ";" << classe << ";" << nome_cientifico << ";" 
-						<< sexo << ";" << tamanho << ";" << dieta << ";" << tem_veterinario 
-						<< ";" << tem_tratador << ";" << nome_batismo << ";" << venenoso << ";" << tipo_veneno 
-						<< ";" << autorizacao_ibama << ";" << uf_origem << endl;
-				}	
-				
-
 			} else {
 
 				Animal* animal = new ReptilExotico(id, classe, nome_cientifico, sexo, tamanho,
@@ -441,12 +442,6 @@ void Controlador::addAnimal(){
 													venenoso, tipo_veneno, autorizacao_ibama, pais_origem, cidade_origem);
 				lista_animais.insert({id, animal});
 
-				if (outfile_.is_open() && outfile_.good()){ // verificamos se está tudo bem
-					outfile_ << id << ";" << classe << ";" << nome_cientifico << ";" 
-						<< sexo << ";" << tamanho << ";" << dieta << ";" << tem_veterinario 
-						<< ";" << tem_tratador << ";" << nome_batismo << ";" << venenoso << ";" << tipo_veneno
-						<< ";" << autorizacao_ibama << ";" << pais_origem << ";" << cidade_origem << endl;
-				}	
 			}
         	break;
    		}
@@ -467,28 +462,13 @@ void Controlador::addAnimal(){
 											tamanho_bico_cm, envergadura_asas, autorizacao_ibama, uf_origem);
 				lista_animais.insert({id, animal});
 
-				if (outfile_.is_open() && outfile_.good()){   
-					outfile_ << id << ";" << classe << ";" << nome_cientifico << ";" 
-						<< sexo << ";" << tamanho << ";" << dieta << ";" << tem_veterinario 
-						<< ";" << tem_tratador << ";" << nome_batismo << ";" << tamanho_bico_cm 
-						<< ";" << envergadura_asas << ";" << autorizacao_ibama << ";" << uf_origem << endl;
-				}	
-				
 
 			} else {
 
 				Animal* animal = new AveExotico(id, classe, nome_cientifico, sexo, tamanho,
 												dieta, tem_veterinario, tem_tratador, nome_batismo, 
 												tamanho_bico_cm, envergadura_asas, autorizacao_ibama, pais_origem, cidade_origem);
-				lista_animais.insert({id, animal});
-				
-				if (outfile_.is_open() && outfile_.good()){ 
-					outfile_ << id << ";" << classe << ";" << nome_cientifico << ";" 
-						<< sexo << ";" << tamanho << ";" << dieta << ";" << tem_veterinario 
-						<< ";" << tem_tratador << ";" << nome_batismo << ";" << tamanho_bico_cm 
-						<< ";" << envergadura_asas << ";" << autorizacao_ibama << ";" << pais_origem 
-						<< ";" << cidade_origem << endl;
-				}		
+				lista_animais.insert({id, animal});	
 			}
         	break;
     	}
@@ -503,10 +483,7 @@ void Controlador::addAnimal(){
     	}
 	}
 
-	outfile_.close();
-	cout << "Animal adicionado com sucesso!" << endl;
-
-
+	salvarDadosAnimais();
 } 
 
 void Controlador::listarAnimais(int opc){
@@ -517,7 +494,9 @@ void Controlador::listarAnimais(int opc){
 
 	switch(opc){
 		case 1:
-			cout << "Amphibia, Ave, Reptilia ou Mammalia\n";
+			cout << "--------- Listagem por classe ----------\n " <<
+					"Insira a classe dos animais a serem listados:\n" <<
+					"Amphibia, Ave, Reptilia ou Mammalia\n";
 			cin >> opc_classe;
 
 			for(it = lista_animais.begin(); it != lista_animais.end(); it++){
@@ -528,6 +507,7 @@ void Controlador::listarAnimais(int opc){
 		break;
 
 		case 2:
+			cout << "--------- Listagem por sexo ----------\n " << endl;
 			cout << "M ou F\n";
 			cin >> opc_sexo;
 
@@ -538,30 +518,18 @@ void Controlador::listarAnimais(int opc){
 			}
 		break;
 
+		case 3:
+			for(it = lista_animais.begin(); it != lista_animais.end(); it++){
+				cout << "\n" << *it->second;	
+			}
+		break;
+
 		default:
+			cout << "Essa opção não existe no menu." << endl;
 		break;
 	}
-
-
 }
 
-void Controlador::removerFuncionario(){
-	map<int, Funcionario*>::iterator it_func;
-	int id;
-	
-	cout << "Digite o ID do usuário que você deseja remover" << endl;
-	cin >> id;
-
-
-  	it_func = lista_funcionarios.find(id);
-	if (it_func != lista_funcionarios.end()){
-		lista_funcionarios.erase(id);
-		cout << "Funcionário Removido" << endl; 
-
-	} else {
-		cout << "Não foi encontrado Funcionário com esse id" << endl;
-	}
-}
 
 void Controlador::removerAnimal(){
 	map<int, Animal*>::iterator it_animal;
@@ -573,9 +541,25 @@ void Controlador::removerAnimal(){
   	it_animal = lista_animais.find(id);
 	if (it_animal != lista_animais.end()){
 		lista_funcionarios.erase(id);
-		cout << "Funcionário Removido" << endl; 
+		cout << "Animal Removido" << endl; 
 
 	} else {
-		cout << "Não foi encontrado Funcionário com esse id" << endl;
+		cout << "Não foi encontrado Animal com esse id" << endl;
 	}
 }
+
+void Controlador::consultarAnimal(){
+	map<int, Animal*>::iterator it_animal;
+	int id;
+	
+	cout << "Digite o ID do animal que você deseja consultar" << endl;
+	cin >> id;
+  	it_animal = lista_animais.find(id);
+
+	if (it_animal != lista_animais.end()){
+		cout << *it_animal->second;
+	} else {
+		cout << "Não foi encontrado Animal com esse id" << endl;
+	}
+}
+

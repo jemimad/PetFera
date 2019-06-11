@@ -10,6 +10,7 @@ class Ave : public Animal{
 		double m_tamanho_bico_cm;
 		double m_envergadura_asas;
 		ostream& listar_animais(ostream& os) const = 0;
+		ofstream& salvar_animais(ofstream& out) const = 0;
 
 	public:
 

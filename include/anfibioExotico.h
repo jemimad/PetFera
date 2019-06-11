@@ -9,6 +9,7 @@
 class AnfibioExotico : public Anfibio, AnimalExotico{
 	protected: 
 		ostream& listar_animais(ostream& os) const;
+		ofstream& salvar_animais(ofstream& out) const;
 
 	public:
 		AnfibioExotico(int id, string classe, string nome_cientifico,char sexo, 
@@ -27,6 +28,15 @@ ostream& AnfibioExotico::listar_animais(ostream& os) const{
 	"\nPaís de Origem: " << m_pais_origem << "\nCidade de Origem: " << m_cidade_origem << "\n\n";
 
 	return os;
+}
+
+ofstream& AnfibioExotico::salvar_animais(ofstream& out) const{
+	out << m_id << ";" << m_classe << ";" <<  m_nome_cientifico << ";" << m_sexo 
+	<< ";" << m_tamanho << ";" << m_dieta << ";" << m_tem_veterinario << ";" << m_tem_tratador 
+	<< ";" << m_nome_batismo << ";" << m_total_mudas <<
+	";" << m_autorizacao_ibama << ";" << m_pais_origem << ";" << m_cidade_origem << "\n";
+
+	return out;
 }
 
 

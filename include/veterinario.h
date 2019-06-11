@@ -10,6 +10,7 @@ class Veterinario : public Funcionario{
 	protected:
 		string m_cmrv;
 		ostream& listar(ostream& os) const;
+		ofstream& salvar(ofstream& out) const;
 
 	public:
 
@@ -30,6 +31,16 @@ ostream& Veterinario::listar(ostream& os) const{
 	"\nCMRV: " << m_cmrv << "\n\n";
 
 	return os;
+}
+
+ofstream& Veterinario::salvar(ofstream& out) const{
+	out <<  m_id << ";" << m_funcao << ";" <<  
+	m_nome << ";" << m_cpf << ";" << m_idade << 
+	";" << m_tipoSanguineo << ";" << 
+	m_fatorRH << ";" << m_especialidade << 
+	";" << m_cmrv << "\n";
+
+	return out;
 }
 
 string Veterinario::getFuncao(){

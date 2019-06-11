@@ -10,6 +10,7 @@
 class ReptilExotico : public Reptil, AnimalExotico{
 	protected: 
 		ostream& listar_animais(ostream& os) const;
+		ofstream& salvar_animais(ofstream& out) const;
 
 	public:
 		ReptilExotico(int id, string classe, string nome_cientifico,char sexo, 
@@ -31,5 +32,15 @@ ostream& ReptilExotico::listar_animais(ostream& os) const{
 
 	return os;
 }
+
+ofstream& ReptilExotico::salvar_animais(ofstream& out) const{
+	out << m_id << ";" << m_classe << ";" <<  m_nome_cientifico << ";" << m_sexo 
+	<< ";" << m_tamanho << ";" << m_dieta << ";" << m_tem_veterinario << ";" << m_tem_tratador 
+	<< ";" << m_nome_batismo << ";" << m_venenoso << ";" << m_tipo_veneno << 
+	";" << m_autorizacao_ibama << ";" << m_pais_origem << ";" << m_cidade_origem <<"\n";
+
+	return out;
+}
+
 
 #endif

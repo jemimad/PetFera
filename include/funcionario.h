@@ -17,6 +17,7 @@ class Funcionario{
 		string m_especialidade;
 
 		virtual ostream& listar(ostream&) const = 0;
+		virtual ofstream& salvar(ofstream&) const = 0;
 
 	public:
 
@@ -28,13 +29,16 @@ class Funcionario{
 
 		virtual string getFuncao() = 0;
 		friend ostream& operator<<(ostream& os, const Funcionario& f);
+		friend ofstream& operator<<(ofstream& out, const Funcionario& f);
 };
 
 ostream& operator<<(ostream& os, const Funcionario& f){
 	return f.listar(os);
 }
 
-
+ofstream& operator<<(ofstream& out, const Funcionario& f){
+	return f.salvar(out);
+}
 
 #endif
 

@@ -11,6 +11,7 @@ class Reptil : public Animal{
 		bool m_venenoso;
 		string m_tipo_veneno;
 		ostream& listar_animais(ostream& os) const = 0;
+		ofstream& salvar_animais(ofstream& out) const = 0;
 	public:
 		Reptil(int id, string classe, string nome_cientifico,char sexo, 
 			double tamanho, string dieta, int tem_veterinario, int tem_tratador,

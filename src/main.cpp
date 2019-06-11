@@ -6,8 +6,9 @@ int main(){
 
 	Controlador petfera;
 
-	petfera.abrirPetshop();
+	//petfera.abrirPetshop();
 	petfera.exibirMenu();
+
 
 	return 0;
 }

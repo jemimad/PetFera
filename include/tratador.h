@@ -8,6 +8,7 @@ class Tratador : public Funcionario{
 	protected:
 		int m_nivelSeguranca;
 		ostream& listar(ostream& os) const;
+		ofstream& salvar(ofstream& out) const;
 
 	public:
 		Tratador(int id, string funcao, string nome, string cpf, short idade, char tipoSanguineo,
@@ -33,6 +34,18 @@ ostream& Tratador::listar(ostream& os) const{
 
 	return os;
 }
+
+ofstream& Tratador::salvar(ofstream& out) const{
+	out <<  m_id << ";" << m_funcao << ";" <<  
+	m_nome << ";" << m_cpf << ";" << m_idade << 
+	";" << m_tipoSanguineo << ";" << 
+	m_fatorRH << ";" << m_especialidade << 
+	";" << m_nivelSeguranca << "\n";
+
+	return out;
+}
+
+
 
 string Tratador::getFuncao(){
 	return "Tratador";

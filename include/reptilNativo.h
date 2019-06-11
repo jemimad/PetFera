@@ -10,6 +10,7 @@
 class ReptilNativo : public Reptil, AnimalNativo{
 	protected:
 		ostream& listar_animais(ostream& os) const;
+		ofstream& salvar_animais(ofstream& out) const;
 
 
 	public:
@@ -29,6 +30,15 @@ ostream& ReptilNativo::listar_animais(ostream& os) const{
 	"\nAutorização do IBAMA: " << m_autorizacao_ibama << "\nUF de Origem: " << m_uf_origem << "\n\n";
 
 	return os;
+}
+
+ofstream& ReptilNativo::salvar_animais(ofstream& out) const{
+	out << m_id << ";" << m_classe << ";" <<  m_nome_cientifico << ";" << m_sexo 
+	<< ";" << m_tamanho << ";" << m_dieta << ";" << m_tem_veterinario << ";" << m_tem_tratador 
+	<< ";" << m_nome_batismo << ";" << m_venenoso << ";" << m_tipo_veneno << 
+	";" << m_autorizacao_ibama << ";" << m_uf_origem << "\n";
+
+	return out;
 }
 
 

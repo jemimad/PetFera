@@ -8,6 +8,8 @@
 class AnfibioNativo : public Anfibio, AnimalNativo{
 	protected: 
 		ostream& listar_animais(ostream& os) const;
+		ofstream& salvar_animais(ofstream& out) const;
+
 
 	public:
 		AnfibioNativo(int id, string classe, string nome_cientifico,char sexo, 
@@ -28,6 +30,14 @@ ostream& AnfibioNativo::listar_animais(ostream& os) const{
 	return os;
 }
 
+ofstream& AnfibioNativo::salvar_animais(ofstream& out) const{
+	out << m_id << ";" << m_classe << ";" <<  m_nome_cientifico << ";" << m_sexo <<
+	";" << m_tamanho << ";" << m_dieta << ";" << m_tem_veterinario << ";" << m_tem_tratador <<
+	";" << m_nome_batismo << ";" << m_total_mudas << ";" << m_autorizacao_ibama << 
+	";" << m_uf_origem << "\n";
+
+	return out;
+}
 
 
 #endif

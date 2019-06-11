@@ -10,6 +10,8 @@ class Mamifero : public Animal{
 	protected:
 		string m_cor_pelo;
 		ostream& listar_animais(ostream& os) const = 0;
+		ofstream& salvar_animais(ofstream& out) const = 0;
+
 	public:
 
 		Mamifero(int id, string classe, string nome_cientifico,char sexo, 

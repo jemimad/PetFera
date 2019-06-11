@@ -56,38 +56,26 @@ void Controlador::exibirMenuAnimais(){
 		case 2:
 			cout << "--------- Remover animal ----------\n " <<
 				"Insira o id do animal a ser removido:" << endl;
-				//removerAnimal(int id);
+				removerAnimal();
+				exibirMenuAnimais();
 		break;
 
 		case 3:
 			cout << "--------- Consultar animal ----------\n " <<
 				"Insira o id do animal a ser consultado:" << endl;
-				//editarAnimal();
+				consultarAnimal();
+				exibirMenuAnimais();
 		break;
 
 		case 4:
 			cout << "--------- Listagem de animais ----------\n " <<
 					"1 - Listagem por classe\n " <<
-					"2 - Listagem por sexo\n " << endl;
+					"2 - Listagem por sexo\n " << 
+					"3 - Listagem geral\n" << endl;
 			cin >> opc_Menu_Animal_Listagem;
-			switch (opc_Menu_Animal_Listagem){
-				case 1:
-					cout << "--------- Listagem por classe ----------\n " <<
-						"Insira a classe dos animais a serem listados:" << endl;
-					listarAnimais(opc_Menu_Animal_Listagem);
-					exibirMenuAnimais();
-				break;
-
-				case 2:
-					cout << "--------- Listagem por sexo ----------\n " << endl;
-					listarAnimais(opc_Menu_Animal_Listagem);
-					exibirMenuAnimais();
-				break;
-				default:
-					cout << "Não existe essa opção no menu." << endl;
-					exibirMenuAnimais();
-				break;
-			}
+			listarAnimais(opc_Menu_Animal_Listagem);
+			exibirMenuAnimais();
+		break;
 		case 5:
 			cout << "--------- Alterar dados de um animal ----------\n " <<
 				"Insira o id do animal a ser alterado:" << endl;

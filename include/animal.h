@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include <fstream>
 
 class Animal{
 	protected:
@@ -17,6 +18,7 @@ class Animal{
 		string m_nome_batismo;
 
 		virtual ostream& listar_animais(ostream& os) const = 0;
+		virtual ofstream& salvar_animais(ofstream& out) const = 0;
 
 
 	public:
@@ -38,11 +40,17 @@ class Animal{
 		string getNomeBatismo();
 
 		friend ostream& operator<<(ostream& os, const Animal& a);
+		friend ofstream& operator<<(ofstream& out, const Animal& a);
 };
 
 ostream& operator<<(ostream& os, const Animal& a){
 	return a.listar_animais(os);
 }
+
+ofstream& operator<<(ofstream& out, const Animal& a){
+	return a.salvar_animais(out);
+}
+
 
 
 #endif

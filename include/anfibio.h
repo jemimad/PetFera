@@ -8,6 +8,7 @@ class Anfibio : public Animal{
 	protected:
 		int m_total_mudas;
 		ostream& listar_animais(ostream& os) const = 0;
+		ofstream& salvar_animais(ofstream& out) const = 0;
 		//date m_ultima_muda; procurar classe date
 	public:
 
