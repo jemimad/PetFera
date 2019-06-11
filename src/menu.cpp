@@ -56,11 +56,13 @@ void Controlador::exibirMenuAnimais(){
 		case 2:
 			cout << "--------- Remover animal ----------\n " <<
 				"Insira o id do animal a ser removido:" << endl;
+				//removerAnimal(int id);
 		break;
 
 		case 3:
 			cout << "--------- Consultar animal ----------\n " <<
 				"Insira o id do animal a ser consultado:" << endl;
+				//editarAnimal();
 		break;
 
 		case 4:
