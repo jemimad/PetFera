@@ -4,7 +4,7 @@
 #include <iostream>
 #include <string>
 
-#include "animal.h"
+#include "../animal/animal.h"
 
 class Reptil : public Animal{
 	protected:
@@ -13,22 +13,13 @@ class Reptil : public Animal{
 		ostream& listar_animais(ostream& os) const = 0;
 		ofstream& salvar_animais(ofstream& out) const = 0;
 	public:
-		Reptil(int id, string classe, string nome_cientifico,char sexo, 
+		Reptil(int id, string classe, string classificacao, string nome_cientifico,char sexo, 
 			double tamanho, string dieta, int tem_veterinario, int tem_tratador,
 			string nome_batismo, bool venenoso, string tipo_veneno);
 		Reptil();
 		~Reptil();
 
-		string getClasse();
-		char getSexo();
 };
 
-string Reptil::getClasse(){
-	return "Reptilia";
-}
-
-char Reptil::getSexo(){
-	return m_sexo;
-}
 
 #endif

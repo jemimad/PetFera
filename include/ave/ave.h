@@ -2,7 +2,7 @@
 #define _AVE_
 
 #include <iostream>
-#include "animal.h"
+#include "../animal/animal.h"
 
 
 class Ave : public Animal{
@@ -14,22 +14,14 @@ class Ave : public Animal{
 
 	public:
 
-		Ave(int id, string classe, string nome_cientifico,char sexo, 
+		Ave(int id, string classe, string classificacao, string nome_cientifico,char sexo, 
 			double tamanho, string dieta, int tem_veterinario, int tem_tratador,
 			string nome_batismo, double tamanho_bico_cm, double envergadura_asas);
 		Ave();
 		~Ave();
 
-		string getClasse();
-		char getSexo();
+
 };
 
-string Ave::getClasse(){
-	return "Ave";
-}
-
-char Ave::getSexo(){
-	return m_sexo;
-}
 
 #endif

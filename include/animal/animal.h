@@ -9,6 +9,7 @@ class Animal{
 	protected:
 		int m_id;
 		string m_classe;
+		string m_classificacao;
 		string m_nome_cientifico;
 		char m_sexo;
 		double m_tamanho;
@@ -24,14 +25,15 @@ class Animal{
 	public:
 
 		Animal();
-		Animal(int id, string classe, string nome_cientifico,char sexo, 
+		Animal(int id, string classe, string m_classificacao, string nome_cientifico,char sexo, 
 			double tamanho, string dieta, int tem_veterinario, int tem_tratador,
 			string nome_batismo);
 		~Animal();
 
 
-		virtual string getClasse() = 0;
-		virtual char getSexo() = 0;
+		string getClasse();
+		char getSexo();
+		string getClassificacao();
 		
 		int getId();
 		string getNomeCientifico();

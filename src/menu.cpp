@@ -10,7 +10,7 @@ void Controlador::exibirMenu(){
 
 	cout << "--------- PetFera ----------\n "<<
 			"1 - Setor de Animais\n " <<
-			"2 - Setor Funcionários\n " << 
+			"2 - Setor de Funcionários\n " << 
 			"3 - Sair" << endl;
 	cin >> opc_Menu_Principal;
 
@@ -23,6 +23,8 @@ void Controlador::exibirMenu(){
 		break;
 
 		case 3:
+			salvarDadosAnimais();
+			salvarDadosFuncionarios();
 			exit(0);
 		break;
 
@@ -49,29 +51,30 @@ void Controlador::exibirMenuAnimais(){
 		case 1:
 			cout << "--------- Adicionar animal----------\n " <<
 				"Informe os dados sobre o seu animal:" << endl;
-				addAnimal();
-				exibirMenuAnimais();
+			addAnimal();
+			exibirMenuAnimais();
 		break;
 
 		case 2:
 			cout << "--------- Remover animal ----------\n " <<
 				"Insira o id do animal a ser removido:" << endl;
-				removerAnimal();
-				exibirMenuAnimais();
+			removerAnimal();
+			exibirMenuAnimais();
 		break;
 
 		case 3:
 			cout << "--------- Consultar animal ----------\n " <<
 				"Insira o id do animal a ser consultado:" << endl;
-				consultarAnimal();
-				exibirMenuAnimais();
+			consultarAnimal();
+			exibirMenuAnimais();
 		break;
 
 		case 4:
 			cout << "--------- Listagem de animais ----------\n " <<
 					"1 - Listagem por classe\n " <<
 					"2 - Listagem por sexo\n " << 
-					"3 - Listagem geral\n" << endl;
+					"3 - Listagem por classificação\n" <<
+					"4 - Listagem geral\n" << endl;
 			cin >> opc_Menu_Animal_Listagem;
 			listarAnimais(opc_Menu_Animal_Listagem);
 			exibirMenuAnimais();

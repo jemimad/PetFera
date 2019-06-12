@@ -6,8 +6,8 @@
 #include <sstream>
 #include <algorithm>
 
-#include "../include/animal.h"
-#include "../include/funcionario.h"
+#include "animal.cpp"
+#include "../include/funcionario/funcionario.h"
 #include "../include/controlador.h"
 
 #include "construtores.cpp"
@@ -38,6 +38,7 @@ Classes resolveOption(string input) {
 e guardar esses dados no map, como objeto, para que as operações possam ser realizadas neles.
 Não ta dando certo pois: tem que saber como pega cada palavra entre os ; e salva no atributo certo
 pra poder construir o objeto certo e depois guardar o objeto certo no map.*/
+
 void Controlador::abrirPetshop(){
 	ifstream inputfile_animais;
 	string linha;
@@ -86,6 +87,8 @@ bool Controlador::verificarIdFuncionario(int id){
 		return false;
 	} 
 	return true;
+
+	//return it == lista_funcionarios.end();
 }
 
 void Controlador::salvarDadosFuncionarios(){
@@ -99,7 +102,6 @@ void Controlador::salvarDadosFuncionarios(){
 	outfile.close();
 	cout << "Funcionário adicionado com sucesso!" << endl;
 }
-
 
 void Controlador::addFuncionario(int opc){
 
@@ -169,7 +171,7 @@ void Controlador::addFuncionario(int opc){
 		lista_funcionarios.insert({id, func});
 	}
 
-	salvarDadosFuncionarios();
+	//salvarDadosFuncionarios();
 }
 
 
@@ -251,7 +253,9 @@ void Controlador::removerFuncionario(){
 
 
 
-//ANIMAL
+//***************************** ANIMAL *****************************
+
+
 bool Controlador::verificarIdAnimal(int id){
 	map<int, Animal*>::iterator it;
 
@@ -272,7 +276,7 @@ void Controlador::salvarDadosAnimais(){
     }
 
 	outfile_.close();
-	cout << "Animal adicionado com sucesso!" << endl;
+	cout << "Os dados dos animais foram salvos com sucesso!" << endl;
 }
 
 void Controlador::addAnimal(){
@@ -293,7 +297,7 @@ void Controlador::addAnimal(){
 	string pais_origem;
 	string cidade_origem;
 
-	bool nativo;
+	string classificacao;
 	bool id_disponivel = true;
 	int opc;
 
@@ -322,7 +326,7 @@ void Controlador::addAnimal(){
 	cout << "Sexo: " << endl;
 	cin >> sexo;
 
-	cout << "Tamanho: " << endl;
+	cout << "Tamanho em metros: " << endl;
 	cin >> tamanho;
 
 	cout << "Dieta: " << endl;
@@ -337,34 +341,42 @@ void Controlador::addAnimal(){
 	cout << "Nome de batismo: " << endl;
 	cin >> nome_batismo;
 
-	cout << "Autorização do IBAMA: " << endl;
-	cin >> autorizacao_ibama;
-
 	cout << "Este animal é:" << endl << 
-		"1- Nativo" << endl <<
-		"2- Exotico" << endl;
+		"\n1- Nativo" <<
+		"\n2- Exotico" << 
+		"\n3- Doméstico" << endl;
 	cin >> opc;
 
 	switch(opc){
 		case 1: {
+			cout << "Autorização do IBAMA: " << endl;
+			cin >> autorizacao_ibama;
+
 			cout << "UF de Origem:" << endl;
 			cin >> uf_origem;
 
-			nativo = true;
+			classificacao = "Nativo";
 
 			break;
 		}
-		case 2: {	
+		case 2: {
+			cout << "Autorização do IBAMA: " << endl;
+			cin >> autorizacao_ibama;
+
 			cout << "País de Origem:" << endl;
 			cin >> pais_origem;
 
 			cout << "Cidade de Origem:" << endl;
 			cin >> cidade_origem;
 
-			nativo = false;
+			classificacao = "Exotico";
 
 			break;	
 		}
+
+		case 3:
+			classificacao = "Domestico";
+		break;
 	}
 	   
 	switch(resolveOption(classe)){
@@ -373,19 +385,25 @@ void Controlador::addAnimal(){
 			cout << "Cor do Pelo:" << endl;
 			cin >> cor_pelo;
 
-			if(nativo == true){
-				Animal* animal = new MamiferoNativo(id, classe, nome_cientifico, sexo, tamanho, 
+			if(classificacao == "Nativo"){
+				Animal* animal = new MamiferoNativo(id, classe, classificacao, nome_cientifico, sexo, tamanho, 
 													dieta, tem_veterinario, tem_tratador, nome_batismo,
 													cor_pelo, autorizacao_ibama, uf_origem);
 				lista_animais.insert({id, animal});
 
 
-        cout << "Cadastro efetuado com sucesso!!" << endl;
-			} else {
+        	cout << "Cadastro efetuado com sucesso!!" << endl;
+			} else if (classificacao == "Exotico") {
 
-				Animal* animal = new MamiferoExotico(id, classe, nome_cientifico, sexo, tamanho,
+				Animal* animal = new MamiferoExotico(id, classe, classificacao, nome_cientifico, sexo, tamanho,
 													dieta, tem_veterinario, tem_tratador, nome_batismo, 
 													cor_pelo, autorizacao_ibama, pais_origem, cidade_origem);
+				lista_animais.insert({id, animal});
+			}
+
+			else {
+				Animal* animal = new MamiferoDomestico(id, classe, classificacao, nome_cientifico, sexo, tamanho,
+													dieta, tem_veterinario, tem_tratador, nome_batismo, cor_pelo);
 				lista_animais.insert({id, animal});
 			}
 	
@@ -397,17 +415,24 @@ void Controlador::addAnimal(){
 			cout << "Total de Mudas:" << endl;
 			cin >> total_de_mudas;	
 
-			if(nativo == true){
-				Animal* animal = new AnfibioNativo(id, classe, nome_cientifico, sexo, tamanho, 
+			if(classificacao == "Nativo"){
+				Animal* animal = new AnfibioNativo(id, classe, classificacao, nome_cientifico, sexo, tamanho, 
 													dieta, tem_veterinario, tem_tratador, nome_batismo,
 													total_de_mudas, autorizacao_ibama, uf_origem);
 				lista_animais.insert({id, animal});
 
-			} else {
+			} else if (classificacao == "Exotico") {
 
-				Animal* animal = new AnfibioExotico(id, classe, nome_cientifico, sexo, tamanho,
+				Animal* animal = new AnfibioExotico(id, classe, classificacao, nome_cientifico, sexo, tamanho,
 													dieta, tem_veterinario, tem_tratador, nome_batismo, 
 													total_de_mudas, autorizacao_ibama, pais_origem, cidade_origem);
+				lista_animais.insert({id, animal});
+			}
+
+			else {
+				Animal* animal = new AnfibioDomestico(id, classe, classificacao, nome_cientifico, sexo, tamanho,
+													dieta, tem_veterinario, tem_tratador, nome_batismo, 
+													total_de_mudas);
 				lista_animais.insert({id, animal});
 			}
 
@@ -429,19 +454,24 @@ void Controlador::addAnimal(){
 				tipo_veneno = "Não possui veneno.";
 			}
 
-			if(nativo == true){
-				Animal* animal = new ReptilNativo(id, classe, nome_cientifico, sexo, tamanho, 
+			if(classificacao == "Nativo"){
+				Animal* animal = new ReptilNativo(id, classe, classificacao, nome_cientifico, sexo, tamanho, 
 											dieta, tem_veterinario, tem_tratador, nome_batismo,
 											venenoso, tipo_veneno, autorizacao_ibama, uf_origem);
 				lista_animais.insert({id, animal});
 
-			} else {
+			} else if (classificacao == "Exotico")  {
 
-				Animal* animal = new ReptilExotico(id, classe, nome_cientifico, sexo, tamanho,
+				Animal* animal = new ReptilExotico(id, classe, classificacao, nome_cientifico, sexo, tamanho,
 													dieta, tem_veterinario, tem_tratador, nome_batismo, 
 													venenoso, tipo_veneno, autorizacao_ibama, pais_origem, cidade_origem);
 				lista_animais.insert({id, animal});
 
+			} else {
+				Animal* animal = new ReptilDomestico(id, classe, classificacao, nome_cientifico, sexo, tamanho,
+													dieta, tem_veterinario, tem_tratador, nome_batismo, 
+													venenoso, tipo_veneno);
+				lista_animais.insert({id, animal});
 			}
         	break;
    		}
@@ -456,18 +486,24 @@ void Controlador::addAnimal(){
 			cout << "Envergadura das asas" << endl;
 			cin >> envergadura_asas;
 
-			if(nativo == true){
-				Animal* animal = new AveNativo(id, classe, nome_cientifico, sexo, tamanho, 
+			if(classificacao == "Nativo"){
+				Animal* animal = new AveNativo(id, classe, classificacao, nome_cientifico, sexo, tamanho, 
 											dieta, tem_veterinario, tem_tratador, nome_batismo,
 											tamanho_bico_cm, envergadura_asas, autorizacao_ibama, uf_origem);
 				lista_animais.insert({id, animal});
 
 
-			} else {
+			} else if (classificacao == "Exotico")   {
 
-				Animal* animal = new AveExotico(id, classe, nome_cientifico, sexo, tamanho,
+				Animal* animal = new AveExotico(id, classe, classificacao, nome_cientifico, sexo, tamanho,
 												dieta, tem_veterinario, tem_tratador, nome_batismo, 
 												tamanho_bico_cm, envergadura_asas, autorizacao_ibama, pais_origem, cidade_origem);
+				lista_animais.insert({id, animal});	
+
+			} else {
+				Animal* animal = new AveDomestico(id, classe, classificacao, nome_cientifico, sexo, tamanho,
+												dieta, tem_veterinario, tem_tratador, nome_batismo, 
+												tamanho_bico_cm, envergadura_asas);
 				lista_animais.insert({id, animal});	
 			}
         	break;
@@ -483,12 +519,12 @@ void Controlador::addAnimal(){
     	}
 	}
 
-	salvarDadosAnimais();
+	//salvarDadosAnimais();
 } 
 
 void Controlador::listarAnimais(int opc){
 	map<int, Animal*>::iterator it;
-	string opc_classe;
+	string opc_classe, opc_classificacao;
 	char opc_sexo;
 	//fazer um tolower aqui
 
@@ -519,6 +555,20 @@ void Controlador::listarAnimais(int opc){
 		break;
 
 		case 3:
+			cout << "--------- Listagem por classificação ----------\n " <<
+					"Insira a classificação dos animais a serem listados:\n" <<
+					"Nativo, Exotico ou Domestico\n";
+			cin >> opc_classificacao;
+
+			for(it = lista_animais.begin(); it != lista_animais.end(); it++){
+				if(it->second->getClassificacao() == opc_classificacao){
+					cout << "\n" << *it->second;	
+				}
+			}
+		break;
+
+
+		case 4:
 			for(it = lista_animais.begin(); it != lista_animais.end(); it++){
 				cout << "\n" << *it->second;	
 			}
@@ -529,7 +579,6 @@ void Controlador::listarAnimais(int opc){
 		break;
 	}
 }
-
 
 void Controlador::removerAnimal(){
 	map<int, Animal*>::iterator it_animal;

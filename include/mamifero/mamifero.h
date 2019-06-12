@@ -4,7 +4,7 @@
 #include <iostream>
 #include <string>
 
-#include "animal.h"
+#include "../animal/animal.h"
 
 class Mamifero : public Animal{
 	protected:
@@ -14,23 +14,15 @@ class Mamifero : public Animal{
 
 	public:
 
-		Mamifero(int id, string classe, string nome_cientifico,char sexo, 
+		Mamifero(int id, string classe, string classificacao, string nome_cientifico,char sexo, 
 			double tamanho, string dieta, int tem_veterinario, int tem_tratador,
 			string nome_batismo, string cor_pelo);
 		Mamifero();
 		~Mamifero();
 
-		string getClasse();
-		char getSexo();
 };
 
-string Mamifero::getClasse(){
-	return "Mammalia";
-}
 
-char Mamifero::getSexo(){
-	return m_sexo;
-}
 
 
 

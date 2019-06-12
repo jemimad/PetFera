@@ -2,7 +2,7 @@
 #define _ANFIBIO_
 
 #include <iostream>
-#include "animal.h"
+#include "../animal/animal.h"
 
 class Anfibio : public Animal{
 	protected:
@@ -12,21 +12,11 @@ class Anfibio : public Animal{
 		//date m_ultima_muda; procurar classe date
 	public:
 
-		Anfibio(int id, string classe, string nome_cientifico,char sexo, 
+		Anfibio(int id, string classe, string classificacao, string nome_cientifico,char sexo, 
 			double tamanho, string dieta, int tem_veterinario, int tem_tratador,
 			string nome_batismo, int total_mudas);
 		Anfibio();
 		~Anfibio();
-
-		string getClasse();
-		char getSexo();
 };
 
-string Anfibio::getClasse(){
-	return "Amphibia";
-}
-
-char Anfibio::getSexo(){
-	return m_sexo;
-}
 #endif
