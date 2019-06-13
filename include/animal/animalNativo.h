@@ -12,6 +12,12 @@ class AnimalNativo : public AnimalSilvestre{
 		AnimalNativo(string autorizacao_ibama, string uf_origem);
 		AnimalNativo();
 		~AnimalNativo();
+
+		void setUfOrigem(string uf_origem);
 };
+
+void AnimalNativo::setUfOrigem(string uf_origem){
+	m_uf_origem = m_uf_origem;
+}
 
 #endif

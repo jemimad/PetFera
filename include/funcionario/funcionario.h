@@ -26,6 +26,12 @@ class Funcionario{
 					char fatorRH, string m_especialidade);
 		~Funcionario();
 
+		void setNome(string nome_);
+		void setCpf(string cpf_);
+		void setIdade(short idade_);
+		void setTipoSanguineo(short tipoSanguineo_);
+		void setFatorRh(char fatorRH_);
+		void setEspecialidade(string especialidade_);
 
 		virtual string getFuncao() = 0;
 		friend ostream& operator<<(ostream& os, const Funcionario& f);

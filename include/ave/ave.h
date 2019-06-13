@@ -20,8 +20,18 @@ class Ave : public Animal{
 		Ave();
 		~Ave();
 
+		void setTamanhoBico(double tamanho_bico_cm_);
+		void setEnvergaduraAsas(double envergadura_asas_);
 
 };
+
+void Ave::setTamanhoBico(double tamanho_bico_cm_){
+	m_tamanho_bico_cm = tamanho_bico_cm_;
+}
+
+void Ave::setEnvergaduraAsas(double envergadura_asas_){
+	m_envergadura_asas = envergadura_asas_;
+}
 
 
 #endif

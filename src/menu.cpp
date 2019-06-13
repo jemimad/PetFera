@@ -65,7 +65,9 @@ void Controlador::exibirMenuAnimais(){
 		case 3:
 			cout << "--------- Consultar animal ----------\n " <<
 				"Insira o id do animal a ser consultado:" << endl;
-			consultarAnimal();
+			int id;
+			cin >> id;
+			consultarAnimal(id);
 			exibirMenuAnimais();
 		break;
 
@@ -82,6 +84,8 @@ void Controlador::exibirMenuAnimais(){
 		case 5:
 			cout << "--------- Alterar dados de um animal ----------\n " <<
 				"Insira o id do animal a ser alterado:" << endl;
+			editarAnimal();
+			exibirMenuAnimais();
 		break;
 		
 		case 6:
@@ -137,11 +141,17 @@ void Controlador::exibirMenuFuncionarios(){
 		case 2:
 			cout << "--------- Remover funcionário ----------\n " << endl;
 			removerFuncionario();
+			exibirMenuFuncionarios();
 		break;
 			
 		case 3:
 			cout << "--------- Consultar funcionário ----------\n " << endl;
-			consultarFuncionario();
+			cout << "Digite o ID do usuário que você deseja consultar" << endl;
+			int id_f;
+			cin >> id_f;
+
+			consultarFuncionario(id_f);
+			exibirMenuFuncionarios();
 		break;
 			
 		case 4:
@@ -173,6 +183,8 @@ void Controlador::exibirMenuFuncionarios(){
 			
 		case 5:
 			cout << "--------- Alterar dados de um Funcionário  ----------\n " << endl;
+			editarFuncionario();
+			exibirMenuFuncionarios();
 						
 		break;
 		

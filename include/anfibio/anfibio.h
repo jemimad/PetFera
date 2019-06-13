@@ -17,6 +17,12 @@ class Anfibio : public Animal{
 			string nome_batismo, int total_mudas);
 		Anfibio();
 		~Anfibio();
+
+		void setTotalMudas(int total_mudas_);
 };
+
+void Anfibio::setTotalMudas(int total_mudas_){
+	m_total_mudas = total_mudas_;
+}
 
 #endif

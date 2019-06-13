@@ -20,7 +20,13 @@ class Mamifero : public Animal{
 		Mamifero();
 		~Mamifero();
 
+		void setCorPelo(string cor_pelo_);
+
 };
+
+void Mamifero::setCorPelo(string cor_pelo_){
+	m_cor_pelo = cor_pelo_;
+}
 
 
 

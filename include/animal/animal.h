@@ -35,11 +35,22 @@ class Animal{
 		char getSexo();
 		string getClassificacao();
 		
-		int getId();
+		/*int getId();
 		string getNomeCientifico();
 		double getTamanho();
 		string getDieta();
-		string getNomeBatismo();
+		string getNomeBatismo();*/
+
+		void setId(int id);
+		void setClasse(string classe);
+		void setClassificacao(string classificacao);
+		void setNomeCientifico(string nome_cientifico);
+		void setSexo(char sexo);
+		void setTamanho(double tamanho);
+		void setDieta(string dieta);
+		void setIdVeterinario(int tem_veterinario);
+		void setIdTratador(int tem_tratador);
+		void setNomeBatismo(string nome_batismo);
 
 		friend ostream& operator<<(ostream& os, const Animal& a);
 		friend ofstream& operator<<(ofstream& out, const Animal& a);

@@ -19,7 +19,18 @@ class Reptil : public Animal{
 		Reptil();
 		~Reptil();
 
+		void setVenenoso(bool venenoso_);
+		void setTipoVeneno(string tipo_veneno_);
+
 };
+
+void Reptil::setVenenoso(bool venenoso_){
+	m_venenoso = venenoso_;
+}
+
+void Reptil::setTipoVeneno(string tipo_veneno_){
+	m_tipo_veneno = tipo_veneno_;
+}
 
 
 #endif

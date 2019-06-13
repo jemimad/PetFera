@@ -18,7 +18,9 @@ class Veterinario : public Funcionario{
 					char fatorRH, string especialidade, string cmrv);		
 		Veterinario();
 		~Veterinario();
+
 		string getFuncao();
+		void setCMRV(string cmrv_);
 
 
 };
@@ -47,6 +49,9 @@ string Veterinario::getFuncao(){
 	return "Veterinario";
 }
 
+void Veterinario::setCMRV(string cmrv_){
+	m_cmrv = cmrv_;
+}
 
 
 #endif

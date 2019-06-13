@@ -1,0 +1,59 @@
+[33mcommit 6d9100501235dc2fbc2a2cad63acb4a7fcc65a88[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: carmems <cstefanie.16@gmail.com>
+Date:   Wed Jun 12 02:10:15 2019 +0000
+
+    Adição do atributo 'classificação' e Implementação de animais do tipo Domestico
+
+[33mcommit 31e3a15b18aa274ce8916f30680e4fb62495bc30[m
+Author: carmems <cstefanie.16@gmail.com>
+Date:   Tue Jun 11 04:19:55 2019 +0000
+
+    Melhoria em listagens, otimização de código
+
+[33mcommit e7b690911240c38571c804244244570c74583eb3[m
+Author: jemimad <jemiman53@gmail.com>
+Date:   Mon Jun 10 23:03:27 2019 -0300
+
+    Criação do makefile
+
+[33mcommit c7ca18995a75f550f53811f9662af3b56cf19e1f[m
+Author: ItaloL <cstefanie@LAPTOP-I419GM6M.localdomain>
+Date:   Mon Jun 10 22:55:48 2019 +0000
+
+    Listagem de animal
+
+[33mcommit c34d7297f39cee73e65b25338322376debe76178[m
+Author: Carmem <cstefanie.16@gmail.com>
+Date:   Mon Jun 10 02:01:36 2019 -0300
+
+    Melhoria na Listagem de Funcionário, inicialização Listagem de Animais, modificação no Menu e Consulta de Funcionário
+
+[33mcommit c16460026f8456cb465e0733448a8c33adecab64[m
+Author: jemimad <jemiman53@gmail.com>
+Date:   Thu Jun 6 17:25:40 2019 -0300
+
+    Persistência de Animal em arquivo, remoção de Funcionário e Animal
+
+[33mcommit f5c033341d8ca7a1571d78090cd1395fdcf4d301[m
+Author: jemimad <jemiman53@gmail.com>
+Date:   Wed Jun 5 22:24:57 2019 -0300
+
+    Persistindo funcionário e inicialização da persistência de animal
+
+[33mcommit 5d4e7956be21b106eb508065fd41f2d711e70d2e[m
+Author: Carmem Stefanie da Silva Cavalcante <cstefanie@A21214037397L.imd.local>
+Date:   Wed Jun 5 13:45:06 2019 -0300
+
+    Correção de erros em Cadastro de Animais
+
+[33mcommit 548ef24076546f2fdb78914bbf34c43b86d0efc8[m
+Author: Carmem <cstefanie.16@gmail.com>
+Date:   Tue Jun 4 22:40:59 2019 -0300
+
+    Adição de Animal, Construtores de animais, separação de código
+
+[33mcommit 779dc7e75f6d3d5b1eb3dba07e6bf23c9cf12be8[m
+Author: ItaloL <italoluis11@gmail.com>
+Date:   Tue Jun 4 15:19:36 2019 -0300
+
+    Resolvendo problemas do git

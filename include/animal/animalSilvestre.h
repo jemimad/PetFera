@@ -12,6 +12,12 @@ class AnimalSilvestre{
 		AnimalSilvestre(string autorizacao_ibama);
 		AnimalSilvestre();
 		~AnimalSilvestre();
+
+		void setAutorizacaoIbama(string autorizacao_ibama);
 };
+
+void AnimalSilvestre::setAutorizacaoIbama(string autorizacao_ibama){
+	m_autorizacao_ibama = autorizacao_ibama;
+}
 
 #endif

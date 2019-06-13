@@ -51,8 +51,11 @@ class Controlador{
 		//Função para remover funcionário. Não recebe parâmetro.
 		void removerFuncionario();
 
-		//Função para consultar funcionário. Não recebe parâmetro.
-		void consultarFuncionario();
+		//Função para consultar funcionário. 
+		bool consultarFuncionario(int id);
+
+		//Função para editar funcionário. Não recebe parâmetro.
+		void editarFuncionario();
 
 		//Função para adicionar animal. Não recebe parâmetro.
 		void addAnimal();
@@ -63,8 +66,11 @@ class Controlador{
 		//Função para remover animal. Não recebe parâmetro.
 		void removerAnimal();
 
-		//Função para consultar animal. Não recebe parâmetro.
-		void consultarAnimal();
+		//Função para consultar animal. 
+		void consultarAnimal(int id);
+
+		//Função para editar animal. Não recebe parâmetro.
+		void editarAnimal();
 
 		//Destrutor da classe controladora.
 		~Controlador();

@@ -13,6 +13,18 @@ class AnimalExotico : public AnimalSilvestre{
 		AnimalExotico(string autorizacao_ibama, string pais_origem, string cidade_origem);
 		AnimalExotico();
 		~AnimalExotico();
+
+		void setPaisOrigem(string pais_origem);
+		void setCidadeOrigem(string cidade_origem);
 };
+
+
+void AnimalExotico::setPaisOrigem(string pais_origem){
+	m_pais_origem = pais_origem;
+}
+
+void AnimalExotico::setCidadeOrigem(string cidade_origem){
+	m_cidade_origem = cidade_origem;
+}
 
 #endif

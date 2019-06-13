@@ -18,6 +18,7 @@ class Tratador : public Funcionario{
 		~Tratador();
 
 		string getFuncao();
+		void setNivelSeguranca(int nivelSeguranca_);
 
 
 
@@ -51,16 +52,9 @@ string Tratador::getFuncao(){
 	return "Tratador";
 }
 
-/*ostream& operator<<(ostream& o,  Tratador& t){
-	o << "ID:" << t.m_id << "\nFuncao" << t.m_funcao << "\nNome: " <<  
-	t.m_nome << "\nCPF: " << t.m_cpf << "\nIdade: " << t.m_idade << 
-	"\nTipo Sanguineo: " << t.m_tipoSanguineo << "\nFator RH: " << 
-	t.m_fatorRH << "\nEspecialidade: " << t.m_especialidade << 
-	"\nNível de Seguranca: " << t.m_nivelSeguranca;
 
-	return o;
-}*/
-
-
+void Tratador::setNivelSeguranca(int nivelSeguranca_){
+	m_nivelSeguranca = nivelSeguranca_;
+}
 
 #endif
