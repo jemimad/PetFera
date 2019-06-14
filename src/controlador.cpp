@@ -1,20 +1,27 @@
-#include <string>
-#include <map>
-#include <utility>
-#include <iterator>
-#include <fstream>
-#include <sstream>
-#include <algorithm>
-
-#include "animal.cpp"
-#include "funcionario.cpp"
-#include "../include/controlador.h"
-
-#include "construtores.cpp"
-
-using namespace std;
-using std::string;
-
+#include "controlador.h"
+#include "anfibio.h"
+#include "anfibioDomestico.h"
+#include "anfibioExotico.h"
+#include "anfibioNativo.h"
+#include "animal.h"
+#include "animalExotico.h"
+#include "animalNativo.h"
+#include "animalSilvestre.h"
+#include "ave.h"
+#include "aveDomestico.h"
+#include "aveExotico.h"
+#include "aveNativo.h"
+#include "funcionario.h"
+#include "mamifero.h"
+#include "mamiferoDomestico.h"
+#include "mamiferoExotico.h"
+#include "mamiferoNativo.h"
+#include "reptil.h"
+#include "reptilDomestico.h"
+#include "reptilExotico.h"
+#include "reptilNativo.h"
+#include "tratador.h"
+#include "veterinario.h"
 
 //ENUM 
 enum Classes{
@@ -108,7 +115,7 @@ Não ta dando certo pois: tem que saber como pega cada palavra entre os ; e salv
 pra poder construir o objeto certo e depois guardar o objeto certo no map.*/
 
 void Controlador::abrirPetshop(){
-	ifstream inputfile_animais;
+	/*ifstream inputfile_animais;
 	string linha;
 	inputfile_animais.open("animais.csv");
 
@@ -143,7 +150,32 @@ void Controlador::abrirPetshop(){
 		inputfile_funcionarios.close();
 	}else{
 		cout << "Arquivo vazio ou inexistente" << endl;
-	}
+	}*/
+
+	Funcionario* func = new Veterinario(01, "Veterinario", "João", "123.321.123-3", 21, 
+							'B', '+', "Aves", "120.254");
+	lista_funcionarios.insert({01, func});
+
+	
+	Funcionario* func2 = new Tratador(02, "Tratador", "Maria", "325.567.897-9",30, 
+							'A', '-', "Mamiferos", 0);
+	lista_funcionarios.insert({02, func2});
+
+	Animal* animalAf = new AnfibioExotico(01, "Amphibia", "Exotico", "Salamandra", 'F', 0.05,
+										"Lodo", 01, 0, "Sal", 
+										3, "120.225IB", "Madagascar", "Aquela");
+	lista_animais.insert({01, animalAf});
+
+	Animal* animalMa = new MamiferoDomestico(02, "Mammalia", "Domestico", "Gato", 'M', 0.8,
+									 "Ração", 0, 0, "Xanim", "marrom");
+	lista_animais.insert({02, animalMa});
+
+	Animal* animalAv = new AveNativo(03, "Ave", "Nativo", "Papagaio", 'F', 0.1, 
+									"Frutas", 0, 02, "Verde", 3, 45, "123.432IB", "AM");
+	lista_animais.insert({03, animalAv});
+
+
+
 }
 
 /*Essa função retorna falso se o ID estiver indisponível (já existir um funcionário com esse id)*/
@@ -744,8 +776,11 @@ void Controlador::removerAnimal(){
 
   	it_animal = lista_animais.find(id);
 	if (it_animal != lista_animais.end()){
+
+		//delete  it_animal->second;
 		lista_funcionarios.erase(id);
 		cout << "Animal Removido" << endl; 
+
 
 	} else {
 		cout << "Não foi encontrado Animal com esse id" << endl;
@@ -975,3 +1010,7 @@ void Controlador::editarAnimal(){
 		break;	
 	}
 }
+
+//Construtor e Destrutor do controlador.
+Controlador::Controlador(){}
+Controlador::~Controlador(){}

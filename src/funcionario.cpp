@@ -1,5 +1,21 @@
 #include <iostream>
-#include "../include/funcionario/funcionario.h"
+#include "funcionario.h"
+
+Funcionario::Funcionario(int id, string funcao, string nome, string cpf, short idade, short tipoSanguineo,
+					char fatorRH, string especialidade):m_id(id), m_funcao(funcao), m_nome(nome), m_cpf(cpf),
+					m_idade(idade), m_tipoSanguineo(tipoSanguineo), m_fatorRH(fatorRH),
+					m_especialidade(especialidade){
+}
+
+Funcionario::~Funcionario(){}
+
+ostream& operator<<(ostream& os, const Funcionario& f){
+	return f.listar(os);
+}
+
+ofstream& operator<<(ofstream& out, const Funcionario& f){
+	return f.salvar(out);
+}
 
 void Funcionario::setNome(string nome_){
 	m_nome = nome_;

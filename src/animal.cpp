@@ -1,5 +1,22 @@
 #include <iostream>
-#include "../include/animal/animal.h"
+#include "animal.h"
+
+Animal::Animal(int id, string classe, string classificacao, string nome_cientifico,char sexo, 
+			double tamanho, string dieta, int tem_veterinario, int tem_tratador,
+			string nome_batismo): m_id(id), m_classe(classe), m_classificacao(classificacao), m_nome_cientifico(nome_cientifico),
+			m_sexo(sexo), m_tamanho(tamanho), m_dieta(dieta), m_tem_veterinario(tem_veterinario),
+			m_tem_tratador(tem_tratador), m_nome_batismo(nome_batismo){
+}
+
+Animal::~Animal(){}
+
+ostream& operator<<(ostream& os, const Animal& a){
+	return a.listar_animais(os);
+}
+
+ofstream& operator<<(ofstream& out, const Animal& a){
+	return a.salvar_animais(out);
+}
 
 string Animal::getClasse(){
 	return m_classe;

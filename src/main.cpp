@@ -1,12 +1,11 @@
 #include <iostream>
-#include "menu.cpp"
-
+#include "menu.h"
 
 int main(){
 
 	Controlador petfera;
 
-	//petfera.abrirPetshop();
+	petfera.abrirPetshop();
 	petfera.exibirMenu();
 
 

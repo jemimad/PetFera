@@ -3,9 +3,18 @@
 #include <iostream>
 #include <string>
 #include <map>
+#include <string>
+#include <map>
+#include <utility>
+#include <iterator>
+#include <fstream>
+#include <sstream>
+#include <algorithm>
 
+#include "animal.h"
+#include "funcionario.h"
 
-using std::string;
+using namespace std;
 using std::map;
 
 class Controlador{
