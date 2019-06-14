@@ -1,4 +1,4 @@
-#include "anfibioDomestico.h"
+#include "../include/anfibioDomestico.h"
 
 AnfibioDomestico::AnfibioDomestico(int id, string classe, string classificacao, string nome_cientifico,char sexo, 
 			double tamanho, string dieta, int tem_veterinario, int tem_tratador,

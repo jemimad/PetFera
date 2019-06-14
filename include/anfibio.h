@@ -2,6 +2,7 @@
 #define _ANFIBIO_
 
 #include <iostream>
+#include <fstream>
 #include "animal.h"
 
 class Anfibio : public Animal{
