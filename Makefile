@@ -1,103 +1,95 @@
-#Pastas
-INC = ./include
-SRC = ./src
-OBJ = ./obj
-BIN = ./bin
+#Makefile for "petfera" C++ application
+#Created by Carmem Stefanie, Italo Luis, Jemima Dias - 15/06/2019
 
 #Variáveis 
-CC = g++ 
-CFLAGS = -O0 -Wall -std=c++11 -I$(INC)
+PROG= petfera
+CC = g++
+CPPFLAGS= -O0 -g -Wall -std=c++11 -I/usr/petfera/include
+OBJS = ./obj
 
-OBJECTS = $(OBJ)/animalSilvestre.o $(OBJ)/funcionario.o $(OBJ)/main.o $(OBJ)/anfibio.o $(OBJ)/anfibioDomestico.o $(OBJ)/anfibioExotico.o $(OBJ)/anfibioNativo.o $(OBJ)/animal.o $(OBJ)/animalExotico.o
-        $(OBJ)/animalNativo.o $(OBJ)/ave.o $(OBJ)/aveDomestico.o $(OBJ)/aveExotico.o $(OBJ)/aveNativo.o $(OBJ)/controlador.o $(OBJ)/mamifero.o $(OBJ)/mamiferoDomestico.o $(OBJ)/mamiferoExotico.o
-        $(OBJ)/mamiferoNativo.o $(OBJ)/menu.o $(OBJ)/reptil.o $(OBJ)/reptilDomestico.o $(OBJ)/reptilExotico.o $(OBJ)/reptilNativo.o $(OBJ)/tratador.o $(OBJ)/veterinario.o
+OBJS= main.o animal.o animalSilvestre.o funcionario.o anfibio.o anfibioDomestico.o anfibioExotico.o anfibioNativo.o animalExotico.o animalNativo.o ave.o aveDomestico.o aveExotico.o aveNativo.o controlador.o mamifero.o mamiferoDomestico.o mamiferoExotico.o mamiferoNativo.o menu.o reptil.o reptilDomestico.o reptilExotico.o reptilNativo.o tratador.o veterinario.o
 
-PROG = $(BIN)/petfera
+$(PROG): $(OBJS)
+	$(CC) $(CPPFLAGS) -o $(PROG) $(OBJS)
 
-all: $(OBJECTS) $(BIN)/petfera
-        $(CC) $(CFLAGS) -o $(PROG) $(OBJECTS)
+main.o:
+	$(CC) $(CPPFLAGS) -c main.cpp
 
-$(OBJ)/animalSilvestre.o: $(INC)/animalSilvestre.h
-        $(CC) $(CFLAGS) -c $(SRC)/animalSilvestre.cpp -o $@
+animal.o:
+	$(CC) $(CPPFLAGS) -c animal.cpp
 
-$(OBJ)/funcionario.o: $(INC)/funcionario.h
-        $(CC) $(CFLAGS) -c $(SRC)/funcionario.cpp -o $@ 
+animalSilvestre.o:
+	$(CC) $(CPPFLAGS) -c animalSilvestre.cpp
+	
+funcionario.o:
+	$(CC) $(CPPFLAGS) -c funcionario.cpp
 
-$(OBJ)/main.o: $(INC)/main.cpp
-        $(CC) $(CFLAGS) -c $(SRC)/main.cpp -o $@   
+anfibio.o:
+	$(CC) $(CPPFLAGS) -c anfibio.cpp
 
-$(OBJ)/anfibio.o: $(INC)/anfibio.h
-        $(CC) $(CFLAGS) -c $(SRC)/anfibio.cpp -o $@
+anfibioDomestico.o:
+	$(CC) $(CPPFLAGS) -c anfibioDomestico.cpp
 
-$(OBJ)/anfibioDomestico.o: $(INC)/anfibioDomestico.h
-        $(CC) $(CFLAGS) -c $(SRC)/anfibioDomestico.cpp -o $@
+anfibioExotico.o:
+	$(CC) $(CPPFLAGS) -c anfibioExotico.cpp
 
-$(OBJ)/anfibioExotico.o: $(INC)/anfibioExotico.h
-        $(CC) $(CFLAGS) -c $(SRC)/anfibioExotico.cpp -o $@
+anfibioNativo.o:
+	$(CC) $(CPPFLAGS) -c anfibioNativo.cpp
 
-$(OBJ)/anfibioNativo.o: $(INC)/anfibioNativo.h
-        $(CC) $(CFLAGS) -c $(SRC)/anfibioNativo.cpp -o $@
+animalExotico.o:
+	$(CC) $(CPPFLAGS) -c animalExotico.cpp
 
-$(OBJ)/animal.o: $(INC)/animal.h
-        $(CC) $(CFLAGS) -c $(SRC)/animal.cpp -o $@      
+animalNativo.o:
+	$(CC) $(CPPFLAGS) -c animalNativo.cpp
 
-$(OBJ)/animalExotico.o: $(INC)/animalExotico.h
-        $(CC) $(CFLAGS) -c $(SRC)/animalExotico.cpp -o $@
+ave.o:
+	$(CC) $(CPPFLAGS) -c ave.cpp
 
-$(OBJ)/animalNativo.o: $(INC)/animalNativo.h
-        $(CC) $(CFLAGS) -c $(SRC)/animalNativo.cpp -o $@
+aveDomestico.o:
+	$(CC) $(CPPFLAGS) -c aveDomestico.cpp
 
-$(OBJ)/ave.o: $(INC)/ave.h
-        $(CC) $(CFLAGS) -c $(SRC)/ave.cpp -o $@
+aveExotico.o:
+	$(CC) $(CPPFLAGS) -c aveExotico.cpp
 
-$(OBJ)/aveDomestico.o: $(INC)/aveDomestico.h
-        $(CC) $(CFLAGS) -c $(SRC)/aveDomestico -o $@
+aveNativo.o:
+	$(CC) $(CPPFLAGS) -c aveNativo.cpp
 
-$(OBJ)/aveExotico.o: $(INC)/aveExotico.h
-        $(CC) $(CFLAGS) -c $(SRC)/aveExotico-o $@
+controlador.o:
+	$(CC) $(CPPFLAGS) -c controlador.cpp
 
-$(OBJ)/aveNativo.o: $(INC)/aveNativo.h
-        $(CC) $(CFLAGS) -c $(SRC)/aveNativo -o $@
+mamifero.o: 
+	$(CC) $(CPPFLAGS) -c mamifero.cpp
 
-$(OBJ)/controlador.o: $(INC)/controlador.h
-        $(CC) $(CFLAGS) -c $(SRC)/controlador.cpp -o $@
+mamiferoDomestico.o:
+	$(CC) $(CPPFLAGS) -c mamiferoDomestico.cpp
 
-$(OBJ)/funcionario.o: $(INC)/funcionario.h
-        $(CC) $(CFLAGS) -c $(SRC)/funcionario -o $@
+mamiferoExotico.o:
+	$(CC) $(CPPFLAGS) -c mamiferoExotico.cpp
 
-$(OBJ)/mamifero.o: $(INC)/mamifero.h
-        $(CC) $(CFLAGS) -c $(SRC)/mamifero.cpp -o $@
+mamiferoNativo.o:
+	$(CC) $(CPPFLAGS) -c mamiferoNativo.cpp
 
-$(OBJ)/mamiferoDomestico.o: $(INC)/mamiferoDomestico.h
-        $(CC) $(CFLAGS) -c $(SRC)/mamiferoDomestico.cpp -o $@
+menu.o: 
+	$(CC) $(CPPFLAGS) -c menu.cpp
 
-$(OBJ)/mamiferoExotico.o: $(INC)/mamiferoExotico.h
-        $(CC) $(CFLAGS) -c $(SRC)/mamiferoExotico.cpp -o $@
+reptil.o:
+	$(CC) $(CPPFLAGS) -c reptil.cpp
 
-$(OBJ)/mamiferoNativo.o: $(INC)/mamiferoNativo.h
-        $(CC) $(CFLAGS) -c $(SRC)/mamiferoNativo.cpp -o $@
+reptilDomestico.o:
+	$(CC) $(CPPFLAGS) -c reptilDomestico.cpp
 
-$(OBJ)/menu.o: $(INC)/menu.h
-        $(CC) $(CFLAGS) -c $(SRC)/menu.cpp -o $@
+reptilExotico.o:
+	$(CC) $(CPPFLAGS) -c reptilExotico.cpp
 
-$(OBJ)/reptil.o: $(INC)/reptil.h
-        $(CC) $(CFLAGS) -c $(SRC)/reptil.cpp -o $@
+reptilNativo.o:
+	$(CC) $(CPPFLAGS) -c reptilNativo.cpp
 
-$(OBJ)/reptilDomestico.o: $(INC)/reptilDomestico.h
-        $(CC) $(CFLAGS) -c $(SRC)/reptilDomestico.cpp -o $@
+tratador.o:
+	$(CC) $(CPPFLAGS) -c tratador.cpp
 
-$(OBJ)/reptilExotico.o: $(INC)/reptilExotico.h
-        $(CC) $(CFLAGS) -c $(SRC)/reptilExotico.cpp -o $@
-
-$(OBJ)/reptilNativo.o: $(INC)/reptilNativo.h
-        $(CC) $(CFLAGS) -c $(SRC)/reptilNativo.cpp -o $@
-
-$(OBJ)/tratador.o: $(INC)/tratador.h
-        $(CC) $(CFLAGS) -c $(SRC)/tratador.cpp -o $@
-
-$(OBJ)/veterinario.o: $(INC)/veterinario.h
-        $(CC) $(CFLAGS) -c $(SRC)/veterinario.cpp -o $@
+veterinario.o:
+	$(CC) $(CPPFLAGS) -c veterinario.cpp
 
 clean:
-        rm -f $(PROG) $(OBJECTS)
+	rm -f core $(PROG) $(OBJS)
 

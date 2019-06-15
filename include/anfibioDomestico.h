@@ -1,7 +1,6 @@
 #ifndef _ANFIBIO_DOMESTICO_
 #define _ANFIBIO_DOMESTICO_
 
-#include <iostream>
 #include "anfibio.h"
 
 class AnfibioDomestico : public Anfibio{
