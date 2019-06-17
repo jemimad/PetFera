@@ -200,7 +200,7 @@ void Controlador::salvarDadosFuncionarios(){
     }
 
 	outfile.close();
-	cout << "Funcionário adicionado com sucesso!" << endl;
+	cout << "Os dados dos funcionários foram salvos com sucesso!" << endl;
 }
 
 void Controlador::addFuncionario(int opc){

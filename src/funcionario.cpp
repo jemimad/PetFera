@@ -1,4 +1,3 @@
-#include <iostream>
 #include "funcionario.h"
 
 Funcionario::Funcionario(int id, string funcao, string nome, string cpf, short idade, short tipoSanguineo,

@@ -1,95 +1,85 @@
-#Makefile for "petfera" C++ application
-#Created by Carmem Stefanie, Italo Luis, Jemima Dias - 15/06/2019
+# Note:
+# Copied from: https://gist.github.com/maurizzzio/de8908f67923091982c8c8136a063ea6
+# Generic Makefile example for a C++ project
+#
+CXX ?= g++
 
-#Variáveis 
-PROG= petfera
-CC = g++
-CPPFLAGS= -O0 -g -Wall -std=c++11 -I/usr/petfera/include
-OBJS = ./obj
+# path #
+SRC_PATH = src
+BUILD_PATH = build
+BIN_PATH = $(BUILD_PATH)
 
-OBJS= main.o animal.o animalSilvestre.o funcionario.o anfibio.o anfibioDomestico.o anfibioExotico.o anfibioNativo.o animalExotico.o animalNativo.o ave.o aveDomestico.o aveExotico.o aveNativo.o controlador.o mamifero.o mamiferoDomestico.o mamiferoExotico.o mamiferoNativo.o menu.o reptil.o reptilDomestico.o reptilExotico.o reptilNativo.o tratador.o veterinario.o
+# executable #
+BIN_NAME = petfera.out
 
-$(PROG): $(OBJS)
-	$(CC) $(CPPFLAGS) -o $(PROG) $(OBJS)
+# extensions #
+SRC_EXT = cpp
 
-main.o:
-	$(CC) $(CPPFLAGS) -c main.cpp
+# code lists #
+# Find all source files in the source directory, sorted by
+# most recently modified
+SOURCES = $(shell find $(SRC_PATH) -name '*.$(SRC_EXT)' | sort -k 1nr | cut -f2-)
+# Set the object file names, with the source directory stripped
+# from the path, and the build path prepended in its place
+OBJECTS = $(SOURCES:$(SRC_PATH)/%.$(SRC_EXT)=$(BUILD_PATH)/%.o)
+# Set the dependency files that will be used to add header dependencies
+DEPS = $(OBJECTS:.o=.d)
 
-animal.o:
-	$(CC) $(CPPFLAGS) -c animal.cpp
+# flags #
+OPTIMIZE = -O03
+DEBUG = -g
+COMPILE_FLAGS = -std=c++11 -Wall -g
+INCLUDES = -I include
+#INCLUDES = -I include/ -I /usr/local/include
+# Space-separated pkg-config libraries used by this project
+LIBS =
 
-animalSilvestre.o:
-	$(CC) $(CPPFLAGS) -c animalSilvestre.cpp
-	
-funcionario.o:
-	$(CC) $(CPPFLAGS) -c funcionario.cpp
+.PHONY: default_target
+default_target: release
 
-anfibio.o:
-	$(CC) $(CPPFLAGS) -c anfibio.cpp
+.PHONY: debug
+debug: export CXXFLAGS := $(CXXFLAGS) $(COMPILE_FLAGS) $(DEBUG)
+debug: dirs
+	@$(MAKE) all
 
-anfibioDomestico.o:
-	$(CC) $(CPPFLAGS) -c anfibioDomestico.cpp
 
-anfibioExotico.o:
-	$(CC) $(CPPFLAGS) -c anfibioExotico.cpp
+.PHONY: release
+release: export CXXFLAGS := $(CXXFLAGS) $(COMPILE_FLAGS) $(OPTIMIZE)
+release: dirs
+	@$(MAKE) all
 
-anfibioNativo.o:
-	$(CC) $(CPPFLAGS) -c anfibioNativo.cpp
+.PHONY: dirs
+dirs:
+	@echo "Creating directories"
+	@mkdir -p $(dir $(OBJECTS))
+	@mkdir -p $(BIN_PATH)
 
-animalExotico.o:
-	$(CC) $(CPPFLAGS) -c animalExotico.cpp
-
-animalNativo.o:
-	$(CC) $(CPPFLAGS) -c animalNativo.cpp
-
-ave.o:
-	$(CC) $(CPPFLAGS) -c ave.cpp
-
-aveDomestico.o:
-	$(CC) $(CPPFLAGS) -c aveDomestico.cpp
-
-aveExotico.o:
-	$(CC) $(CPPFLAGS) -c aveExotico.cpp
-
-aveNativo.o:
-	$(CC) $(CPPFLAGS) -c aveNativo.cpp
-
-controlador.o:
-	$(CC) $(CPPFLAGS) -c controlador.cpp
-
-mamifero.o: 
-	$(CC) $(CPPFLAGS) -c mamifero.cpp
-
-mamiferoDomestico.o:
-	$(CC) $(CPPFLAGS) -c mamiferoDomestico.cpp
-
-mamiferoExotico.o:
-	$(CC) $(CPPFLAGS) -c mamiferoExotico.cpp
-
-mamiferoNativo.o:
-	$(CC) $(CPPFLAGS) -c mamiferoNativo.cpp
-
-menu.o: 
-	$(CC) $(CPPFLAGS) -c menu.cpp
-
-reptil.o:
-	$(CC) $(CPPFLAGS) -c reptil.cpp
-
-reptilDomestico.o:
-	$(CC) $(CPPFLAGS) -c reptilDomestico.cpp
-
-reptilExotico.o:
-	$(CC) $(CPPFLAGS) -c reptilExotico.cpp
-
-reptilNativo.o:
-	$(CC) $(CPPFLAGS) -c reptilNativo.cpp
-
-tratador.o:
-	$(CC) $(CPPFLAGS) -c tratador.cpp
-
-veterinario.o:
-	$(CC) $(CPPFLAGS) -c veterinario.cpp
-
+.PHONY: clean
 clean:
-	rm -f core $(PROG) $(OBJS)
+	@echo "Deleting $(BIN_NAME) symlink"
+	@$(RM) $(BIN_NAME)
+	@echo "Deleting directories"
+	@$(RM) -r $(BUILD_PATH)
+	@$(RM) -r $(BIN_PATH)
 
+# checks the executable and symlinks to the output
+.PHONY: all
+all: $(BIN_PATH)/$(BIN_NAME)
+	@echo "Making symlink: $(BIN_NAME) -> $<"
+	@$(RM) $(BIN_NAME)
+	@ln -s $(BIN_PATH)/$(BIN_NAME) $(BIN_NAME)
+
+# Creation of the executable
+$(BIN_PATH)/$(BIN_NAME): $(OBJECTS)
+	@echo "Linking: $@"
+	$(CXX) $(OBJECTS) -o $@
+
+# Add dependency files, if they exist
+-include $(DEPS)
+
+# Source file rules
+# After the first compilation they will be joined with the rules from the
+# dependency files to provide header dependencies
+$(BUILD_PATH)/%.o: $(SRC_PATH)/%.$(SRC_EXT)
+	@echo "Compiling: $< -> $@"
+	$(CXX) $(CXXFLAGS) $(INCLUDES) -MP -MMD -c $< -o $@
