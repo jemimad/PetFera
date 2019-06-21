@@ -23,6 +23,9 @@
 #include "tratador.h"
 #include "veterinario.h"
 
+
+using namespace std;
+
 //ENUM 
 enum Classes{
     Classe_invalida,
@@ -115,44 +118,118 @@ Não ta dando certo pois: tem que saber como pega cada palavra entre os ; e salv
 pra poder construir o objeto certo e depois guardar o objeto certo no map.*/
 
 void Controlador::abrirPetshop(){
-	/*ifstream inputfile_animais;
-	string linha;
+	//abriu o arquivo
+	ifstream inputfile_animais;
 	inputfile_animais.open("animais.csv");
+	
+	//ANIMAL
+	string classe, classificacao, sexo, nome_cientifico, dieta, nome_batismo;
+	int id, tamanho, id_veterinario, id_tratador;
 
-	if(inputfile_animais.is_open()){
-		while(getline(inputfile_animais, linha)){
-			cout << linha << endl;
+	int total_mudas;
+
+	//NATIVO
+	string uf_origem;
+
+	//EXOTICO
+	string pais_origem, cidade_origem;
+
+	//SILVESTRE
+	string autorizacao_ibama;
+
+	//LEITUR
+	vector<string> att;
+	string linha;
+	string ops;
+
+	//vendo o tamanho do arquivo
+	inputfile_animais.seekg(0,ios::end);
+    int size = inputfile_animais.tellg();
+    
+    //se o arquivo está aberto direitinho e não está vazio, entra
+	if(inputfile_animais.is_open() && size > 0){
+
+		cout << "entrou 1" << endl;
+
+		//enquanto não chegar no fim do arquivo, vai:
+		while(!inputfile_animais.eof()){
+			
+			//pegar linha do arquivo
+			getline(inputfile_animais, linha);
+
+			//jogar a linha pro stringstream pra poder dividir em palavras
+			stringstream atributos_animal(linha);
+			
+			//limpar o vetor(pra caso já exista algo nele)
+			att.clear();
+
+			cout << "entrou 1.5";
+
+			//vai percorrer a linha inteira salvando os dados (que estão separados por ;)
+			//em um vetor de strings
+			while(getline(atributos_animal, ops, ';')){
+				att.push_back(ops);		
+			}
+
+			cout << "esse aí passou";
+
+			//vai distribuir os valores nas variaveis certas pra poder passar pro construtor
+			id = stoi(att[0]);
+			classe = att[1];
+			classificacao = att[2];
+			nome_cientifico = att[3];
+			sexo = att[4];
+			tamanho = stoi(att[5]);
+			dieta = att[6];
+			id_veterinario = stoi(att[7]);
+			id_tratador = stoi(att[8]);
+			nome_batismo = att[9];
+
+
+			//isso é pra converter string pra char
+			char sexo_aux = sexo[0];
+
+			if(classe == "Amphibia"){
+				
+				total_mudas = stoi(att[10]);
+
+				if(classificacao == "Nativo"){
+					autorizacao_ibama = att[11];
+					uf_origem = att[12];
+				
+					Animal* anfnat = new AnfibioNativo(id, classe, classificacao, nome_cientifico, sexo_aux, tamanho, 
+											dieta, id_veterinario, id_tratador, nome_batismo, total_mudas,
+											autorizacao_ibama, uf_origem);
+					lista_animais.insert({id, anfnat});
+				
+				} else if (classificacao == "Exotico"){
+					autorizacao_ibama = att[11];
+					pais_origem = att[12];
+					cidade_origem = att[13];
+
+					Animal* anfexot = new AnfibioExotico(id, classe, classificacao, nome_cientifico, sexo_aux, tamanho, 
+										dieta, id_veterinario, id_tratador, nome_batismo, total_mudas,
+										autorizacao_ibama, pais_origem, cidade_origem);
+					lista_animais.insert({id, anfexot});
+				} else {
+				
+					Animal* anfdom = new AnfibioDomestico(id, classe, classificacao, nome_cientifico, sexo_aux, tamanho, 
+										dieta, id_veterinario, id_tratador, nome_batismo, total_mudas);
+					lista_animais.insert({id, anfdom});
+				}	
+			}
 		}
-		inputfile_animais.close();
-	}else{
+	}
+	 
+
+	else {
 		cout << "Arquivo vazio ou inexistente" << endl;
 	}
 
-	ifstream inputfile_funcionarios;
-	inputfile_funcionarios.open("funcionarios.csv");
-	stringstream ss;
+	inputfile_animais.close();
+}
 
-	int id;
-	string nome, cpf, especialidade, funcao;
-	short idade;
-	char tipoSanguineo;
-	char fatorRH;
-	string valor;
-
-	if(inputfile_funcionarios.is_open()){
-		while(getline(inputfile_funcionarios, valor)){
-			ss << valor;
-			ss >> id >> funcao >> nome >>  cpf >> idade >>
-				tipoSanguineo >> fatorRH >> especialidade;
-			
-			cout << valor << endl;
-		} 
-		inputfile_funcionarios.close();
-	}else{
-		cout << "Arquivo vazio ou inexistente" << endl;
-	}*/
-
-	Funcionario* func = new Veterinario(01, "Veterinario", "João", "123.321.123-3", 21, 
+	/*Funcionario* func = new Veterinario(01, "Veterinario", "João", "123.321.123-3", 21, 
 							'B', '+', "Aves", "120.254");
 	lista_funcionarios.insert({01, func});
 
@@ -172,11 +249,7 @@ void Controlador::abrirPetshop(){
 
 	Animal* animalAv = new AveNativo(03, "Ave", "Nativo", "Papagaio", 'F', 0.1, 
 									"Frutas", 0, 02, "Verde", 3, 45, "123.432IB", "AM");
-	lista_animais.insert({03, animalAv});
-
-
-
-}
+	lista_animais.insert({03, animalAv});*/
 
 /*Essa função retorna falso se o ID estiver indisponível (já existir um funcionário com esse id)*/
 bool Controlador::verificarIdFuncionario(int id){
@@ -193,7 +266,7 @@ bool Controlador::verificarIdFuncionario(int id){
 
 void Controlador::salvarDadosFuncionarios(){
 	ofstream outfile; 
-	outfile.open("funcionarios.csv");
+	outfile.open("data/funcionarios.csv");
 
 	for(auto it = lista_funcionarios.begin(); it != lista_funcionarios.end(); it++){
         outfile << *it->second;

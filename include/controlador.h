@@ -10,6 +10,8 @@
 #include <fstream>
 #include <sstream>
 #include <algorithm>
+#include <vector>
+#include <cstring>
 
 #include "animal.h"
 #include "funcionario.h"
