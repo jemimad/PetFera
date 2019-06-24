@@ -180,7 +180,7 @@ void Controlador::abrirPetshop(){
 			classificacao = att[2];
 			nome_cientifico = att[3];
 			sexo = att[4];
-			tamanho = stod(att[5]); //acho que aqui é double
+			tamanho = stod(att[5]); 
 			dieta = att[6];
 			id_veterinario = stoi(att[7]);
 			id_tratador = stoi(att[8]);
@@ -223,8 +223,8 @@ void Controlador::abrirPetshop(){
 				envergadura_asas = stod(att[11]);
 
 				if(classificacao == "Nativo"){
-					autorizacao_ibama = att[11];
-					uf_origem = att[12];
+					autorizacao_ibama = att[12];
+					uf_origem = att[13];
 				
 					Animal* avenat = new AveNativo(id, classe, classificacao, nome_cientifico, sexo_aux, tamanho, 
 											dieta, id_veterinario, id_tratador, nome_batismo, tamanho_bico_cm, 
@@ -232,9 +232,9 @@ void Controlador::abrirPetshop(){
 					lista_animais.insert({id, avenat});
 				
 				} else if (classificacao == "Exotico"){
-					autorizacao_ibama = att[11];
-					pais_origem = att[12];
-					cidade_origem = att[13];
+					autorizacao_ibama = att[12];
+					pais_origem = att[13];
+					cidade_origem = att[14];
 
 					Animal* aveexot = new AveExotico(id, classe, classificacao, nome_cientifico, sexo_aux, tamanho, 
 										dieta, id_veterinario, id_tratador, nome_batismo,  tamanho_bico_cm, 
@@ -288,8 +288,8 @@ void Controlador::abrirPetshop(){
 				tipo_veneno = att[11];
 
 				if(classificacao == "Nativo"){
-					autorizacao_ibama = att[11];
-					uf_origem = att[12];
+					autorizacao_ibama = att[12];
+					uf_origem = att[13];
 				
 					Animal* repnat = new ReptilNativo(id, classe, classificacao, nome_cientifico, sexo_aux, tamanho, 
 											dieta, id_veterinario, id_tratador, nome_batismo, venenoso, tipo_veneno,
@@ -297,9 +297,9 @@ void Controlador::abrirPetshop(){
 					lista_animais.insert({id, repnat});
 				
 				} else if (classificacao == "Exotico"){
-					autorizacao_ibama = att[11];
-					pais_origem = att[12];
-					cidade_origem = att[13];
+					autorizacao_ibama = att[12];
+					pais_origem = att[13];
+					cidade_origem = att[14];
 
 					Animal* repexot = new ReptilExotico(id, classe, classificacao, nome_cientifico, sexo_aux, tamanho, 
 										dieta, id_veterinario, id_tratador, nome_batismo, venenoso, tipo_veneno,
