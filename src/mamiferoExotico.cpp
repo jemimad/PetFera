@@ -10,20 +10,21 @@ MamiferoExotico::MamiferoExotico(int id, string classe, string classificacao, st
 MamiferoExotico::~MamiferoExotico(){}
 
 ostream& MamiferoExotico::listar_animais(ostream& os) const{
-	os << "ID:" << m_id << 
-	"\nClasse: " << m_classe << 
-	"\nClassificação: " << m_classificacao << 
-	"\nNome Científico: " <<  m_nome_cientifico << 
-	"\nSexo: " << m_sexo << 
-	"\nTamanho em metros: " << m_tamanho << 
-	"\nDieta: " << m_dieta << 
-	"\nID Veterinário: " << m_tem_veterinario << 
-	"\nID Tratador: " << m_tem_tratador << 
-	"\nNome de Batismo: " << m_nome_batismo << 
-	"\nCor do Pelo: " << m_cor_pelo << 
-	"\nAutorização do IBAMA: " << m_autorizacao_ibama << 
-	"\nPaís de Origem: " << m_pais_origem << 
-	"\nCidade de Origem: " << m_cidade_origem << "\n\n";
+	os << "| ID: " << m_id << 
+    " | Classe: " << m_classe << 
+    " | Classificação: "<< m_classificacao << 
+    " | Nome Científico: " <<  m_nome_cientifico << 
+    " | Sexo: " << m_sexo << 
+    " | Tamanho em metros: " << m_tamanho << 
+    " | Dieta: " << m_dieta << 
+    " | ID Veterinário: " << m_tem_veterinario << 
+    " | ID Tratador: " << m_tem_tratador << 
+    " | Nome de Batismo: " << m_nome_batismo << 
+	" | Cor do Pelo: " << m_cor_pelo <<
+	" | Autorização do IBAMA: " << m_autorizacao_ibama <<   
+	" | País de Origem: " << m_pais_origem << 
+	" | Cidade de Origem: " << m_cidade_origem << " |\n\n";
+
 	return os;
 }
 

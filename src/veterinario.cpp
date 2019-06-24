@@ -10,11 +10,15 @@ Veterinario::Veterinario(int id, string funcao, string nome, string cpf, short i
 Veterinario::~Veterinario(){}
 
 ostream& Veterinario::listar(ostream& os) const{
-	os << "ID:" << m_id << "\nFunção: " << m_funcao << "\nNome: " <<  
-	m_nome << "\nCPF: " << m_cpf << "\nIdade: " << m_idade << 
-	"\nTipo Sanguineo: " << m_tipoSanguineo << "\nFator RH: " << 
-	m_fatorRH << "\nEspecialidade: " << m_especialidade << 
-	"\nCMRV: " << m_cmrv << "\n\n";
+	os << "| ID: " << m_id << 
+    " | Função: " << m_funcao << 
+    " | Nome: " <<  m_nome << 
+    " | CPF: " << m_cpf << 
+    " | Idade: " << m_idade << 
+    " |	Tipo Sanguíneo: " << m_tipoSanguineo << 
+    " | Fator RH: " << m_fatorRH << 
+    " | Especialidade: " << m_especialidade << 
+    " | CMRV " << m_cmrv << "|\n\n";
 
 	return os;
 }

@@ -11,21 +11,21 @@ AnfibioExotico::AnfibioExotico(int id, string classe, string classificacao, stri
 AnfibioExotico::~AnfibioExotico(){}
 
 ostream& AnfibioExotico::listar_animais(ostream& os) const{
-	os << "ID:" << m_id << 
-	"\nClasse: " << m_classe << 
-	"\nClassificação: " << m_classificacao << 
-	"\nNome Científico: " <<  m_nome_cientifico << 
-	"\nSexo: " << m_sexo << 
-	"\nTamanho em metros: " << m_tamanho << 
-	"\nDieta: " << m_dieta << 
-	"\nID Veterinário: " << m_tem_veterinario << 
-	"\nID Tratador: " << m_tem_tratador << 
-	"\nNome de Batismo: " << m_nome_batismo << 
-	"\nTotal de Mudas: " << m_total_mudas << 
-	"\nAutorização do IBAMA: " << m_autorizacao_ibama << 
-	"\nPaís de Origem: " << m_pais_origem << 
-	"\nCidade de Origem: " << m_cidade_origem << "\n\n";
-
+	os << "| ID: " << m_id << 
+    " | Classe: " << m_classe << 
+    " | Classificação: "<< m_classificacao << 
+    " | Nome Científico: " <<  m_nome_cientifico << 
+    " | Sexo: " << m_sexo << 
+    " | Tamanho em metros: " << m_tamanho << 
+    " | Dieta: " << m_dieta << 
+    " | ID Veterinário: " << m_tem_veterinario << 
+    " | ID Tratador: " << m_tem_tratador << 
+    " | Nome de Batismo: " << m_nome_batismo << 
+    " | Total de Mudas: " << m_total_mudas <<
+	" | Autorizacao IBAMA: " << m_autorizacao_ibama <<
+	" | Pais de Origem: " << m_pais_origem <<
+	" | Cidade de Origem: " << m_cidade_origem << "|\n\n";
+	
 	return os;
 }
 

@@ -9,17 +9,18 @@ MamiferoDomestico::MamiferoDomestico(int id, string classe, string classificacao
 MamiferoDomestico::~MamiferoDomestico(){}
 
 ostream& MamiferoDomestico::listar_animais(ostream& os) const{
-	os << "ID:" << m_id << 
-	"\nClasse: " << m_classe << 
-	"\nClassificação: " << m_classificacao << 
-	"\nNome Científico: " <<  m_nome_cientifico << 
-	"\nSexo: " << m_sexo << 
-	"\nTamanho em metros: " << m_tamanho << 
-	"\nDieta: " << m_dieta << 
-	"\nID Veterinário: " << m_tem_veterinario << 
-	"\nID Tratador: " << m_tem_tratador << 
-	"\nNome de Batismo: " << m_nome_batismo << 
-	"\nCor do Pelo: " << m_cor_pelo << "\n\n";
+	os << "| ID: " << m_id << 
+    " | Classe: " << m_classe << 
+    " | Classificação: "<< m_classificacao << 
+    " | Nome Científico: " <<  m_nome_cientifico << 
+    " | Sexo: " << m_sexo << 
+    " | Tamanho em metros: " << m_tamanho << 
+    " | Dieta: " << m_dieta << 
+    " | ID Veterinário: " << m_tem_veterinario << 
+    " | ID Tratador: " << m_tem_tratador << 
+    " | Nome de Batismo: " << m_nome_batismo << 
+    " | Cor do Pelo: " << m_cor_pelo << "|\n\n";
+	
 	return os;
 }
 

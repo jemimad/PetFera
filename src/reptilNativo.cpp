@@ -11,20 +11,20 @@ ReptilNativo::ReptilNativo(int id, string classe, string classificacao, string n
 ReptilNativo::~ReptilNativo(){}
 
 ostream& ReptilNativo::listar_animais(ostream& os) const{
-	os << "ID:" << m_id << 
-	"\nClasse: " << m_classe << 
-	"\nClassificação: " << m_classificacao <<
-	"\nNome Científico: " <<  m_nome_cientifico << 
-	"\nSexo: " << m_sexo << 
-	"\nTamanho em metros: " << m_tamanho << 
-	"\nDieta: " << m_dieta << 
-	"\nID Veterinário: " << m_tem_veterinario << 
-	"\nID Tratador: " << m_tem_tratador << 
-	"\nNome de Batismo: " << m_nome_batismo << 
-	"\nVenenoso: " << m_venenoso << 
-	"\nTipo de veneno: " << m_tipo_veneno <<
-	"\nAutorização do IBAMA: " << m_autorizacao_ibama << 
-	"\nUF de Origem: " << m_uf_origem << "\n\n";
+	os << "| ID: " << m_id << 
+    " | Classe: " << m_classe << 
+    " | Classificação: "<< m_classificacao << 
+    " | Nome Científico: " <<  m_nome_cientifico << 
+    " | Sexo: " << m_sexo << 
+    " | Tamanho em metros: " << m_tamanho << 
+    " | Dieta: " << m_dieta << 
+    " | ID Veterinário: " << m_tem_veterinario << 
+    " | ID Tratador: " << m_tem_tratador << 
+    " | Nome de Batismo: " << m_nome_batismo << 
+	" | Venenoso: " << m_venenoso <<
+	" | Tipo de veneno: " << m_tipo_veneno <<
+	" | Autorização do IBAMA: " << m_autorizacao_ibama <<   
+    " | UF de Origem: " << m_uf_origem << "|\n\n";
 
 	return os;
 }

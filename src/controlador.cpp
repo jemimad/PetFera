@@ -112,20 +112,16 @@ AtributosFuncionario verificarAtributoFuncionario(string input){
 }
 
 
-/*Essa função vai servir pra ler os dados dos arquivos (tanto de animais quanto de funcionarios)
-e guardar esses dados no map, como objeto, para que as operações possam ser realizadas neles.
-Não ta dando certo pois: tem que saber como pega cada palavra entre os ; e salva no atributo certo
-pra poder construir o objeto certo e depois guardar o objeto certo no map.*/
-
 void Controlador::abrirPetshop(){
 	//abriu o arquivo
 	ifstream inputfile_animais;
-	inputfile_animais.open("animais.csv");
+	inputfile_animais.open("data/animais.csv");
 	
 	//ANIMAL
 	string classe, classificacao, sexo, nome_cientifico, dieta, nome_batismo;
 	int id, tamanho, id_veterinario, id_tratador;
 
+	//ANFIBIO
 	int total_mudas;
 
 	//NATIVO
@@ -137,41 +133,35 @@ void Controlador::abrirPetshop(){
 	//SILVESTRE
 	string autorizacao_ibama;
 
-	//LEITUR
+	//LEITURA
 	vector<string> att;
 	string linha;
 	string ops;
 
-	//vendo o tamanho do arquivo
+	//posiciona o ponteiro no final do arquivo
 	inputfile_animais.seekg(0,ios::end);
+	//recebe o tamanho do arquivo
     int size = inputfile_animais.tellg();
-    
+	//posiciona o ponteiro no inicio do arquivo
+	inputfile_animais.seekg(0, ios::beg);
     //se o arquivo está aberto direitinho e não está vazio, entra
 	if(inputfile_animais.is_open() && size > 0){
-
-		cout << "entrou 1" << endl;
-
 		//enquanto não chegar no fim do arquivo, vai:
 		while(!inputfile_animais.eof()){
-			
+			//limpar o vetor(pra caso já exista algo nele)
+			att.clear();
+
 			//pegar linha do arquivo
 			getline(inputfile_animais, linha);
 
 			//jogar a linha pro stringstream pra poder dividir em palavras
 			stringstream atributos_animal(linha);
-			
-			//limpar o vetor(pra caso já exista algo nele)
-			att.clear();
-
-			cout << "entrou 1.5";
 
 			//vai percorrer a linha inteira salvando os dados (que estão separados por ;)
 			//em um vetor de strings
 			while(getline(atributos_animal, ops, ';')){
 				att.push_back(ops);		
 			}
-
-			cout << "esse aí passou";
 
 			//vai distribuir os valores nas variaveis certas pra poder passar pro construtor
 			id = stoi(att[0]);
@@ -219,10 +209,7 @@ void Controlador::abrirPetshop(){
 				}	
 			}
 		}
-	}
-	 
-
-	else {
+	}else{
 		cout << "Arquivo vazio ou inexistente" << endl;
 	}
 
@@ -251,7 +238,6 @@ void Controlador::abrirPetshop(){
 									"Frutas", 0, 02, "Verde", 3, 45, "123.432IB", "AM");
 	lista_animais.insert({03, animalAv});*/
 
-/*Essa função retorna falso se o ID estiver indisponível (já existir um funcionário com esse id)*/
 bool Controlador::verificarIdFuncionario(int id){
 	map<int, Funcionario*>::iterator it;
 
@@ -377,7 +363,7 @@ void Controlador::listarFuncionarios(int opc){
 		}
 		default:{
 			cout << "Essa opção não existe, tente novamente";
-			break;	
+			break;
 		}
 	}	
 }
@@ -529,7 +515,7 @@ bool Controlador::verificarIdAnimal(int id){
 void Controlador::salvarDadosAnimais(){
 	//preenchendo arquivo de animais
 	ofstream outfile_; 
-	outfile_.open("animais.csv");
+	outfile_.open("data/animais.csv");
 
     for(auto it = lista_animais.begin(); it != lista_animais.end(); it++){
         outfile_ << *it->second;

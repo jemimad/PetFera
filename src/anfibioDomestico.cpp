@@ -9,17 +9,17 @@ AnfibioDomestico::AnfibioDomestico(int id, string classe, string classificacao, 
 AnfibioDomestico::~AnfibioDomestico(){}
 
 ostream& AnfibioDomestico::listar_animais(ostream& os) const{
-    os << "| ID: | " << m_id << 
-    "Classe: | " << m_classe << 
-    " Classificação: |"<< m_classificacao << 
-    " Nome Científico: |" <<  m_nome_cientifico << 
-    " Sexo: |" << m_sexo << 
-    " Tamanho em metros: |" << m_tamanho << 
-    " Dieta: |" << m_dieta << 
-    " ID Veterinário: |" << m_tem_veterinario << 
-    " ID Tratador: |" << m_tem_tratador << 
-    " Nome de Batismo: |" << m_nome_batismo << 
-    " Total de Mudas: |" << m_total_mudas << "\n\n";
+    os << "| ID: " << m_id << 
+    " | Classe: " << m_classe << 
+    " | Classificação: "<< m_classificacao << 
+    " | Nome Científico: " <<  m_nome_cientifico << 
+    " | Sexo: " << m_sexo << 
+    " | Tamanho em metros: " << m_tamanho << 
+    " | Dieta: " << m_dieta << 
+    " | ID Veterinário: " << m_tem_veterinario << 
+    " | ID Tratador: " << m_tem_tratador << 
+    " | Nome de Batismo: " << m_nome_batismo << 
+    " | Total de Mudas: " << m_total_mudas << "|\n\n";
 
     return os;
 }

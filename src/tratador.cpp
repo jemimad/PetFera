@@ -10,11 +10,15 @@ Tratador::Tratador(int id, string funcao, string nome, string cpf, short idade, 
 Tratador::~Tratador(){}
 
 ostream& Tratador::listar(ostream& os) const{
-	os << "| ID: | " << m_id << "| Função: | " << m_funcao << "| Nome: | " <<  
-	m_nome << "| CPF: | " << m_cpf << "| Idade: | " << m_idade << 
-	"| Tipo Sanguineo: | " << m_tipoSanguineo << "| Fator RH: | " << 
-	m_fatorRH << "| Especialidade: | " << m_especialidade << 
-	"| Nível de Seguranca: | " << m_nivelSeguranca << "\n\n";
+	os << "| ID: " << m_id << 
+    " | Função: " << m_funcao << 
+    " | Nome: "<< m_nome << 
+    " | CPF: " <<  m_cpf<< 
+    " | Idade: " << m_idade << 
+    " | Tipo Sanguíneo: " << m_tipoSanguineo << 
+    " | Fator RH: " << m_fatorRH << 
+    " | Especialidade: " << m_especialidade << 
+    " | Nível de Segurança: " << m_nivelSeguranca <<  "|\n\n";
 
 	return os;
 }
@@ -28,8 +32,6 @@ ofstream& Tratador::salvar(ofstream& out) const{
 
 	return out;
 }
-
-
 
 string Tratador::getFuncao(){
 	return "Tratador";

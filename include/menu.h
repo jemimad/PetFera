@@ -19,23 +19,23 @@ void Controlador::exibirMenu(){
 	switch (opc_Menu_Principal){
 		case 1:
 			exibirMenuAnimais();
-			
+			break;
+
 		case 2:
 			exibirMenuFuncionarios();
-		break;
+			break;
 
 		case 3:
 			salvarDadosAnimais();
 			salvarDadosFuncionarios();
 			exit(0);
-		break;
+			break;
 
 		default:
 			cout << "Não existe essa opção no menu." << endl;
-	}		
-
-	exibirMenu();
-
+			exibirMenu();
+			break;
+	}
 }
 
 void Controlador::exibirMenuAnimais(){
@@ -125,12 +125,14 @@ void Controlador::exibirMenuFuncionarios(){
 					cout << "--------- Adicionar tratador ----------\n " <<
 						"Insira os dados sobre o tratador:" << endl;
 					addFuncionario(1);
+					exibirMenuFuncionarios();
 				break;
 
 				case 2:
 					cout << "--------- Adicionar veterinário----------\n " <<
 							"Insira os dados sobre o veterinário:" << endl;
 					addFuncionario(2);
+					exibirMenuFuncionarios();
 				break;
 
 				default:
@@ -168,12 +170,27 @@ void Controlador::exibirMenuFuncionarios(){
 						"1 - Tratador\n" <<
 						"2 - Veterinário" << endl;
 					cin >> opc_Menu_Funcionario_Listagem_Funcao;
-					listarFuncionarios(opc_Menu_Funcionario_Listagem_Funcao);
+
+					switch(opc_Menu_Funcionario_Listagem){
+						case 1:
+							listarFuncionarios(1);
+							exibirMenuFuncionarios();
+							break;
+						case 2:
+							listarFuncionarios(2);
+							exibirMenuFuncionarios();
+							break;
+						default:
+							cout << "Não há essa opção no menu.";
+							exibirMenuFuncionarios();
+							break;
+					}
 				break;
 					
 				case 2:
 					cout << "--------- Listagem geral ----------\n ";
 					listarFuncionarios(3);
+					exibirMenuFuncionarios();
 				break;
 
 				default:
