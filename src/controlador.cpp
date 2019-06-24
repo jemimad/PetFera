@@ -119,10 +119,21 @@ void Controlador::abrirPetshop(){
 	
 	//ANIMAL
 	string classe, classificacao, sexo, nome_cientifico, dieta, nome_batismo;
-	int id, tamanho, id_veterinario, id_tratador;
+	int id, id_veterinario, id_tratador;
+	double tamanho;
 
 	//ANFIBIO
 	int total_mudas;
+
+	//AVE
+	double tamanho_bico_cm, envergadura_asas;
+
+	//MAMIFERO
+	string cor_pelo;
+
+	//REPTIL
+	bool venenoso;
+	string tipo_veneno, verificar_veneno;
 
 	//NATIVO
 	string uf_origem;
@@ -169,18 +180,16 @@ void Controlador::abrirPetshop(){
 			classificacao = att[2];
 			nome_cientifico = att[3];
 			sexo = att[4];
-			tamanho = stoi(att[5]);
+			tamanho = stod(att[5]); //acho que aqui é double
 			dieta = att[6];
 			id_veterinario = stoi(att[7]);
 			id_tratador = stoi(att[8]);
 			nome_batismo = att[9];
 
-
 			//isso é pra converter string pra char
 			char sexo_aux = sexo[0];
 
-			if(classe == "Amphibia"){
-				
+			if(classe == "Amphibia"){	
 				total_mudas = stoi(att[10]);
 
 				if(classificacao == "Nativo"){
@@ -207,6 +216,104 @@ void Controlador::abrirPetshop(){
 										dieta, id_veterinario, id_tratador, nome_batismo, total_mudas);
 					lista_animais.insert({id, anfdom});
 				}	
+			}
+
+			if(classe == "Ave"){
+				tamanho_bico_cm = stod(att[10]);
+				envergadura_asas = stod(att[11]);
+
+				if(classificacao == "Nativo"){
+					autorizacao_ibama = att[11];
+					uf_origem = att[12];
+				
+					Animal* avenat = new AveNativo(id, classe, classificacao, nome_cientifico, sexo_aux, tamanho, 
+											dieta, id_veterinario, id_tratador, nome_batismo, tamanho_bico_cm, 
+											envergadura_asas, autorizacao_ibama, uf_origem);
+					lista_animais.insert({id, avenat});
+				
+				} else if (classificacao == "Exotico"){
+					autorizacao_ibama = att[11];
+					pais_origem = att[12];
+					cidade_origem = att[13];
+
+					Animal* aveexot = new AveExotico(id, classe, classificacao, nome_cientifico, sexo_aux, tamanho, 
+										dieta, id_veterinario, id_tratador, nome_batismo,  tamanho_bico_cm, 
+										envergadura_asas, autorizacao_ibama, pais_origem, cidade_origem);
+					lista_animais.insert({id, aveexot});
+				} else {
+				
+					Animal* avedom = new AveDomestico(id, classe, classificacao, nome_cientifico, sexo_aux, tamanho, 
+										dieta, id_veterinario, id_tratador, nome_batismo, tamanho_bico_cm, envergadura_asas);
+					lista_animais.insert({id, avedom});
+				}	
+			}
+
+			if(classe == "Mammalia"){
+				cor_pelo = att[10];
+
+				if(classificacao == "Nativo"){
+					autorizacao_ibama = att[11];
+					uf_origem = att[12];
+				
+					Animal* maminat = new MamiferoNativo(id, classe, classificacao, nome_cientifico, sexo_aux, tamanho, 
+											dieta, id_veterinario, id_tratador, nome_batismo, cor_pelo,
+											autorizacao_ibama, uf_origem);
+					lista_animais.insert({id, maminat});
+				
+				} else if (classificacao == "Exotico"){
+					autorizacao_ibama = att[11];
+					pais_origem = att[12];
+					cidade_origem = att[13];
+
+					Animal* mamiexot = new MamiferoExotico(id, classe, classificacao, nome_cientifico, sexo_aux, tamanho, 
+										dieta, id_veterinario, id_tratador, nome_batismo, cor_pelo,
+										autorizacao_ibama, pais_origem, cidade_origem);
+					lista_animais.insert({id, mamiexot});
+				} else {
+				
+					Animal* mamidom = new MamiferoDomestico(id, classe, classificacao, nome_cientifico, sexo_aux, tamanho, 
+										dieta, id_veterinario, id_tratador, nome_batismo, cor_pelo);
+					lista_animais.insert({id, mamidom});
+				}	
+			}
+
+			if(classe == "Reptilia"){
+				verificar_veneno = att[10];
+				if(verificar_veneno == "true" || verificar_veneno == "s"){
+					venenoso = true;
+				} else {
+					venenoso = false;
+				}
+
+				tipo_veneno = att[11];
+
+				if(classificacao == "Nativo"){
+					autorizacao_ibama = att[11];
+					uf_origem = att[12];
+				
+					Animal* repnat = new ReptilNativo(id, classe, classificacao, nome_cientifico, sexo_aux, tamanho, 
+											dieta, id_veterinario, id_tratador, nome_batismo, venenoso, tipo_veneno,
+											autorizacao_ibama, uf_origem);
+					lista_animais.insert({id, repnat});
+				
+				} else if (classificacao == "Exotico"){
+					autorizacao_ibama = att[11];
+					pais_origem = att[12];
+					cidade_origem = att[13];
+
+					Animal* repexot = new ReptilExotico(id, classe, classificacao, nome_cientifico, sexo_aux, tamanho, 
+										dieta, id_veterinario, id_tratador, nome_batismo, venenoso, tipo_veneno,
+										autorizacao_ibama, pais_origem, cidade_origem);
+					lista_animais.insert({id, repexot});
+				} else {
+				
+					Animal* repdom = new ReptilDomestico(id, classe, classificacao, nome_cientifico, sexo_aux, tamanho, 
+										dieta, id_veterinario, id_tratador, nome_batismo, venenoso, tipo_veneno);
+					lista_animais.insert({id, repdom});
+				}	
+
+
+
 			}
 		}
 	}else{
@@ -637,8 +744,6 @@ void Controlador::addAnimal(){
 													cor_pelo, autorizacao_ibama, uf_origem);
 				lista_animais.insert({id, animal});
 
-
-        	cout << "Cadastro efetuado com sucesso!!" << endl;
 			} else if (classificacao == "Exotico") {
 
 				Animal* animal = new MamiferoExotico(id, classe, classificacao, nome_cientifico, sexo, tamanho,
