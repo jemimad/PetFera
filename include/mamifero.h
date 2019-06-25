@@ -21,6 +21,7 @@ class Mamifero : public Animal{
 		~Mamifero();
 
 		void setCorPelo(string cor_pelo_);
+		string getCorPelo();
 
 };
 

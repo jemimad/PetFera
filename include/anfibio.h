@@ -20,6 +20,8 @@ class Anfibio : public Animal{
 		~Anfibio();
 
 		void setTotalMudas(int total_mudas_);
+		int getTotalMudas();
+
 };
 
 #endif

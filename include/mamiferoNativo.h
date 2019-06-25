@@ -17,6 +17,7 @@ class MamiferoNativo : public Mamifero, AnimalNativo{
 			string nome_batismo, string cor_pelo, string autorizacao_ibama, string uf_origem);
 		MamiferoNativo();
 		~MamiferoNativo();
+		void abstract();
 
 		//friend ostream& operator<<(ostream& os,  MamiferoNativo& mn);
 

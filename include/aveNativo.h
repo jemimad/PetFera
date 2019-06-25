@@ -17,6 +17,7 @@ class AveNativo : public Ave, AnimalNativo{
 			string nome_batismo, double tamanho_bico_cm, double envergadura_asas, string autorizacao_ibama, string uf_origem);
 		AveNativo();
 		~AveNativo();
+		void abstract();
 };
 
 

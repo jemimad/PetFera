@@ -15,7 +15,11 @@ class AnimalNativo : public AnimalSilvestre{
 		AnimalNativo();
 		~AnimalNativo();
 
+		string getAutorizacaoIbama();
+		string getUfOrigem();
 		void setUfOrigem(string uf_origem);
+
+		//virtual void abstract() = 0;
 };
 
 #endif

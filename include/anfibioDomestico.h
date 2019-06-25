@@ -14,6 +14,7 @@ class AnfibioDomestico : public Anfibio{
 			string nome_batismo, int total_mudas);
 		AnfibioDomestico();
 		~AnfibioDomestico();
+
 };
 
 #endif

@@ -19,6 +19,7 @@ class ReptilExotico : public Reptil, AnimalExotico{
 			string cidade_origem);
 		ReptilExotico();
 		~ReptilExotico();
+		void abstract();
 };
 
 

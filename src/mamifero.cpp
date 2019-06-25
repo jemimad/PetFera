@@ -12,3 +12,8 @@ Mamifero::~Mamifero(){}
 void Mamifero::setCorPelo(string cor_pelo_){
 	m_cor_pelo = cor_pelo_;
 }
+
+string Mamifero::getCorPelo(){
+	return m_cor_pelo;
+}
+

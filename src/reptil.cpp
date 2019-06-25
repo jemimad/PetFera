@@ -16,3 +16,12 @@ void Reptil::setVenenoso(bool venenoso_){
 void Reptil::setTipoVeneno(string tipo_veneno_){
 	m_tipo_veneno = tipo_veneno_;
 }
+
+
+bool Reptil::getVenenoso(){
+	return m_venenoso;
+}
+
+string Reptil::getTipoVeneno(){
+	return m_tipo_veneno;
+}

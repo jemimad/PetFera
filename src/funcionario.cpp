@@ -39,3 +39,29 @@ void Funcionario::setFatorRh(char fatorRH_){
 void Funcionario::setEspecialidade(string especialidade_){
 	m_especialidade = especialidade_;
 }
+
+//
+
+string Funcionario::getNome(){
+	return m_nome;
+}
+
+string Funcionario::getCpf(){
+	return m_cpf;
+}
+
+int Funcionario::getIdade(){
+	return m_idade;
+}
+
+char Funcionario::getTipoSanguineo(){
+	return m_tipoSanguineo;
+}
+
+char Funcionario::getFatorRh(){
+	return m_fatorRH;
+}
+
+string Funcionario::getEspecialidade(){
+	return m_especialidade;
+}

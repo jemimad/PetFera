@@ -43,73 +43,6 @@ Classes resolveOption(string input) {
     return Classe_invalida;
 }
 
-enum AtributosAnimal{
-	Nome_cientifico,
-	Sexo,
-	Tamanho,
-	Dieta,
-	Id_veterinario,
-	Id_tratador,
-	Nome_batismo,
-	Autorizacao_ibama,
-	UF_origem,
-	Pais_origem,
-	Cidade_origem,
-	Cor_pelo,
-	Tamanho_bico,
-	Envergadura_asas,
-	Venenoso,
-	Tipo_veneno,
-	Total_mudas,
-	Atributo_invalido
-};
-
-AtributosAnimal verificarAtributoAnimal(string input){
-	if(input == "nomecientifico" || input == "Nomecientico") return Nome_cientifico;
-	if(input == "sexo" || input == "Sexo") return Sexo;
-	if(input == "tamanho" || input == "Tamanho") return Tamanho;
-	if(input == "dieta" || input == "Dieta") return Dieta;
-	if(input == "idveterinario" || input == "Idveterinario") return Id_veterinario;
-	if(input == "idtratador" || input == "Idtratador") return Id_tratador;
-	if(input == "nomebatismo" || input == "Nomebatismo") return Nome_batismo;
-	if(input == "autorizacaoibama" || input == "Autorizacaoibama") return Autorizacao_ibama;
-	if(input == "uforigem" || input == "UForigem") return UF_origem;
-	if(input == "paisorigem" || input == "Paisorigem") return Pais_origem;
-	if(input == "cidadeorigem" || input == "Cidadeorigem") return Cidade_origem;
-	if(input == "cordopelo" || input == "corpelo" || input == "CordoPelo") return Cor_pelo;
-	if(input == "tamanhodobico" || input == "tamanhodobicocm") return Tamanho_bico;
-	if(input == "envergadurasas" || input == "envergaduradasasas" || input == "Envergadurasas") return Envergadura_asas;
-	if(input == "venenoso" || input == "Venenoso") return Venenoso;
-	if(input == "tipoveneno" || input == "Tipoveneno") return Tipo_veneno;
-	if(input == "totaldemudas" || input == "totalmudas" || input == "Totalmudas") return Total_mudas;
-
-	return Atributo_invalido;
-}
-
-enum AtributosFuncionario{
-	Nome,
-	CPF,
-	Idade,
-	Tipo_sanguineo,
-	Fator_RH,
-	Especialidade,
-	Nivel_seguranca,
-	CMRV,
-	Atributo_inval
-};
-
-AtributosFuncionario verificarAtributoFuncionario(string input){
-	if(input == "Nome" || input == "nome") return Nome;
-	if(input == "CPF" || input == "cpf") return CPF;
-	if(input == "Idade" || input == "idade") return Idade;
-	if(input == "tiposanguineo" || input == "Tiposanguineo") return Tipo_sanguineo;
-	if(input == "fatorrh" || input == "Fatorrh") return Fator_RH;
-	if(input == "especialidade" || input == "Especialidade") return Especialidade;
-	if(input == "nivelseguranca" || input == "Nivelseguranca") return Nivel_seguranca;
-	if(input == "CMRV" || input == "cmrv") return CMRV;
-
-	return Atributo_inval;
-}
 
 
 void Controlador::lerAnimais(){
@@ -398,28 +331,7 @@ void Controlador::abrirPetshop(){
 	lerAnimais();
 	lerFuncionarios();
 }
-	/*Funcionario* func = new Veterinario(01, "Veterinario", "João", "123.321.123-3", 21, 
-							'B', '+', "Aves", "120.254");
-	lista_funcionarios.insert({01, func});
-
 	
-	Funcionario* func2 = new Tratador(02, "Tratador", "Maria", "325.567.897-9",30, 
-							'A', '-', "Mamiferos", 0);
-	lista_funcionarios.insert({02, func2});
-
-	Animal* animalAf = new AnfibioExotico(01, "Amphibia", "Exotico", "Salamandra", 'F', 0.05,
-										"Lodo", 01, 0, "Sal", 
-										3, "120.225IB", "Madagascar", "Aquela");
-	lista_animais.insert({01, animalAf});
-
-	Animal* animalMa = new MamiferoDomestico(02, "Mammalia", "Domestico", "Gato", 'M', 0.8,
-									 "Ração", 0, 0, "Xanim", "marrom");
-	lista_animais.insert({02, animalMa});
-
-	Animal* animalAv = new AveNativo(03, "Ave", "Nativo", "Papagaio", 'F', 0.1, 
-									"Frutas", 0, 02, "Verde", 3, 45, "123.432IB", "AM");
-	lista_animais.insert({03, animalAv});*/
-
 bool Controlador::verificarIdFuncionario(int id){
 	map<int, Funcionario*>::iterator it;
 
@@ -588,92 +500,77 @@ void Controlador::removerFuncionario(){
 	}
 }
 
+
+
 void Controlador::editarFuncionario(){
 	map<int, Funcionario*>::iterator it;
-
+	
 	int id;
-	string atributo;
-	bool id_existente;
+	string novo_valor;
 
 	cout << "Indique o ID do Funcionário que você deseja alterar" << endl;
 	cin >> id;
 
-	cout << "-----------------------------------------\n";
-	id_existente = consultarFuncionario(id);
-	cout << "-----------------------------------------\n";
 
-	if(id_existente){
-		cout << "Indique qual campo você deseja modificar o valor\n" <<
-			"(Para campos com nomes compostos (como 'Nivel de Seguranca')," <<
-			"insira-os sem espaçamento ('nomedeseguranca'))\n" <<
-			"OBS: Atributos 'ID' e 'Funcao'" << endl;
+	it = lista_funcionarios.find(id);	
+	if(it == lista_funcionarios.end()){
+		cout << "Não foi encontrado nenhum Funcionário com esse ID" << endl;
+	} else {
+		cout << "Se quiser manter o valor já salvo, insira -" << endl;
 
-		cin >> atributo;
-
-		it = lista_funcionarios.find(id);
-
-		string nome_;
-		string cpf_;
-		string especialidade_;
-		string cmrv_;
-
-		switch(verificarAtributoFuncionario(atributo)){
-			case Nome:
-				cout << "Nome: ";
-				cin >> nome_;
-				it->second->setNome(nome_);
-			break;
-
-			case CPF:
-				cout << "CPF: ";
-				cin >> cpf_;
-				it->second->setCpf(cpf_);
-			break;
-
-			case Idade:
-				short idade_;
-				cout << "Idade: ";
-				cin >> idade_;
-				it->second->setIdade(idade_);
-			break;
-
-			case Tipo_sanguineo:
-				short tipoSanguineo_;
-				cout << "Tipo Sanguineo: ";
-				cin >> tipoSanguineo_;
-				it->second->setTipoSanguineo(tipoSanguineo_);			
-			break;
-
-			case Fator_RH:
-				char fatorRH_;
-				cout << "Fator RH: ";
-				cin >> fatorRH_;
-				it->second->setFatorRh(fatorRH_);			
-			break;
-
-			case Especialidade:
-				cout << "Especialidade: ";
-				cin >> especialidade_;
-				it->second->setEspecialidade(especialidade_);
-			break;
-
-			case Nivel_seguranca:
-				short nivelSeguranca_;
-				cout << "Nivel de Segurança: ";
-				cin >> nivelSeguranca_;
-				dynamic_cast<Tratador*>(it->second)->setNivelSeguranca(nivelSeguranca_);
-			break;
-
-			case CMRV:
-				cout << "CMRV: ";
-				cin >> cmrv_;
-				dynamic_cast<Veterinario*>(it->second)->setCMRV(cmrv_);
-			break;
-
-			case Atributo_inval:
-				cout << "Esse atributo não existe ou não pode ser modificado, tente novamente" << endl;
-			break;
+		cout << "Nome: [" << it->second->getNome() << "]: ";
+		cin >> novo_valor;
+		if(novo_valor != "-"){
+			it->second->setNome(novo_valor);
 		}
+
+		cout << "CPF: [" << it->second->getCpf() << "]: ";
+		cin >> novo_valor;
+		if(novo_valor != "-"){
+			it->second->setCpf(novo_valor);
+		}
+
+		cout << "Idade: [" << it->second->getIdade() << "]: ";
+		cin >> novo_valor;
+		if(novo_valor != "-"){
+			it->second->setIdade(stoi(novo_valor));
+		}
+
+		cout << "Tipo Sanguineo: [" << it->second->getTipoSanguineo() << "]: ";
+		cin >> novo_valor;
+		if(novo_valor != "-"){
+			char tp_aux = novo_valor[0];
+			it->second->setTipoSanguineo(tp_aux);
+		}
+
+		cout << "Fator RH: [" << it->second->getFatorRh() << "]: ";
+		cin >> novo_valor;
+		if(novo_valor != "-"){
+			char frh_aux = novo_valor[0];
+			it->second->setFatorRh(frh_aux);
+		}
+
+		cout << "Especialidade: [" << it->second->getEspecialidade() << "]: ";
+		cin >> novo_valor;
+		if(novo_valor != "-"){
+			it->second->setEspecialidade(novo_valor);
+		}
+
+		if(it->second->getFuncao() == "Tratador"){
+			cout << "Nivel de Segurança: [" << dynamic_cast<Tratador*>(it->second)->getNivelSeguranca() << "]: ";
+			cin >> novo_valor;
+			if(novo_valor != "-"){
+				dynamic_cast<Tratador*>(it->second)->setNivelSeguranca(stoi(novo_valor));
+			}
+		} else {
+			cout << "CMRV: [" << dynamic_cast<Veterinario*>(it->second)->getCMRV() << "]: ";
+			cin >> novo_valor;
+			if(novo_valor != "-"){
+				dynamic_cast<Veterinario*>(it->second)->setCMRV(novo_valor);
+			}
+		}
+
+		cout << "Usuário editado com sucesso!" << endl;
 	}
 }
 
@@ -1042,213 +939,153 @@ void Controlador::editarAnimal(){
 	map<int, Animal*>::iterator it;
 
 	int id;
-	string atributo;
+	string novo_valor;
+
+	cout << "Indique o ID do Animal que você deseja alterar" << endl;
 	cin >> id;
 
-	cout << "-----------------------------------------\n";
-	consultarAnimal(id);
-	cout << "-----------------------------------------\n";
-	cout << "Indique qual campo você deseja modificar o valor\n" <<
-			"(Para campos com nomes compostos (como 'Nome Científico')," <<
-			"insira-os sem espaçamento ('nomecientico'))\n" <<
-			"OBS: Atributos 'ID', 'Classe' e 'Classificacao' não podem ser alterados." << endl;
+	it = lista_animais.find(id);	
+	if(it == lista_animais.end()){
+		cout << "Não foi encontrado nenhum Animal com esse ID" << endl;
+	} else {
+		cout << "Se quiser manter o valor já salvo, insira -" << endl;
 
-	cin >> atributo;
+		cout << "Nome Científico: [" << it->second->getNomeCientifico() << "]: ";
+		cin >> novo_valor;
+		if(novo_valor != "-"){
+			it->second->setNomeCientifico(novo_valor);
+		}
 
-	it = lista_animais.find(id);
+		cout << "Sexo: [" << it->second->getSexo() << "]: ";
+		cin >> novo_valor;
+		if(novo_valor != "-"){
+			char sx_aux = novo_valor[0];
+			it->second->setSexo(sx_aux);
+		}
 
-	//não sei porque nao deixou declarar dentro
-	string nome_cientifico_;
-	string dieta_;
-	string nome_batismo_;
-	string autorizacao_ibama_;
-	string uf_origem_;
-	string pais_origem_;
-	string cidade_origem_;
-	string cor_pelo_;
-	string tipo_veneno_;
+		cout << "Tamanho: [" << it->second->getTamanho() << "]: ";
+		cin >> novo_valor;
+		if(novo_valor != "-"){
+			it->second->setTamanho(stod(novo_valor));
+		}
 
+		cout << "Dieta: [" << it->second->getDieta() << "]: ";
+		cin >> novo_valor;
+		if(novo_valor != "-"){
+			it->second->setDieta(novo_valor);
+		}
 
-	switch(verificarAtributoAnimal(atributo)){		
-		case Nome_cientifico:
-			cout << "Nome Científico: ";
-			cin >> nome_cientifico_; 
+		cout << "ID  Veterinario: [" << it->second->getIdVeterinario() << "]: ";
+		cin >> novo_valor;
+		if(novo_valor != "-"){
+			it->second->setIdVeterinario(stoi(novo_valor));
+		}
 
-			it->second->setNomeCientifico(nome_cientifico_);
-		break;
-		
-		case Sexo:
-			char sexo_;
-			cout << "Sexo: ";
-			cin >> sexo_;
+		cout << "ID Tratador: [" << it->second->getIdTratador() << "]: ";
+		cin >> novo_valor;
+		if(novo_valor != "-"){
+			it->second->setIdTratador(stoi(novo_valor));
+		}
 
-			it->second->setSexo(sexo_);
-		break;
+		cout << "Nome Batismo: [" << it->second->getNomeBatismo() << "]: ";
+		cin >> novo_valor;
+		if(novo_valor != "-"){
+			it->second->setNomeBatismo(novo_valor);
+		}
 
-		case Tamanho:
-			int tamanho_;
-			cout << "Tamanho: ";
-			cin >> tamanho_;
-			it->second->setTamanho(tamanho_);
-		break;
+		string classe = it->second->getClasse();
 
-		case Dieta:
-			cout << "Dieta: ";
-			cin >> dieta_;
-			it->second->setDieta(dieta_);
-		break;
-
-		case Id_veterinario:
-			int id_veterinario_;
-			cout << "ID Veterinario: ";
-			cin >> id_veterinario_;
-			it->second->setIdVeterinario(id_veterinario_);
-		break;
-
-		case Id_tratador:
-			int id_tratador_;
-			cout << "ID Tratador: ";
-			cin >> id_tratador_;
-			it->second->setIdTratador(id_tratador_);
-		break;
-
-		case Nome_batismo:
-			cout << "Nome de Batismo: ";
-			cin >> nome_batismo_;
-			it->second->setNomeBatismo(nome_batismo_);
-		break;
-
-		case Autorizacao_ibama:
-			cout << "Autorização do Ibama: ";
-			cin >> autorizacao_ibama_;
-			dynamic_cast<AnimalSilvestre*>(it->second)->setAutorizacaoIbama(autorizacao_ibama_);
-		break;
-
-		case UF_origem:
-			cout << "UF de Origem: ";
-			cin >> uf_origem_;
-			dynamic_cast<AnimalNativo*>(it->second)->setUfOrigem(uf_origem_);
-		break;
-
-		case Pais_origem:
-			cout << "Pais de Origem: ";
-			cin >> pais_origem_;
-			dynamic_cast<AnimalExotico*>(it->second)->setPaisOrigem(pais_origem_);
-		break;
-
-		case Cidade_origem:
-			cout << "Cidade de Origem: ";
-			cin >> cidade_origem_;
-			dynamic_cast<AnimalExotico*>(it->second)->setCidadeOrigem(cidade_origem_);
-		break;
-
-		case Cor_pelo:
-			cout << "Cor do Pelo: ";
-			cin >> cor_pelo_;
-
-			if(it->second->getClassificacao() == "Nativo"){
-				dynamic_cast<MamiferoNativo*>(it->second)->setCorPelo(cor_pelo_);
-			} else if (it->second->getClassificacao() == "Exotico"){
-				dynamic_cast<MamiferoExotico*>(it->second)->setCorPelo(cor_pelo_);
-			} else {
-				dynamic_cast<MamiferoDomestico*>(it->second)->setCorPelo(cor_pelo_);
+		if(classe == "Amphibia"){
+			cout << "Total de Mudas: [" << reinterpret_cast<AnfibioDomestico*>(it->second)->getTotalMudas() << "]: ";
+			cin >> novo_valor;
+			if(novo_valor != "-"){
+				reinterpret_cast<AnfibioDomestico*>(it->second)->setTotalMudas(stoi(novo_valor));
 			}
-		break;
+		}
 
-		case Tamanho_bico:
-			double tamanho_bico_cm_;
-			cout << "Tamanho do bico em cm: ";
-			cin >> tamanho_bico_cm_;
 
-			if(it->second->getClassificacao() == "Nativo"){
-				dynamic_cast<AveNativo*>(it->second)->setTamanhoBico(tamanho_bico_cm_);
-			} else if (it->second->getClassificacao() == "Exotico"){
-				dynamic_cast<AveExotico*>(it->second)->setTamanhoBico(tamanho_bico_cm_);
-			} else {
-				dynamic_cast<AveDomestico*>(it->second)->setTamanhoBico(tamanho_bico_cm_);
-			}
-			
-		break;
-
-		case Envergadura_asas:
-			double envergadura_asas_;
-			cout << "Envergadura das asas: ";
-			cin >> envergadura_asas_;
-
-			if(it->second->getClassificacao() == "Nativo"){
-				dynamic_cast<AveNativo*>(it->second)->setEnvergaduraAsas(envergadura_asas_);
-			} else if (it->second->getClassificacao() == "Exotico"){
-				dynamic_cast<AveExotico*>(it->second)->setEnvergaduraAsas(envergadura_asas_);
-			} else {
-				dynamic_cast<AveDomestico*>(it->second)->setEnvergaduraAsas(envergadura_asas_);
-			}
-		break;
-
-		case Venenoso:
-			bool venenoso_;
-			char opc_v;
-			cout << "É venenoso? S/N ";
-			cin >> opc_v;
-
-			if(opc_v == 'S' || opc_v == 's'){
-				venenoso_ = true;
-				cout << "Tipo de Veneno: ";
-				cin >> tipo_veneno_;
-			} else {
-				venenoso_ = false;
+		else if(classe == "Ave"){
+			cout << "Tamanho do bico em cm: [" << reinterpret_cast<AveDomestico*>(it->second)->getTamanhoBico() << "]: ";
+			cin >> novo_valor;
+			if(novo_valor != "-"){
+				reinterpret_cast<AveDomestico*>(it->second)->setTamanhoBico(stod(novo_valor));
 			}
 
-			if(it->second->getClassificacao() == "Nativo"){
-				dynamic_cast<ReptilNativo*>(it->second)->setVenenoso(venenoso_);
-			} else if (it->second->getClassificacao() == "Exotico"){
-				dynamic_cast<ReptilExotico*>(it->second)->setVenenoso(venenoso_);
-			} else {
-				dynamic_cast<ReptilDomestico*>(it->second)->setVenenoso(venenoso_);
+			cout << "Envergadura das asas: [" << reinterpret_cast<AveDomestico*>(it->second)->getEnvergaduraAsas() << "]: ";
+			cin >> novo_valor;
+			if(novo_valor != "-"){
+				reinterpret_cast<AveDomestico*>(it->second)->setEnvergaduraAsas(stod(novo_valor));
 			}
+		}
 
-			if(venenoso_ == true){
-				if(it->second->getClassificacao() == "Nativo"){
-					dynamic_cast<ReptilNativo*>(it->second)->setTipoVeneno(tipo_veneno_);
-				} else if (it->second->getClassificacao() == "Exotico"){
-					dynamic_cast<ReptilExotico*>(it->second)->setTipoVeneno(tipo_veneno_);
+
+		else if(classe == "Mammalia"){
+			cout << "Cor do pelo: [" << reinterpret_cast<MamiferoDomestico*>(it->second)->getCorPelo() << "]: ";
+			cin >> novo_valor;
+			if(novo_valor != "-"){
+				reinterpret_cast<MamiferoDomestico*>(it->second)->setCorPelo(novo_valor);
+			}
+		}
+
+		else if(classe == "Reptilia"){
+			cout << "Venenoso (S/N): [" << reinterpret_cast<ReptilDomestico*>(it->second)->getVenenoso() << "]: ";
+			cin >> novo_valor;
+			if(novo_valor != "-"){
+				if(novo_valor == "S"){
+					bool v_aux = true;
+					reinterpret_cast<ReptilDomestico*>(it->second)->setVenenoso(v_aux);	
 				} else {
-					dynamic_cast<ReptilDomestico*>(it->second)->setTipoVeneno(tipo_veneno_);
+					bool v_aux = false;
+					reinterpret_cast<ReptilDomestico*>(it->second)->setVenenoso(v_aux);	
 				}	
 			}
-		break;
 
-		case Tipo_veneno:
-			cout << "Tipo de Veneno: ";
-			cin >> tipo_veneno_;
-
-			if(it->second->getClassificacao() == "Nativo"){
-				dynamic_cast<ReptilNativo*>(it->second)->setTipoVeneno(tipo_veneno_);
-			} else if (it->second->getClassificacao() == "Exotico"){
-				dynamic_cast<ReptilExotico*>(it->second)->setTipoVeneno(tipo_veneno_);
-			} else {
-				dynamic_cast<ReptilDomestico*>(it->second)->setTipoVeneno(tipo_veneno_);
+			cout << "Tipo de Veneno: [" << reinterpret_cast<ReptilDomestico*>(it->second)->getTipoVeneno() << "]: ";
+			cin >> novo_valor;
+			if(novo_valor != "-"){
+				reinterpret_cast<ReptilDomestico*>(it->second)->setTipoVeneno(novo_valor);
 			}
-		break;
+		}
 
-		case Total_mudas:
-			int total_mudas_;
-			cout << "Total de mudas: ";
-			cin >> total_mudas_;
-
-			if(it->second->getClassificacao() == "Nativo"){
-				dynamic_cast<AnfibioNativo*>(it->second)->setTotalMudas(total_mudas_);
-			} else if (it->second->getClassificacao() == "Exotico"){
-				dynamic_cast<AnfibioExotico*>(it->second)->setTotalMudas(total_mudas_);
-			} else {
-				dynamic_cast<AnfibioDomestico*>(it->second)->setTotalMudas(total_mudas_);
+		/*if(it->second->getClassificacao() == "Nativo"){
+			cout << "Autorização Ibama: [" << dynamic_cast<AnimalNativo*>(it->second)->getAutorizacaoIbama() << "]: ";
+			cin >> novo_valor;
+			if(novo_valor != "-"){
+				dynamic_cast<AnimalNativo*>(it->second)->setAutorizacaoIbama(novo_valor);
 			}
-		break;
 
-		case Atributo_invalido:
-			cout << "Esse atributo não existe ou não pode ser modificado, tente novamente" << endl;
-		break;	
+			cout << "UF de Origem: [" << dynamic_cast<AnimalNativo*>(it->second)->getUfOrigem() << "]: ";
+			cin >> novo_valor;
+			if(novo_valor != "-"){
+				dynamic_cast<AnimalNativo*>(it->second)->setUfOrigem(novo_valor);
+			}
+		} 
+
+		if(it->second->getClassificacao() == "Exotico"){
+			cout << "Autorização Ibama: [" << dynamic_cast<AnimalExotico*>(it->second)->getAutorizacaoIbama() << "]: ";
+			cin >> novo_valor;
+			if(novo_valor != "-"){
+				dynamic_cast<AnimalExotico*>(it->second)->setAutorizacaoIbama(novo_valor);
+			}
+
+			cout << "Pais de Origem: [" << dynamic_cast<AnimalExotico*>(it->second)->getPaisOrigem() << "]: ";
+			cin >> novo_valor;
+			if(novo_valor != "-"){
+				dynamic_cast<AnimalExotico*>(it->second)->setPaisOrigem(novo_valor);
+			}
+			
+			cout << "Cidade de Origem: [" << dynamic_cast<AnimalExotico*>(it->second)->getCidadeOrigem() << "]: ";
+			cin >> novo_valor;
+			if(novo_valor != "-"){
+				dynamic_cast<AnimalExotico*>(it->second)->setCidadeOrigem(novo_valor);
+			}
+		} */
+
+
+		cout << "Animal editado com sucesso!" << endl;
 	}
 }
+	
 
 //Construtor e Destrutor do controlador.
 Controlador::Controlador(){}

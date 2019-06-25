@@ -17,6 +17,7 @@ class AnfibioExotico : public Anfibio, AnimalExotico{
 			string nome_batismo, int total_mudas, string autorizacao_ibama, string pais_origem, string cidade_origem);
 		AnfibioExotico();
 		~AnfibioExotico();
+
 };
 
 #endif

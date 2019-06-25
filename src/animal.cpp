@@ -18,18 +18,6 @@ ofstream& operator<<(ofstream& out, const Animal& a){
 	return a.salvar_animais(out);
 }
 
-string Animal::getClasse(){
-	return m_classe;
-}
-
-char Animal::getSexo(){
-	return m_sexo;
-}
-
-string Animal::getClassificacao(){
-	return m_classificacao;
-}
-
 void Animal::setId(int id){
 	m_id = id;
 }
@@ -68,4 +56,42 @@ void Animal::setIdTratador(int tem_tratador){
 
 void Animal::setNomeBatismo(string nome_batismo){
 	m_nome_batismo = nome_batismo;
+}
+//
+
+string Animal::getClasse(){
+	return m_classe;
+}
+
+char Animal::getSexo(){
+	return m_sexo;
+}
+
+string Animal::getClassificacao(){
+	return m_classificacao;
+}
+
+string Animal::getNomeCientifico(){
+	return m_nome_cientifico;
+}
+
+
+double Animal::getTamanho(){
+	return m_tamanho;
+}
+
+string Animal::getDieta(){
+	return m_dieta;
+}
+
+int Animal::getIdVeterinario(){
+	return m_tem_veterinario;
+}
+
+int Animal::getIdTratador(){
+	return m_tem_tratador;
+}
+
+string Animal::getNomeBatismo(){
+	return m_nome_batismo;
 }

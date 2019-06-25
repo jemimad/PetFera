@@ -36,12 +36,12 @@ class Animal{
 		string getClasse();
 		char getSexo();
 		string getClassificacao();
-		
-		/*int getId();
 		string getNomeCientifico();
 		double getTamanho();
 		string getDieta();
-		string getNomeBatismo();*/
+		string getNomeBatismo();
+		int getIdVeterinario();
+		int getIdTratador();
 
 		void setId(int id);
 		void setClasse(string classe);

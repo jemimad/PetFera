@@ -17,6 +17,7 @@ class AveExotico : public Ave, AnimalExotico{
 			string autorizacao_ibama, string pais_origem, string cidade_origem);
 		AveExotico();
 		~AveExotico();
+		void abstract();
 };
 
 

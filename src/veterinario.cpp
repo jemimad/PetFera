@@ -40,3 +40,7 @@ string Veterinario::getFuncao(){
 void Veterinario::setCMRV(string cmrv_){
 	m_cmrv = cmrv_;
 }
+
+string Veterinario::getCMRV(){
+	return m_cmrv;
+}

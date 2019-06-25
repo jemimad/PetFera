@@ -41,3 +41,7 @@ string Tratador::getFuncao(){
 void Tratador::setNivelSeguranca(int nivelSeguranca_){
 	m_nivelSeguranca = nivelSeguranca_;
 }
+
+int Tratador::getNivelSeguranca(){
+	return m_nivelSeguranca;
+}

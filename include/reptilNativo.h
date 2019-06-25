@@ -19,6 +19,7 @@ class ReptilNativo : public Reptil, AnimalNativo{
 			string nome_batismo, bool venenoso, string tipo_veneno, string autorizacao_ibama, string uf_origem);
 		ReptilNativo();
 		~ReptilNativo();
+		void abstract();
 };
 
 #endif

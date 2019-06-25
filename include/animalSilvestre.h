@@ -15,6 +15,7 @@ class AnimalSilvestre{
 		AnimalSilvestre();
 		~AnimalSilvestre();
 
+		virtual string getAutorizacaoIbama() = 0;
 		void setAutorizacaoIbama(string autorizacao_ibama);
 };
 

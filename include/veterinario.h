@@ -20,6 +20,7 @@ class Veterinario : public Funcionario{
 		~Veterinario();
 
 		string getFuncao();
+		string getCMRV();
 		void setCMRV(string cmrv_);
 
 

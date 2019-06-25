@@ -18,6 +18,8 @@ class Tratador : public Funcionario{
 		~Tratador();
 
 		string getFuncao();
+		int getNivelSeguranca();
+		
 		void setNivelSeguranca(int nivelSeguranca_);
 
 

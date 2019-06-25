@@ -16,6 +16,7 @@ class MamiferoExotico : public Mamifero, AnimalExotico{
 			string nome_batismo, string cor_pelo, string autorizacao_ibama, string pais_origem, string cidade_origem);
 		MamiferoExotico();
 		~MamiferoExotico();
+		void abstract();
 };
 
 

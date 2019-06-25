@@ -16,6 +16,7 @@ class AnfibioNativo : public Anfibio, AnimalNativo{
 			string nome_batismo, int total_mudas, string autorizacao_ibama, string uf_origem);
 		AnfibioNativo();
 		~AnfibioNativo();
+
 };
 
 

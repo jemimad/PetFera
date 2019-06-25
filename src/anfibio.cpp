@@ -12,3 +12,7 @@ Anfibio::~Anfibio(){}
 void Anfibio::setTotalMudas(int total_mudas_){
 	m_total_mudas = total_mudas_;
 }
+
+int Anfibio::getTotalMudas(){
+	return m_total_mudas;
+}

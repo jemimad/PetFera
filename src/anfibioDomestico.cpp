@@ -31,3 +31,4 @@ ofstream& AnfibioDomestico::salvar_animais(ofstream& out) const{
 
     return out;
 }
+

@@ -37,3 +37,4 @@ ofstream& AnfibioExotico::salvar_animais(ofstream& out) const{
 
 	return out;
 }
+

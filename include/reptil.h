@@ -21,6 +21,8 @@ class Reptil : public Animal{
 
 		void setVenenoso(bool venenoso_);
 		void setTipoVeneno(string tipo_veneno_);
+		bool getVenenoso();
+		string getTipoVeneno();
 
 };
 

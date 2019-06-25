@@ -17,3 +17,11 @@ void Ave::setTamanhoBico(double tamanho_bico_cm_){
 void Ave::setEnvergaduraAsas(double envergadura_asas_){
 	m_envergadura_asas = envergadura_asas_;
 }
+
+double Ave::getTamanhoBico(){
+	return m_tamanho_bico_cm;
+}
+
+double Ave::getEnvergaduraAsas(){
+	return m_envergadura_asas;
+}
