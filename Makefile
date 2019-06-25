@@ -1,85 +1,90 @@
-# Note:
-# Copied from: https://gist.github.com/maurizzzio/de8908f67923091982c8c8136a063ea6
-# Generic Makefile example for a C++ project
-#
-CXX ?= g++
+PROG = PetFera
+CC = g++
+CPPFLAGS = -O0 -g -Wall -std=c++11 -I./include
+SRC = ./src
+INC = ./include
+BIN = ./bin
+OBJ = ./obj
+# LDFLAGS = -Lsrc -lmylib
+OBJS = $(OBJ)/anfibio.o $(OBJ)/anfibioExotico.o $(OBJ)/anfibioNativo.o $(OBJ)/animal.o $(OBJ)/animalExotico.o $(OBJ)/animalNativo.o $(OBJ)/animalSilvestre.o $(OBJ)/ave.o $(OBJ)/aveExotico.o $(OBJ)/aveNativo.o $(OBJ)/funcionario.o $(OBJ)/main.o $(OBJ)/mamifero.o $(OBJ)/mamiferoExotico.o $(OBJ)/mamiferoNativo.o $(OBJ)/reptil.o $(OBJ)/reptilExotico.o $(OBJ)/reptilNativo.o $(OBJ)/controlador.o $(OBJ)/tratador.o $(OBJ)/veterinario.o $(OBJ)/anfibioDomestico.o $(OBJ)/aveDomestico.o $(OBJ)/mamiferoDomestico.o $(OBJ)/reptilDomestico.o
 
-# path #
-SRC_PATH = src
-BUILD_PATH = build
-BIN_PATH = $(BUILD_PATH)
+$(PROG) : $(OBJS)
+	@$(CC) $(OBJS) -o $(BIN)/$(PROG)
 
-# executable #
-BIN_NAME = petfera.out
+$(OBJ)/anfibio.o : $(SRC)/anfibio.cpp $(INC)/anfibio.h
+	@$(CC) $(CPPFLAGS) -c $(SRC)/anfibio.cpp -o $(OBJ)/$@
 
-# extensions #
-SRC_EXT = cpp
+$(OBJ)/anfibioExotico.o : $(SRC)/anfibioExotico.cpp $(INC)/anfibioExotico.h
+	@$(CC) $(CPPFLAGS) -c $(SRC)/anfibioExotico.cpp -o $(OBJ)/$@
 
-# code lists #
-# Find all source files in the source directory, sorted by
-# most recently modified
-SOURCES = $(shell find $(SRC_PATH) -name '*.$(SRC_EXT)' | sort -k 1nr | cut -f2-)
-# Set the object file names, with the source directory stripped
-# from the path, and the build path prepended in its place
-OBJECTS = $(SOURCES:$(SRC_PATH)/%.$(SRC_EXT)=$(BUILD_PATH)/%.o)
-# Set the dependency files that will be used to add header dependencies
-DEPS = $(OBJECTS:.o=.d)
+$(OBJ)/anfibioNativo.o : $(SRC)/anfibioNativo.cpp $(INC)/anfibioNativo.h
+	@$(CC) $(CPPFLAGS) -c $(SRC)/anfibioNativo.cpp -o $(OBJ)/$@
 
-# flags #
-OPTIMIZE = -O03
-DEBUG = -g
-COMPILE_FLAGS = -std=c++11 -Wall -g
-INCLUDES = -I include
-#INCLUDES = -I include/ -I /usr/local/include
-# Space-separated pkg-config libraries used by this project
-LIBS =
+$(OBJ)/animal.o : $(SRC)/animal.cpp $(INC)/animal.h
+	@$(CC) $(CPPFLAGS) -c $(SRC)/animal.cpp -o $(OBJ)/$@
 
-.PHONY: default_target
-default_target: release
+$(OBJ)/animalExotico.o : $(SRC)/animalExotico.cpp $(INC)/animalExotico.h
+	@$(CC) $(CPPFLAGS) -c $(SRC)/animalExotico.cpp -o $(OBJ)/$@
 
-.PHONY: debug
-debug: export CXXFLAGS := $(CXXFLAGS) $(COMPILE_FLAGS) $(DEBUG)
-debug: dirs
-	@$(MAKE) all
+$(OBJ)/animalNativo.o : $(SRC)/animalNativo.cpp $(INC)/animalNativo.h
+	@$(CC) $(CPPFLAGS) -c $(SRC)/animalNativo.cpp -o $(OBJ)/$@
 
+$(OBJ)/animalSilvestre.o : $(SRC)/animalSilvestre.cpp $(INC)/animalSilvestre.h
+	@$(CC) $(CPPFLAGS) -c $(SRC)/animalSilvestre.cpp -o $(OBJ)/$@
 
-.PHONY: release
-release: export CXXFLAGS := $(CXXFLAGS) $(COMPILE_FLAGS) $(OPTIMIZE)
-release: dirs
-	@$(MAKE) all
+$(OBJ)/ave.o : $(SRC)/ave.cpp $(INC)/ave.h
+	@$(CC) $(CPPFLAGS) -c $(SRC)/ave.cpp -o $(OBJ)/$@
 
-.PHONY: dirs
-dirs:
-	@echo "Creating directories"
-	@mkdir -p $(dir $(OBJECTS))
-	@mkdir -p $(BIN_PATH)
+$(OBJ)/aveExotico.o : $(SRC)/aveExotico.cpp $(INC)/aveExotico.h
+	@$(CC) $(CPPFLAGS) -c $(SRC)/aveExotico.cpp -o $(OBJ)/$@
 
-.PHONY: clean
-clean:
-	@echo "Deleting $(BIN_NAME) symlink"
-	@$(RM) $(BIN_NAME)
-	@echo "Deleting directories"
-	@$(RM) -r $(BUILD_PATH)
-	@$(RM) -r $(BIN_PATH)
+$(OBJ)/aveNativo.o : $(SRC)/aveNativo.cpp $(INC)/aveNativo.h
+	@$(CC) $(CPPFLAGS) -c $(SRC)/aveNativo.cpp -o $(OBJ)/$@
 
-# checks the executable and symlinks to the output
-.PHONY: all
-all: $(BIN_PATH)/$(BIN_NAME)
-	@echo "Making symlink: $(BIN_NAME) -> $<"
-	@$(RM) $(BIN_NAME)
-	@ln -s $(BIN_PATH)/$(BIN_NAME) $(BIN_NAME)
+$(OBJ)/funcionario.o : $(SRC)/funcionario.cpp $(INC)/funcionario.h
+	@$(CC) $(CPPFLAGS) -c $(SRC)/funcionario.cpp -o $(OBJ)/$@
 
-# Creation of the executable
-$(BIN_PATH)/$(BIN_NAME): $(OBJECTS)
-	@echo "Linking: $@"
-	$(CXX) $(OBJECTS) -o $@
+$(OBJ)/main.o : $(SRC)/main.cpp $(INC)/menu.h
+	@$(CC) $(CPPFLAGS) -c $(SRC)/main.cpp -o $(OBJ)/$@
 
-# Add dependency files, if they exist
--include $(DEPS)
+$(OBJ)/mamifero.o : $(SRC)/mamifero.cpp $(INC)/mamifero.h
+	@$(CC) $(CPPFLAGS) -c $(SRC)/mamifero.cpp -o $(OBJ)/$@
 
-# Source file rules
-# After the first compilation they will be joined with the rules from the
-# dependency files to provide header dependencies
-$(BUILD_PATH)/%.o: $(SRC_PATH)/%.$(SRC_EXT)
-	@echo "Compiling: $< -> $@"
-	$(CXX) $(CXXFLAGS) $(INCLUDES) -MP -MMD -c $< -o $@
+$(OBJ)/mamiferoExotico.o : $(SRC)/mamiferoExotico.cpp $(INC)/mamiferoExotico.h
+	@$(CC) $(CPPFLAGS) -c $(SRC)/mamiferoExotico.cpp -o $(OBJ)/$@
+
+$(OBJ)/mamiferoNativo.o : $(SRC)/mamiferoNativo.cpp $(INC)/mamiferoNativo.h
+	@$(CC) $(CPPFLAGS) -c $(SRC)/mamiferoNativo.cpp -o $(OBJ)/$@
+
+$(OBJ)/reptil.o : $(SRC)/reptil.cpp $(INC)/reptil.h
+	@$(CC) $(CPPFLAGS) -c $(SRC)/reptil.cpp -o $(OBJ)/$@
+
+$(OBJ)/reptilExotico.o : $(SRC)/reptilExotico.cpp $(INC)/reptilExotico.h
+	@$(CC) $(CPPFLAGS) -c $(SRC)/reptilExotico.cpp -o $(OBJ)/$@
+
+$(OBJ)/reptilNativo.o : $(SRC)/reptilNativo.cpp $(INC)/reptilNativo.h
+	@$(CC) $(CPPFLAGS) -c $(SRC)/reptilNativo.cpp -o $(OBJ)/$@
+
+$(OBJ)/controlador.o : $(SRC)/controlador.cpp $(INC)/controlador.h
+	@$(CC) $(CPPFLAGS) -c $(SRC)/controlador.cpp -o $(OBJ)/$@
+
+$(OBJ)/tratador.o : $(SRC)/tratador.cpp $(INC)/tratador.h
+	@$(CC) $(CPPFLAGS) -c $(SRC)/tratador.cpp -o $(OBJ)/$@
+
+$(OBJ)/veterinario.o : $(SRC)/veterinario.cpp $(INC)/veterinario.h
+	@$(CC) $(CPPFLAGS) -c $(SRC)/veterinario.cpp -o $(OBJ)/$@
+
+$(OBJ)/anfibioDomestico.o : $(SRC)/anfibioDomestico.cpp $(INC)/anfibioDomestico.h
+	@$(CC) $(CPPFLAGS) -c $(SRC)/anfibioDomestico.cpp -o $(OBJ)/$@
+
+$(OBJ)/aveDomestico.o : $(SRC)/aveDomestico.cpp $(INC)/aveDomestico.h
+	@$(CC) $(CPPFLAGS) -c $(SRC)/aveDomestico.cpp -o $(OBJ)/$@
+
+$(OBJ)/mamiferoDomestico.o : $(SRC)/mamiferoDomestico.cpp $(INC)/mamiferoDomestico.h
+	@$(CC) $(CPPFLAGS) -c $(SRC)/mamiferoDomestico.cpp -o $(OBJ)/$@
+
+$(OBJ)/reptilDomestico.o : $(SRC)/reptilDomestico.cpp $(INC)/reptilDomestico.h
+	@$(CC) $(CPPFLAGS) -c $(SRC)/reptilDomestico.cpp -o $(OBJ)/$@
+
+clean :
+	rm -f core $(PROG) $(OBJS) 
