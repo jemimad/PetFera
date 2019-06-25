@@ -112,7 +112,7 @@ AtributosFuncionario verificarAtributoFuncionario(string input){
 }
 
 
-void Controlador::abrirPetshop(){
+void Controlador::lerAnimais(){
 	//abriu o arquivo
 	ifstream inputfile_animais;
 	inputfile_animais.open("data/animais.csv");
@@ -317,12 +317,87 @@ void Controlador::abrirPetshop(){
 			}
 		}
 	}else{
-		cout << "Arquivo vazio ou inexistente" << endl;
+		cout << "Arquivo de Animais está vazio ou é inexistente" << endl;
 	}
 
 	inputfile_animais.close();
 }
 
+void Controlador::lerFuncionarios(){
+	//abriu o arquivo
+	ifstream inputfile_funcionarios;
+	inputfile_funcionarios.open("data/funcionarios.csv");
+	
+	//FUNCIONARIO
+	string funcao, nome, cpf,  tipoSanguineo, fatorRH, especialidade;
+	int id, idade;
+
+	//VETERINARIO
+	string cmrv;
+
+	//TRATADOR
+	int nivelSeguranca;
+
+	//LEITURA
+	vector<string> att;
+	string linha;
+	string ops;
+
+	inputfile_funcionarios.seekg(0,ios::end);
+    int size = inputfile_funcionarios.tellg();
+	inputfile_funcionarios.seekg(0, ios::beg);
+
+	if(inputfile_funcionarios.is_open() && size > 0){
+		
+		while(!inputfile_funcionarios.eof()){
+			att.clear();
+			getline(inputfile_funcionarios, linha);
+			stringstream atributos_animal(linha);
+
+			while(getline(atributos_animal, ops, ';')){
+				att.push_back(ops);		
+			}
+
+			id = stoi(att[0]);
+			funcao = att[1];
+			nome = att[2];
+			cpf = att[3];
+			idade = stoi(att[4]);
+			tipoSanguineo = att[5]; 
+			fatorRH = att[6];
+			especialidade = att[7];
+
+			//isso é pra converter string pra char
+			char tp_aux = tipoSanguineo[0];
+			char frh_aux = fatorRH[0];
+
+			if(funcao == "Tratador"){	
+				nivelSeguranca = stoi(att[8]);
+
+				Funcionario* functrat = new Tratador(id, funcao, nome, cpf, idade, tp_aux, frh_aux, especialidade, nivelSeguranca);
+				lista_funcionarios.insert({id, functrat});
+			}
+			if(funcao == "Veterinario"){
+				cmrv = att[8];
+
+				Funcionario* funcvet = new Veterinario(id, funcao, nome, cpf, idade, tp_aux, frh_aux, especialidade, cmrv);
+				lista_funcionarios.insert({id, funcvet});
+			}
+		}
+
+	}else{
+		cout << "Arquivo de Funcionários está vazio ou é inexistente" << endl;
+	}
+
+	inputfile_funcionarios.close();
+
+}
+
+
+void Controlador::abrirPetshop(){
+	lerAnimais();
+	lerFuncionarios();
+}
 	/*Funcionario* func = new Veterinario(01, "Veterinario", "João", "123.321.123-3", 21, 
 							'B', '+', "Aves", "120.254");
 	lista_funcionarios.insert({01, func});

@@ -33,6 +33,9 @@ class Controlador{
 		//Função para verificar se o id inserido para o animal já existe. Recebe como parâmetro um id.
 		bool verificarIdAnimal(int id);
 
+		void lerAnimais();
+		void lerFuncionarios();
+
 	protected:
 		//Map de funcionários. Insere uma chave (id) e um ponteiro para um objeto da classe Funcionário.
 		map<int, Funcionario*> lista_funcionarios;
