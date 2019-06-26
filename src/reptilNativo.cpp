@@ -37,3 +37,7 @@ ofstream& ReptilNativo::salvar_animais(ofstream& out) const{
 
 	return out;
 }
+
+string ReptilNativo::getAutorizacaoIbama(){
+	return m_autorizacao_ibama;
+}

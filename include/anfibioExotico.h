@@ -6,7 +6,7 @@
 #include "animalExotico.h"
 
 
-class AnfibioExotico : public Anfibio, AnimalExotico{
+class AnfibioExotico : public Anfibio, public AnimalExotico{
 	protected: 
 		ostream& listar_animais(ostream& os) const;
 		ofstream& salvar_animais(ofstream& out) const;

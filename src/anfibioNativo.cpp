@@ -36,3 +36,7 @@ ofstream& AnfibioNativo::salvar_animais(ofstream& out) const{
 
 	return out;
 }
+
+string AnfibioNativo::getAutorizacaoIbama(){
+	return m_autorizacao_ibama;
+}

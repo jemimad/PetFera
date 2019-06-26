@@ -7,7 +7,7 @@
 #include "reptil.h"
 #include "animalExotico.h"
 
-class ReptilExotico : public Reptil, AnimalExotico{
+class ReptilExotico : public Reptil, public AnimalExotico{
 	protected: 
 		ostream& listar_animais(ostream& os) const;
 		ofstream& salvar_animais(ofstream& out) const;
@@ -19,7 +19,10 @@ class ReptilExotico : public Reptil, AnimalExotico{
 			string cidade_origem);
 		ReptilExotico();
 		~ReptilExotico();
-		void abstract();
+		//void abstract();
+
+		//string getAutorizacaoIbama();
+
 };
 
 

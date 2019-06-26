@@ -1001,8 +1001,46 @@ void Controlador::editarAnimal(){
 			if(novo_valor != "-"){
 				reinterpret_cast<AnfibioDomestico*>(it->second)->setTotalMudas(stoi(novo_valor));
 			}
-		}
 
+			if(it->second->getClassificacao() == "Nativo"){
+				AnfibioNativo* anf_nativo = reinterpret_cast<AnfibioNativo*>(it->second);
+				
+				cout << "Autorização Ibama: [" << anf_nativo->getAutorizacaoIbama() << "]: ";
+				cin >> novo_valor;
+				if(novo_valor != "-"){
+					anf_nativo->setAutorizacaoIbama(novo_valor);
+				}
+
+
+
+				cout << "UF de Origem: [" << anf_nativo->getUfOrigem() << "]: ";
+				cin >> novo_valor;
+				if(novo_valor != "-"){
+					anf_nativo->setUfOrigem(novo_valor);
+				}
+			} 
+
+			if(it->second->getClassificacao() == "Exotico"){
+				AnfibioExotico* anf_exot = reinterpret_cast<AnfibioExotico*>(it->second);
+				cout << "Autorização Ibama: [" << anf_exot->getAutorizacaoIbama() << "]: ";
+				cin >> novo_valor;
+				if(novo_valor != "-"){
+					anf_exot->setAutorizacaoIbama(novo_valor);
+				}
+
+				cout << "Pais de Origem: [" << anf_exot->getPaisOrigem() << "]: ";
+				cin >> novo_valor;
+				if(novo_valor != "-"){
+					anf_exot->setPaisOrigem(novo_valor);
+				}
+				
+				cout << "Cidade de Origem: [" << anf_exot->getCidadeOrigem() << "]: ";
+				cin >> novo_valor;
+				if(novo_valor != "-"){
+					anf_exot->setCidadeOrigem(novo_valor);
+				}
+			} 
+		}
 
 		else if(classe == "Ave"){
 			cout << "Tamanho do bico em cm: [" << reinterpret_cast<AveDomestico*>(it->second)->getTamanhoBico() << "]: ";
@@ -1016,8 +1054,44 @@ void Controlador::editarAnimal(){
 			if(novo_valor != "-"){
 				reinterpret_cast<AveDomestico*>(it->second)->setEnvergaduraAsas(stod(novo_valor));
 			}
-		}
 
+			if(it->second->getClassificacao() == "Nativo"){
+				AveNativo* ave_nat = reinterpret_cast<AveNativo*>(it->second);
+				cout << "Autorização Ibama: [" << ave_nat->getAutorizacaoIbama() << "]: ";
+				cin >> novo_valor;
+				if(novo_valor != "-"){
+					ave_nat->setAutorizacaoIbama(novo_valor);
+				}
+
+				cout << "DESGRAAAAAAAAAAAAÇA";
+				cout << "UF de Origem: [" << ave_nat->getUfOrigem() << "]: ";
+				cin >> novo_valor;
+				if(novo_valor != "-"){
+					ave_nat->setUfOrigem(novo_valor);
+				}
+			} 
+
+			if(it->second->getClassificacao() == "Exotico"){
+				AveExotico* ave_exot = reinterpret_cast<AveExotico*>(it->second);
+				cout << "Autorização Ibama: [" << ave_exot->getAutorizacaoIbama() << "]: ";
+				cin >> novo_valor;
+				if(novo_valor != "-"){
+					ave_exot->setAutorizacaoIbama(novo_valor);
+				}
+
+				cout << "Pais de Origem: [" << ave_exot->getPaisOrigem() << "]: ";
+				cin >> novo_valor;
+				if(novo_valor != "-"){
+					ave_exot->setPaisOrigem(novo_valor);
+				}
+				
+				cout << "Cidade de Origem: [" << ave_exot->getCidadeOrigem() << "]: ";
+				cin >> novo_valor;
+				if(novo_valor != "-"){
+					ave_exot->setCidadeOrigem(novo_valor);
+				}
+			} 
+		}
 
 		else if(classe == "Mammalia"){
 			cout << "Cor do pelo: [" << reinterpret_cast<MamiferoDomestico*>(it->second)->getCorPelo() << "]: ";
@@ -1025,6 +1099,42 @@ void Controlador::editarAnimal(){
 			if(novo_valor != "-"){
 				reinterpret_cast<MamiferoDomestico*>(it->second)->setCorPelo(novo_valor);
 			}
+
+			if(it->second->getClassificacao() == "Nativo"){
+				MamiferoNativo* mam_nat = reinterpret_cast<MamiferoNativo*>(it->second);
+				cout << "Autorização Ibama: [" << mam_nat->getAutorizacaoIbama() << "]: ";
+				cin >> novo_valor;
+				if(novo_valor != "-"){
+					mam_nat->setAutorizacaoIbama(novo_valor);
+				}
+
+				cout << "UF de Origem: [" << mam_nat->getUfOrigem() <<": ";
+				cin >> novo_valor;
+				if(novo_valor != "-"){
+					mam_nat->setUfOrigem(novo_valor);
+				}
+			} 
+
+			if(it->second->getClassificacao() == "Exotico"){
+				MamiferoExotico* mam_exot = reinterpret_cast<MamiferoExotico*>(it->second);
+				cout << "Autorização Ibama: [" << mam_exot->getAutorizacaoIbama() << "]: ";
+				cin >> novo_valor;
+				if(novo_valor != "-"){
+					mam_exot->setAutorizacaoIbama(novo_valor);
+				}
+
+				cout << "Pais de Origem: [" << mam_exot->getPaisOrigem() << "]: ";
+				cin >> novo_valor;
+				if(novo_valor != "-"){
+					mam_exot->setPaisOrigem(novo_valor);
+				}
+				
+				cout << "Cidade de Origem: [" << mam_exot->getCidadeOrigem() << "]: ";
+				cin >> novo_valor;
+				if(novo_valor != "-"){
+					mam_exot->setCidadeOrigem(novo_valor);
+				}
+			} 
 		}
 
 		else if(classe == "Reptilia"){
@@ -1045,42 +1155,43 @@ void Controlador::editarAnimal(){
 			if(novo_valor != "-"){
 				reinterpret_cast<ReptilDomestico*>(it->second)->setTipoVeneno(novo_valor);
 			}
+
+			if(it->second->getClassificacao() == "Nativo"){
+				ReptilNativo* rep_nat = reinterpret_cast<ReptilNativo*>(it->second);
+				cout << "Autorização Ibama: [" << rep_nat->getAutorizacaoIbama() << "]: ";
+				cin >> novo_valor;
+				if(novo_valor != "-"){
+					rep_nat->setAutorizacaoIbama(novo_valor);
+				}
+
+				cout << "UF de Origem: [" << rep_nat->getUfOrigem() << "]: ";
+				cin >> novo_valor;
+				if(novo_valor != "-"){
+					rep_nat->setUfOrigem(novo_valor);
+				}
+			} 
+
+			if(it->second->getClassificacao() == "Exotico"){
+				ReptilExotico* rep_exot = reinterpret_cast<ReptilExotico*>(it->second);
+				cout << "Autorização Ibama: [" << rep_exot->getAutorizacaoIbama() << "]: ";
+				cin >> novo_valor;
+				if(novo_valor != "-"){
+					rep_exot->setAutorizacaoIbama(novo_valor);
+				}
+
+				cout << "Pais de Origem: [" << rep_exot->getPaisOrigem() << "]: ";
+				cin >> novo_valor;
+				if(novo_valor != "-"){
+					rep_exot->setPaisOrigem(novo_valor);
+				}
+				
+				cout << "Cidade de Origem: [" << rep_exot->getCidadeOrigem() << "]: ";
+				cin >> novo_valor;
+				if(novo_valor != "-"){
+					rep_exot->setCidadeOrigem(novo_valor);
+				}
+			} 
 		}
-
-		/*if(it->second->getClassificacao() == "Nativo"){
-			cout << "Autorização Ibama: [" << dynamic_cast<AnimalNativo*>(it->second)->getAutorizacaoIbama() << "]: ";
-			cin >> novo_valor;
-			if(novo_valor != "-"){
-				dynamic_cast<AnimalNativo*>(it->second)->setAutorizacaoIbama(novo_valor);
-			}
-
-			cout << "UF de Origem: [" << dynamic_cast<AnimalNativo*>(it->second)->getUfOrigem() << "]: ";
-			cin >> novo_valor;
-			if(novo_valor != "-"){
-				dynamic_cast<AnimalNativo*>(it->second)->setUfOrigem(novo_valor);
-			}
-		} 
-
-		if(it->second->getClassificacao() == "Exotico"){
-			cout << "Autorização Ibama: [" << dynamic_cast<AnimalExotico*>(it->second)->getAutorizacaoIbama() << "]: ";
-			cin >> novo_valor;
-			if(novo_valor != "-"){
-				dynamic_cast<AnimalExotico*>(it->second)->setAutorizacaoIbama(novo_valor);
-			}
-
-			cout << "Pais de Origem: [" << dynamic_cast<AnimalExotico*>(it->second)->getPaisOrigem() << "]: ";
-			cin >> novo_valor;
-			if(novo_valor != "-"){
-				dynamic_cast<AnimalExotico*>(it->second)->setPaisOrigem(novo_valor);
-			}
-			
-			cout << "Cidade de Origem: [" << dynamic_cast<AnimalExotico*>(it->second)->getCidadeOrigem() << "]: ";
-			cin >> novo_valor;
-			if(novo_valor != "-"){
-				dynamic_cast<AnimalExotico*>(it->second)->setCidadeOrigem(novo_valor);
-			}
-		} */
-
 
 		cout << "Animal editado com sucesso!" << endl;
 	}

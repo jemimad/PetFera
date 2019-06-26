@@ -5,7 +5,7 @@
 #include "mamifero.h"
 #include "animalNativo.h"
 
-class MamiferoNativo : public Mamifero, AnimalNativo{
+class MamiferoNativo : public Mamifero, public AnimalNativo{
 	protected: 
 		ostream& listar_animais(ostream& os) const;
 		ofstream& salvar_animais(ofstream& out) const;
@@ -17,8 +17,10 @@ class MamiferoNativo : public Mamifero, AnimalNativo{
 			string nome_batismo, string cor_pelo, string autorizacao_ibama, string uf_origem);
 		MamiferoNativo();
 		~MamiferoNativo();
-		void abstract();
+		
+		//void abstract();
 
+		string getAutorizacaoIbama();
 		//friend ostream& operator<<(ostream& os,  MamiferoNativo& mn);
 
 };

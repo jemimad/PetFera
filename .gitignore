@@ -1,9 +1,10 @@
 /.vscode
 .DS_Store
 */.DS_Store
-/build/*
+/obj/*
+/bin/*
 run_tests
-/include/array.h
+
 
 #Doxygen Files
 /docs

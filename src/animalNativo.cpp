@@ -10,10 +10,12 @@ void AnimalNativo::setUfOrigem(string uf_origem){
 	m_uf_origem = m_uf_origem;
 }
 
-string AnimalNativo::getAutorizacaoIbama(){
-	return m_autorizacao_ibama;
-}
+
 
 string AnimalNativo::getUfOrigem(){
 	return m_uf_origem;
+}
+
+void AnimalNativo::setAutorizacaoIbama(string autorizacao_ibama){
+	m_autorizacao_ibama = autorizacao_ibama;
 }

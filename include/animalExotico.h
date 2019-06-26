@@ -16,6 +16,8 @@ class AnimalExotico : public AnimalSilvestre{
 
 		void setPaisOrigem(string pais_origem);
 		void setCidadeOrigem(string cidade_origem);
+		void setAutorizacaoIbama(string autorizacao_ibama);
+		
 		string getAutorizacaoIbama();
 		string getPaisOrigem();
 		string getCidadeOrigem();

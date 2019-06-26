@@ -35,20 +35,7 @@ ofstream& MamiferoNativo::salvar_animais(ofstream& out) const{
 
 	return out;
 }
-/*
-ostream& operator<<(ostream& o,  MamiferoNativo& mn){
-	o << "ID:" << mn.m_id << 
-	"\nClasse" << mn.m_classe << 
-	"\nNome: " <<  mn.m_nome_cientifico << 
-	"\nSexo: " << mn.m_sexo << 
-	"\nTamanho: " << mn.m_tamanho << 
-	"\nDieta: " << mn.m_dieta << 
-	"\nPossui veterinário: " << mn.m_tem_veterinario << 
-	"\nPossui tratador: " << mn.m_tem_tratador << 
-	"\nNome Batismo: " << mn.m_nome_batismo <<
-	"\nCor do pelo: " << mn.m_cor_pelo <<
-	"\nAutorização IBAMA: " << mn.m_autorizacao_ibama <<
-	"\nUF de Origem: " << mn.m_uf_origem;
 
-	return o;
-}*/
+string MamiferoNativo::getAutorizacaoIbama(){
+	return m_autorizacao_ibama;
+}

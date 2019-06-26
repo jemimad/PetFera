@@ -25,3 +25,7 @@ string AnimalExotico::getPaisOrigem(){
 string AnimalExotico::getCidadeOrigem(){
 	return m_cidade_origem;
 }
+
+void AnimalExotico::setAutorizacaoIbama(string autorizacao_ibama){
+	m_autorizacao_ibama = autorizacao_ibama;
+}

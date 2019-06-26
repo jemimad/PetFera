@@ -5,7 +5,7 @@
 #include "anfibio.h"
 #include "animalNativo.h"
 
-class AnfibioNativo : public Anfibio, AnimalNativo{
+class AnfibioNativo : public Anfibio, public AnimalNativo{
 	protected: 
 		ostream& listar_animais(ostream& os) const;
 		ofstream& salvar_animais(ofstream& out) const;
@@ -16,6 +16,9 @@ class AnfibioNativo : public Anfibio, AnimalNativo{
 			string nome_batismo, int total_mudas, string autorizacao_ibama, string uf_origem);
 		AnfibioNativo();
 		~AnfibioNativo();
+
+		string getAutorizacaoIbama();
+
 
 };
 

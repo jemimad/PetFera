@@ -7,7 +7,7 @@
 #include "reptil.h"
 #include "animalNativo.h"
 
-class ReptilNativo : public Reptil, AnimalNativo{
+class ReptilNativo : public Reptil, public AnimalNativo{
 	protected:
 		ostream& listar_animais(ostream& os) const;
 		ofstream& salvar_animais(ofstream& out) const;
@@ -19,7 +19,9 @@ class ReptilNativo : public Reptil, AnimalNativo{
 			string nome_batismo, bool venenoso, string tipo_veneno, string autorizacao_ibama, string uf_origem);
 		ReptilNativo();
 		~ReptilNativo();
-		void abstract();
+		//void abstract();
+		string getAutorizacaoIbama();
+
 };
 
 #endif

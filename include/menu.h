@@ -84,8 +84,7 @@ void Controlador::exibirMenuAnimais(){
 			exibirMenuAnimais();
 		break;
 		case 5:
-			cout << "--------- Alterar dados de um animal ----------\n " <<
-				"Insira o id do animal a ser alterado:" << endl;
+			cout << "--------- Alterar dados de um animal ----------\n " << endl;
 			editarAnimal();
 			exibirMenuAnimais();
 		break;

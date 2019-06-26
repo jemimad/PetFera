@@ -5,7 +5,7 @@
 #include "ave.h"
 #include "animalNativo.h"
 
-class AveNativo : public Ave, AnimalNativo{
+class AveNativo : public Ave, public AnimalNativo{
 	protected:
 		ostream& listar_animais(ostream& os) const;
 		ofstream& salvar_animais(ofstream& out) const;
@@ -17,7 +17,10 @@ class AveNativo : public Ave, AnimalNativo{
 			string nome_batismo, double tamanho_bico_cm, double envergadura_asas, string autorizacao_ibama, string uf_origem);
 		AveNativo();
 		~AveNativo();
-		void abstract();
+		//void abstract();
+
+		string getAutorizacaoIbama();
+
 };
 
 
