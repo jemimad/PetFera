@@ -7,6 +7,11 @@ INC = ./include
 BIN = ./bin
 OBJ = ./obj
 # LDFLAGS = -Lsrc -lmylib
+all: mkdirs $(PROG)
+
+mkdirs:
+	@mkdir -p $(OBJ)
+	@mkdir -p $(BIN)
 
 OBJS = $(OBJ)/anfibio.o $(OBJ)/anfibioExotico.o $(OBJ)/anfibioNativo.o $(OBJ)/animal.o $(OBJ)/animalExotico.o $(OBJ)/animalNativo.o $(OBJ)/animalSilvestre.o $(OBJ)/ave.o $(OBJ)/aveExotico.o $(OBJ)/aveNativo.o $(OBJ)/funcionario.o $(OBJ)/main.o $(OBJ)/mamifero.o $(OBJ)/mamiferoExotico.o $(OBJ)/mamiferoNativo.o $(OBJ)/reptil.o $(OBJ)/reptilExotico.o $(OBJ)/reptilNativo.o $(OBJ)/controlador.o $(OBJ)/tratador.o $(OBJ)/veterinario.o $(OBJ)/anfibioDomestico.o $(OBJ)/aveDomestico.o $(OBJ)/mamiferoDomestico.o $(OBJ)/reptilDomestico.o
 
@@ -89,4 +94,7 @@ $(OBJ)/reptilDomestico.o : $(SRC)/reptilDomestico.cpp $(INC)/reptilDomestico.h
 	@$(CC) $(CPPFLAGS) -c $(SRC)/reptilDomestico.cpp -o $(OBJ)/reptilDomestico.o
 
 clean :
-	rm -f core $(BIN)/$(PROG) $(OBJS)
+	@rm -f core $(BIN)/$(PROG) $(OBJS)
+
+run :
+	@./PetFera
