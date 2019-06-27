@@ -18,7 +18,10 @@
 
 using namespace std;
 using std::map;
-
+/**@file controlador.cpp */
+/**@author Carmem Stanie, Italo Luiz e Jemima Dias */
+/**@data 27/06/2019 */
+/**@brief declação da classe Controlador e de seus Metodos*/
 class Controlador{
 	private:
 		//Função para exibir o menu de animais. Não recebe parâmetro.

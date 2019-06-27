@@ -6,7 +6,10 @@
 
 #include "reptil.h"
 #include "animalExotico.h"
-
+/**@file reptilExotico.cpp */
+/**@author Carmem Stanie, Italo Luiz e Jemima Dias */
+/**@data 27/06/2019 */
+/**@brief declação da classe ReptilExotico com herança da classe Reptil e animalExotico*/
 class ReptilExotico : public Reptil, public AnimalExotico{
 	protected: 
 		ostream& listar_animais(ostream& os) const;

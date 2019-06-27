@@ -1,5 +1,5 @@
 #include "reptilDomestico.h"
-
+/**@brief implementação do construtor e destrutor de reptil domestico */
 ReptilDomestico::ReptilDomestico(int id, string classe, string classificacao, string nome_cientifico,char sexo, 
 			double tamanho, string dieta, int tem_veterinario, int tem_tratador,
 			string nome_batismo, bool venenoso, string tipo_veneno):
@@ -7,7 +7,7 @@ ReptilDomestico::ReptilDomestico(int id, string classe, string classificacao, st
 }
 
 ReptilDomestico::~ReptilDomestico(){}
-
+/**@brief sobrecarga de operador de inserção para listagem e para salvar no arquivo*/
 ostream& ReptilDomestico::listar_animais(ostream& os) const{
 	os << "| ID: " << m_id << 
     " | Classe: " << m_classe << 

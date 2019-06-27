@@ -25,8 +25,8 @@
 
 
 using namespace std;
-
-//ENUM 
+/**@sa Classes resolveOption */
+/**@brief Uso do enum para criação de classe de variaveis*/ 
 enum Classes{
     Classe_invalida,
     Mamifero,
@@ -34,7 +34,7 @@ enum Classes{
     Reptil,
     Ave
 };
-
+/**@brief implementação da classe enum Classes para comparar as variaveis com o valor inserido pelo usuario*/
 Classes resolveOption(string input) {
     if( input == "Mammalia" || input == "mammalia") return Mamifero;
     if( input == "Amphibia" || input == "amphibia") return Anfibio;
@@ -44,70 +44,69 @@ Classes resolveOption(string input) {
 }
 
 
-
+/**@brief Função para ler o arquivo dos animais cadastrados dentro do arquivo do petshop */
 void Controlador::lerAnimais(){
 	//abriu o arquivo
 	ifstream inputfile_animais;
-	inputfile_animais.open("data/animais.csv");
+	inputfile_animais.open("data/animais.csv");/**@brief abertura do arquivo */
 	
 	//ANIMAL
 	string classe, classificacao, sexo, nome_cientifico, dieta, nome_batismo;
 	int id, id_veterinario, id_tratador;
 	double tamanho;
 
-	//ANFIBIO
+	/**@brief Anfibio */
 	int total_mudas;
 
-	//AVE
+	/**@brief AVE */
 	double tamanho_bico_cm, envergadura_asas;
 
-	//MAMIFERO
+	/**@brief MAMIFERO */
 	string cor_pelo;
 
-	//REPTIL
+	/**@brief REPTIL */
 	bool venenoso;
 	string tipo_veneno, verificar_veneno;
 
-	//NATIVO
+	/**@brief NATIVO */
 	string uf_origem;
 
-	//EXOTICO
+	/**@brief EXOTICO*/
 	string pais_origem, cidade_origem;
 
-	//SILVESTRE
+	/**@brief SILVESTRE */
 	string autorizacao_ibama;
 
-	//LEITURA
+	/**@brief LEITURA */
 	vector<string> att;
 	string linha;
 	string ops;
 
-	//posiciona o ponteiro no final do arquivo
+	/**@brief posiciona o ponteiro no final do arquivo */
 	inputfile_animais.seekg(0,ios::end);
-	//recebe o tamanho do arquivo
+	/**@brief recebe o tamanho do arquivo*/
     int size = inputfile_animais.tellg();
-	//posiciona o ponteiro no inicio do arquivo
+	/**@brief posiciona o ponteiro no inicio do arquivo*/
 	inputfile_animais.seekg(0, ios::beg);
-    //se o arquivo está aberto direitinho e não está vazio, entra
+    /**@brief se o arquivo está aberto direitinho e não está vazio, entra*/
 	if(inputfile_animais.is_open() && size > 0){
-		//enquanto não chegar no fim do arquivo, vai:
+		/**@brief enquanto não chegar no fim do arquivo, vai:*/
 		while(!inputfile_animais.eof()){
-			//limpar o vetor(pra caso já exista algo nele)
+			/**@brief limpar o vetor(pra caso já exista algo nele)*/
 			att.clear();
 
-			//pegar linha do arquivo
+			/**@brief pegar linha do arquivo*/
 			getline(inputfile_animais, linha);
 
-			//jogar a linha pro stringstream pra poder dividir em palavras
+			/**@brief jogar a linha pro stringstream pra poder dividir em palavras*/
 			stringstream atributos_animal(linha);
 
-			//vai percorrer a linha inteira salvando os dados (que estão separados por ;)
-			//em um vetor de strings
+			/**@brief vai percorrer a linha inteira salvando os dados (que estão separados por ;) em um vetor de strings*/
 			while(getline(atributos_animal, ops, ';')){
 				att.push_back(ops);		
 			}
 
-			//vai distribuir os valores nas variaveis certas pra poder passar pro construtor
+			/**@brief vai distribuir os valores nas variaveis certas pra poder passar pro construtor*/
 			id = stoi(att[0]);
 			classe = att[1];
 			classificacao = att[2];
@@ -119,9 +118,9 @@ void Controlador::lerAnimais(){
 			id_tratador = stoi(att[8]);
 			nome_batismo = att[9];
 
-			//isso é pra converter string pra char
+			/**@brief Conversão de um string para char */
 			char sexo_aux = sexo[0];
-
+			/**@brief Condicional para saber que tipo de anfibio esta sendo selecionado */
 			if(classe == "Amphibia"){	
 				total_mudas = stoi(att[10]);
 
@@ -150,7 +149,7 @@ void Controlador::lerAnimais(){
 					lista_animais.insert({id, anfdom});
 				}	
 			}
-
+			/**@brief Condicional para saber que tipo de ave esta sendo selecionado */
 			if(classe == "Ave"){
 				tamanho_bico_cm = stod(att[10]);
 				envergadura_asas = stod(att[11]);
@@ -180,7 +179,7 @@ void Controlador::lerAnimais(){
 					lista_animais.insert({id, avedom});
 				}	
 			}
-
+			/**@brief Condicional para saber que tipo de mammalia esta sendo selecionado */
 			if(classe == "Mammalia"){
 				cor_pelo = att[10];
 
@@ -209,7 +208,7 @@ void Controlador::lerAnimais(){
 					lista_animais.insert({id, mamidom});
 				}	
 			}
-
+			/**@brief Condicional para saber que tipo de reptilia esta sendo selecionado */
 			if(classe == "Reptilia"){
 				verificar_veneno = att[10];
 				if(verificar_veneno == "true" || verificar_veneno == "s"){
@@ -252,30 +251,30 @@ void Controlador::lerAnimais(){
 	}else{
 		cout << "Arquivo de Animais está vazio ou é inexistente" << endl;
 	}
-
+	/**@brief fechamento do arquivo*/
 	inputfile_animais.close();
 }
-
+/**@brief função para ler a lista de funcionarios dentro do arquivo*/
 void Controlador::lerFuncionarios(){
-	//abriu o arquivo
+	/**@brief abrir o arquivo */
 	ifstream inputfile_funcionarios;
 	inputfile_funcionarios.open("data/funcionarios.csv");
 	
-	//FUNCIONARIO
+	/**@brief Funcionario*/
 	string funcao, nome, cpf,  tipoSanguineo, fatorRH, especialidade;
 	int id, idade;
 
-	//VETERINARIO
+	/**@brief Veterinario */
 	string cmrv;
 
-	//TRATADOR
+	/**@brief Tratador */
 	int nivelSeguranca;
 
-	//LEITURA
+	/**@brief Leitura*/
 	vector<string> att;
 	string linha;
 	string ops;
-
+	/**@details seekg ta posicionando do final do arquivo, tellg verifica o tamanho do arquivo se for igual a 0 o seekg(beg) posifiona de volta no inicio */
 	inputfile_funcionarios.seekg(0,ios::end);
     int size = inputfile_funcionarios.tellg();
 	inputfile_funcionarios.seekg(0, ios::beg);
@@ -300,10 +299,10 @@ void Controlador::lerFuncionarios(){
 			fatorRH = att[6];
 			especialidade = att[7];
 
-			//isso é pra converter string pra char
+			/**@brief converter string para char */
 			char tp_aux = tipoSanguineo[0];
 			char frh_aux = fatorRH[0];
-
+			/**@brief verificação de função do funcionario */
 			if(funcao == "Tratador"){	
 				nivelSeguranca = stoi(att[8]);
 
@@ -326,28 +325,28 @@ void Controlador::lerFuncionarios(){
 
 }
 
-
+ /**@brief função para abertura do petshop */
 void Controlador::abrirPetshop(){
 	lerAnimais();
 	lerFuncionarios();
 }
-	
+/**@brief Função para verificação do id dos funcionarios */
 bool Controlador::verificarIdFuncionario(int id){
 	map<int, Funcionario*>::iterator it;
-
+	/**@brief uso do iterador para achar e verificar se o id ja é existe */
   	it = lista_funcionarios.find(id);
 	if (it != lista_funcionarios.end()){
 		return false;
 	} 
 	return true;
 
-	//return it == lista_funcionarios.end();
 }
-
+/**@brief função para salvar os dados dos funcionarios no arquivo do petshop */
 void Controlador::salvarDadosFuncionarios(){
 	ofstream outfile; 
+	/**@brief abertura do arquivo da lista de funcionarios */
 	outfile.open("data/funcionarios.csv");
-
+	/**@brief salvar os funcionarios dentro do arquivo e fechamento do arquivo */
 	for(auto it = lista_funcionarios.begin(); it != lista_funcionarios.end(); it++){
         outfile << *it->second;
     }
@@ -355,7 +354,7 @@ void Controlador::salvarDadosFuncionarios(){
 	outfile.close();
 	cout << "Os dados dos funcionários foram salvos com sucesso!" << endl;
 }
-
+/**@brief funçaõ para adicionar um novo funcionario */
 void Controlador::addFuncionario(int opc){
 
 
@@ -368,8 +367,8 @@ void Controlador::addFuncionario(int opc){
 
 	cout << "ID: " << endl;
 	cin >> id;
-	
 	id_disponivel = verificarIdFuncionario(id);
+	/**@brief verificar se o id escolhido estar disponivel para uso*/
 	while(id_disponivel == false){
 		cout << "Já existe um funcionário com esse ID, escolha um outro." << endl;
 		cin >> id;
@@ -396,7 +395,7 @@ void Controlador::addFuncionario(int opc){
 	cout << "Especialidade: " << endl;
 	cin >> especialidade;
 
-
+	/**@brief verificador se o funcionario é tratador ou vetarinario e atribuir os atributos corretos ao funcionario */
 	if(opc == 1){
 		int nivelSeguranca;
 		string funcao = "Tratador";
@@ -427,12 +426,13 @@ void Controlador::addFuncionario(int opc){
 	//salvarDadosFuncionarios();
 }
 
-
+/**@brief função para a listagem do funcionarios existentes */
 void Controlador::listarFuncionarios(int opc){
 	map<int, Funcionario*>::iterator it;
-
+	/**@brief verificar a opção inserida pelo usuario para mostrar ao usuario a opção escolhida */
 	switch(opc){
 		case 1:{
+			/**@brief percorrendo o map para verificação dos funcionarios do tipo tratador */
 			for(it = lista_funcionarios.begin(); it != lista_funcionarios.end(); it++){
 				if(it->second->getFuncao() == "Tratador"){
 					cout << *it->second;
@@ -441,6 +441,7 @@ void Controlador::listarFuncionarios(int opc){
 			break;
 		}
 		case 2:{
+			/**@brief percorrendo o map para verificação dos funcionarios do tipo veterinario*/
 			for(it = lista_funcionarios.begin(); it != lista_funcionarios.end(); it++){
 				if(it->second->getFuncao() == "Veterinario"){
 					cout << *it->second;
@@ -450,6 +451,7 @@ void Controlador::listarFuncionarios(int opc){
 		}
 
 		case 3:{
+			/**@brief percorrendo o map para listagem de todos os funcionarios */
 			for(it = lista_funcionarios.begin(); it != lista_funcionarios.end(); it++){
 				cout << *it->second;
 			}
@@ -462,10 +464,10 @@ void Controlador::listarFuncionarios(int opc){
 	}	
 }
 
-
+/**@brief função para consulta de funcionario por id */
 bool Controlador::consultarFuncionario(int id){
 	map<int, Funcionario*>::iterator it_func;
-
+	/**@brief iterador para procurar pelo id inserido pelo usuario */
   	it_func = lista_funcionarios.find(id);
 	if (it_func != lista_funcionarios.end()){
 		cout << *it_func->second;
@@ -478,10 +480,7 @@ bool Controlador::consultarFuncionario(int id){
 	return false;
 }
 
-/*Não foi apagado funcionário diretamente do arquivo, aqui, porque todas as operações vao
-ser feitas no map. Ou seja, ao fim do programa (ou ao fim dessa função), o map vai ser
-percorrido de modo que seus dados sejam salvos no arquivo, sobrescrevendo os que ja existem
-e assim atualizando os dados que foram modificados.*/
+/**@brief Função para remoção do funcionario */
 void Controlador::removerFuncionario(){
 	map<int, Funcionario*>::iterator it_func;
 	int id;
@@ -489,7 +488,7 @@ void Controlador::removerFuncionario(){
 	cout << "Digite o ID do usuário que você deseja remover" << endl;
 	cin >> id;
 
-
+	/**@brief iterador para percorrer o map a procura do id inserido pelo usuario e erase para excluir o funcionario do map */
   	it_func = lista_funcionarios.find(id);
 	if (it_func != lista_funcionarios.end()){
 		lista_funcionarios.erase(id);
@@ -501,7 +500,7 @@ void Controlador::removerFuncionario(){
 }
 
 
-
+/**@brief Função para edição dos atributos de funcionario */
 void Controlador::editarFuncionario(){
 	map<int, Funcionario*>::iterator it;
 	
@@ -511,13 +510,13 @@ void Controlador::editarFuncionario(){
 	cout << "Indique o ID do Funcionário que você deseja alterar" << endl;
 	cin >> id;
 
-
+	/**@brief iterador para procurar o id do funcionario inserido pelo usuario */
 	it = lista_funcionarios.find(id);	
 	if(it == lista_funcionarios.end()){
 		cout << "Não foi encontrado nenhum Funcionário com esse ID" << endl;
 	} else {
 		cout << "Se quiser manter o valor já salvo, insira -" << endl;
-
+		/**@brief opção para o usuario editar os atributos do funcionario */
 		cout << "Nome: [" << it->second->getNome() << "]: ";
 		cin >> novo_valor;
 		if(novo_valor != "-"){
@@ -580,30 +579,30 @@ void Controlador::editarFuncionario(){
 
 //***************************** ANIMAL *****************************
 
-
+/**@brief Função para verificar id do animal */
 bool Controlador::verificarIdAnimal(int id){
 	map<int, Animal*>::iterator it;
-
+	/**@brief um iterador percorrer o map de animal e verifica se o id ja esta em uso e retorna ao usuario true ou false */
   	it = lista_animais.find(id);
 	if (it != lista_animais.end()){
 		return false;
 	} 
 	return true;
 }
-
+/**@brief Função para salvar os animais no arquivo */
 void Controlador::salvarDadosAnimais(){
-	//preenchendo arquivo de animais
+	/**@brief abertura do arquivo para salvar a lista de animais */
 	ofstream outfile_; 
 	outfile_.open("data/animais.csv");
-
+	/**@brief enquanto o map não chegar ao fim ele vai salvar os animais no arquivo*/
     for(auto it = lista_animais.begin(); it != lista_animais.end(); it++){
         outfile_ << *it->second;
     }
-
+	/**@brief fechamento do arquivo */
 	outfile_.close();
 	cout << "Os dados dos animais foram salvos com sucesso!" << endl;
 }
-
+/**@brief função para adicionar um novo animal*/
 void Controlador::addAnimal(){
 	int id;
 	string classe;
@@ -615,10 +614,10 @@ void Controlador::addAnimal(){
 	int tem_tratador;
 	string nome_batismo;
 	
-	//Nativo
+	/**@brief Nativo */
 	string uf_origem;
 
-	//Exotico 
+	/**@brief Exotico */
 	string pais_origem;
 	string cidade_origem;
 
@@ -626,14 +625,14 @@ void Controlador::addAnimal(){
 	bool id_disponivel = true;
 	int opc;
 
-	//Silvestre:
+	/**@brief Silvestre */
 	string autorizacao_ibama;
 
 
 
 	cout << "ID: " << endl;
 	cin >> id;
-	
+	/**@brief verificar se o id inserido pelo funcionario ja estar em uso */
 	id_disponivel = verificarIdAnimal(id);
 	while(id_disponivel == false){
 		cout << "Já existe um animal com esse ID, escolha um outro." << endl;
@@ -709,7 +708,7 @@ void Controlador::addAnimal(){
 	       	string cor_pelo;
 			cout << "Cor do Pelo:" << endl;
 			cin >> cor_pelo;
-
+			/**@brief verifica o tipo de animal escolhido para inserir e instancia usando o construtor da classe Mamifero*/
 			if(classificacao == "Nativo"){
 				Animal* animal = new MamiferoNativo(id, classe, classificacao, nome_cientifico, sexo, tamanho, 
 													dieta, tem_veterinario, tem_tratador, nome_batismo,
@@ -732,7 +731,7 @@ void Controlador::addAnimal(){
 	
 	    	break;
 	    }
-
+	/**@brief verifica o tipo de animal escolhido para inserir e instancia usando o construtor da classe Anfibio*/
 	    case Anfibio: {
 	        int total_de_mudas;
 			cout << "Total de Mudas:" << endl;
@@ -762,7 +761,7 @@ void Controlador::addAnimal(){
 
 	    	break;
 	    }
-
+		/**@brief verifica o tipo de animal escolhido para inserir e instancia usando o construtor da classe Reptil*/
         case Reptil: {
     		char venenoso;
 			string tipo_veneno;
@@ -798,7 +797,7 @@ void Controlador::addAnimal(){
 			}
         	break;
    		}
-
+		/**@brief verifica o tipo de animal escolhido para inserir e instancia usando o construtor da classe Ave*/
         case Ave: {
         	double tamanho_bico_cm;
 			double envergadura_asas;
@@ -844,13 +843,13 @@ void Controlador::addAnimal(){
 
 	//salvarDadosAnimais();
 } 
-
+/**@brief Função para listagem dos animais existentes no petshop */
 void Controlador::listarAnimais(int opc){
 	map<int, Animal*>::iterator it;
 	string opc_classe, opc_classificacao;
 	char opc_sexo;
-	//fazer um tolower aqui
 
+	/**@brief switch para verificar de que formar o usuario quer que lister os animais, procurando dentro do map pelas opção escolhida pelo usuario */
 	switch(opc){
 		case 1:
 			cout << "--------- Listagem por classe ----------\n " <<
@@ -902,19 +901,19 @@ void Controlador::listarAnimais(int opc){
 		break;
 	}
 }
-
+/**@brief função para remoção do animal do map */
 void Controlador::removerAnimal(){
 	map<int, Animal*>::iterator it_animal;
 	int id;
 	
 	cout << "Digite o ID do animal que você deseja remover" << endl;
 	cin >> id;
-
+	/**@brief um iterador vai procurar dentro do map pelo id inserido pelo usuario se o id for encontrado o map ira da erase no mesmo */
   	it_animal = lista_animais.find(id);
 	if (it_animal != lista_animais.end()){
 
 		//delete  it_animal->second;
-		lista_funcionarios.erase(id);
+		lista_animais.erase(id);
 		cout << "Animal Removido" << endl; 
 
 
@@ -922,19 +921,19 @@ void Controlador::removerAnimal(){
 		cout << "Não foi encontrado Animal com esse id" << endl;
 	}
 }
-
+/**@brief função para consultar animal*/
 void Controlador::consultarAnimal(int id){
 	map<int, Animal*>::iterator it_animal;
 
   	it_animal = lista_animais.find(id);
-
+	/**@brief iterador ira percorrer o map a procura do animal com id inserido pelo usuario*/
 	if (it_animal != lista_animais.end()){
 		cout << *it_animal->second;
 	} else {
 		cout << "Não foi encontrado Animal com esse id" << endl;
 	}
 }
-
+	/**@brief Função para editar os atributos de um animal existente */
 void Controlador::editarAnimal(){
 	map<int, Animal*>::iterator it;
 
@@ -943,7 +942,7 @@ void Controlador::editarAnimal(){
 
 	cout << "Indique o ID do Animal que você deseja alterar" << endl;
 	cin >> id;
-
+	/**@brief um iterador ira procurar pelo id inserido pelo usuario se o animal for encontrado o usuario podera alterar qualquer atribudo se o valor inserido pelo usuario for igual a "-" o valor atual permanecerar*/
 	it = lista_animais.find(id);	
 	if(it == lista_animais.end()){
 		cout << "Não foi encontrado nenhum Animal com esse ID" << endl;
@@ -994,7 +993,7 @@ void Controlador::editarAnimal(){
 		}
 
 		string classe = it->second->getClasse();
-
+		/**@brief verificação se a classe foi alterada se foi alterada o usuario deve entrar com os atributos especificos de determinada classe*/
 		if(classe == "Amphibia"){
 			cout << "Total de Mudas: [" << reinterpret_cast<AnfibioDomestico*>(it->second)->getTotalMudas() << "]: ";
 			cin >> novo_valor;
@@ -1063,7 +1062,6 @@ void Controlador::editarAnimal(){
 					ave_nat->setAutorizacaoIbama(novo_valor);
 				}
 
-				cout << "DESGRAAAAAAAAAAAAÇA";
 				cout << "UF de Origem: [" << ave_nat->getUfOrigem() << "]: ";
 				cin >> novo_valor;
 				if(novo_valor != "-"){
@@ -1198,6 +1196,6 @@ void Controlador::editarAnimal(){
 }
 	
 
-//Construtor e Destrutor do controlador.
+/**@brief  Construtor e Destrutor do controlador.*/
 Controlador::Controlador(){}
 Controlador::~Controlador(){}

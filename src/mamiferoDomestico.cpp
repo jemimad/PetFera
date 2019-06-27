@@ -1,13 +1,13 @@
 #include "mamiferoDomestico.h"
-
+/**@brief implementação do construtor de mamiferoDomestico */
 MamiferoDomestico::MamiferoDomestico(int id, string classe, string classificacao, string nome_cientifico,char sexo, 
 			double tamanho, string dieta, int tem_veterinario, int tem_tratador,
 			string nome_batismo, string cor_pelo):
 			Mamifero(id, classe, classificacao, nome_cientifico, sexo, tamanho, dieta, tem_veterinario, tem_tratador, nome_batismo, cor_pelo){
 }
-
+/**@brief implementação do destrutor de mamifero Domestico */
 MamiferoDomestico::~MamiferoDomestico(){}
-
+/**@brief sobrecarga de operador de inserção para listagem e para salvar no arquivo*/
 ostream& MamiferoDomestico::listar_animais(ostream& os) const{
 	os << "| ID: " << m_id << 
     " | Classe: " << m_classe << 

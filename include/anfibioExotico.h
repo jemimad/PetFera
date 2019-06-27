@@ -4,8 +4,10 @@
 #include <iostream>
 #include "anfibio.h"
 #include "animalExotico.h"
-
-
+/**@file anfibioExotico.cpp */
+/**@author Carmem Stanie, Italo Luiz e Jemima Dias */
+/**@data 27/06/2019 */
+/**@brief declação da classe anfibioExotico com herança da classe anfibio e Animal Exotico */
 class AnfibioExotico : public Anfibio, public AnimalExotico{
 	protected: 
 		ostream& listar_animais(ostream& os) const;

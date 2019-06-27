@@ -1,15 +1,15 @@
 #include "anfibioExotico.h"
 
-
+/**@brief Implementação do construtor de anfibioExotico*/
 AnfibioExotico::AnfibioExotico(int id, string classe, string classificacao, string nome_cientifico,char sexo, 
 			double tamanho, string dieta, int tem_veterinario, int tem_tratador,
 			string nome_batismo, int total_mudas, string autorizacao_ibama, string pais_origem, string cidade_origem): 
 			Anfibio(id, classe, classificacao, nome_cientifico, sexo, tamanho, dieta, tem_veterinario, tem_tratador, nome_batismo, total_mudas),
 			AnimalExotico(autorizacao_ibama, pais_origem, cidade_origem){
 }
-
+/**@brief Destrutor da classe AnfibioExotico */
 AnfibioExotico::~AnfibioExotico(){}
-
+/**@brief sobrecarga de operador de inserção para listagem e para salvar no arquivo*/
 ostream& AnfibioExotico::listar_animais(ostream& os) const{
 	os << "| ID: " << m_id << 
     " | Classe: " << m_classe << 

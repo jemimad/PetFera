@@ -1,5 +1,5 @@
 #include "reptilNativo.h"
-
+/**@brief implementação do construtor e destrutor da classe reptilNativo */
 ReptilNativo::ReptilNativo(int id, string classe, string classificacao, string nome_cientifico,char sexo, 
 			double tamanho, string dieta, int tem_veterinario, int tem_tratador,
 			string nome_batismo, bool venenoso, string tipo_veneno, string autorizacao_ibama, string uf_origem): 
@@ -9,7 +9,7 @@ ReptilNativo::ReptilNativo(int id, string classe, string classificacao, string n
 }
 
 ReptilNativo::~ReptilNativo(){}
-
+/**@brief sobrecarga de operador de inserção para listagem e para salvar no arquivo*/
 ostream& ReptilNativo::listar_animais(ostream& os) const{
 	os << "| ID: " << m_id << 
     " | Classe: " << m_classe << 
@@ -37,7 +37,7 @@ ofstream& ReptilNativo::salvar_animais(ofstream& out) const{
 
 	return out;
 }
-
+/**@brief implementação do get da classe reptil Nativo  */
 string ReptilNativo::getAutorizacaoIbama(){
 	return m_autorizacao_ibama;
 }

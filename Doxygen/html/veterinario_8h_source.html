@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.15"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>PetFera: Código-Fonte de C:/Users/italo/Documents/PetFera/include/veterinario.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="3a1a9ce28c2d4414d988ccd36daa2011.jpg"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">PetFera
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+   <div id="projectbrief">Final</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.15 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Busca');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Busca');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_f396504afdc959660871b003fa10164d.html">Documents</a></li><li class="navelem"><a class="el" href="dir_e1abb3e446d4a34f9e19dd09b205d23b.html">PetFera</a></li><li class="navelem"><a class="el" href="dir_a7e4a23b4a11e39eb2de20499e0888f0.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">veterinario.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="veterinario_8h.html">Vá para a documentação desse arquivo.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef _VETERINARIO_</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define _VETERINARIO_</span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">using</span> std::string;</div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="funcionario_8h.html">funcionario.h</a>&quot;</span></div><div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="class_veterinario.html">   12</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_veterinario.html">Veterinario</a> : <span class="keyword">public</span> <a class="code" href="class_funcionario.html">Funcionario</a>{</div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keyword">protected</span>:</div><div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="class_veterinario.html#ac4e55278d702ffa2adb76e894ba49522">   14</a></span>&#160;        <span class="keywordtype">string</span> <a class="code" href="class_veterinario.html#ac4e55278d702ffa2adb76e894ba49522">m_cmrv</a>;</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        ostream&amp; <a class="code" href="class_veterinario.html#a2299651d151a812b23e876d3fcb24537">listar</a>(ostream&amp; os) <span class="keyword">const</span>;</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        ofstream&amp; <a class="code" href="class_veterinario.html#af1a4652d14b29b1a83a678a91bfd5146">salvar</a>(ofstream&amp; out) <span class="keyword">const</span>;</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keyword">public</span>:</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <a class="code" href="class_veterinario.html#af8dc5f6f77bf8c70dd94d54766764134">Veterinario</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>, <span class="keywordtype">string</span> funcao, <span class="keywordtype">string</span> nome, <span class="keywordtype">string</span> cpf, <span class="keywordtype">short</span> idade, <span class="keywordtype">char</span> tipoSanguineo,</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;                    <span class="keywordtype">char</span> fatorRH, <span class="keywordtype">string</span> especialidade, <span class="keywordtype">string</span> cmrv);       </div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <a class="code" href="class_veterinario.html#af8dc5f6f77bf8c70dd94d54766764134">Veterinario</a>();</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <a class="code" href="class_veterinario.html#a0de805e30bc7006d2035458f80c18671">~Veterinario</a>();</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keywordtype">string</span> <a class="code" href="class_veterinario.html#a57a1825c5d6d50dea61db1ca1bba7ff2">getFuncao</a>();</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keywordtype">string</span> <a class="code" href="class_veterinario.html#a44df25a0df4cd4ff734c6458974304c9">getCMRV</a>();</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_veterinario.html#a6303a932b0ab68f072b8575c3ba61159">setCMRV</a>(<span class="keywordtype">string</span> cmrv_);</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;};</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#endif</span></div><div class="ttc" id="class_veterinario_html_a6303a932b0ab68f072b8575c3ba61159"><div class="ttname"><a href="class_veterinario.html#a6303a932b0ab68f072b8575c3ba61159">Veterinario::setCMRV</a></div><div class="ttdeci">void setCMRV(string cmrv_)</div><div class="ttdef"><b>Definition:</b> veterinario.cpp:40</div></div>
+<div class="ttc" id="class_veterinario_html_af1a4652d14b29b1a83a678a91bfd5146"><div class="ttname"><a href="class_veterinario.html#af1a4652d14b29b1a83a678a91bfd5146">Veterinario::salvar</a></div><div class="ttdeci">ofstream &amp; salvar(ofstream &amp;out) const</div><div class="ttdef"><b>Definition:</b> veterinario.cpp:26</div></div>
+<div class="ttc" id="class_veterinario_html_af8dc5f6f77bf8c70dd94d54766764134"><div class="ttname"><a href="class_veterinario.html#af8dc5f6f77bf8c70dd94d54766764134">Veterinario::Veterinario</a></div><div class="ttdeci">Veterinario()</div></div>
+<div class="ttc" id="class_veterinario_html_a44df25a0df4cd4ff734c6458974304c9"><div class="ttname"><a href="class_veterinario.html#a44df25a0df4cd4ff734c6458974304c9">Veterinario::getCMRV</a></div><div class="ttdeci">string getCMRV()</div><div class="ttdef"><b>Definition:</b> veterinario.cpp:44</div></div>
+<div class="ttc" id="class_veterinario_html"><div class="ttname"><a href="class_veterinario.html">Veterinario</a></div><div class="ttdoc">declação da classe Veterinario com herança da classe Funcionario</div><div class="ttdef"><b>Definition:</b> veterinario.h:12</div></div>
+<div class="ttc" id="class_funcionario_html"><div class="ttname"><a href="class_funcionario.html">Funcionario</a></div><div class="ttdoc">declação da classe Funcionario e implementação de seus metodos</div><div class="ttdef"><b>Definition:</b> funcionario.h:13</div></div>
+<div class="ttc" id="class_veterinario_html_ac4e55278d702ffa2adb76e894ba49522"><div class="ttname"><a href="class_veterinario.html#ac4e55278d702ffa2adb76e894ba49522">Veterinario::m_cmrv</a></div><div class="ttdeci">string m_cmrv</div><div class="ttdef"><b>Definition:</b> veterinario.h:14</div></div>
+<div class="ttc" id="class_veterinario_html_a57a1825c5d6d50dea61db1ca1bba7ff2"><div class="ttname"><a href="class_veterinario.html#a57a1825c5d6d50dea61db1ca1bba7ff2">Veterinario::getFuncao</a></div><div class="ttdeci">string getFuncao()</div><div class="ttdoc">implementação dos metodos get's e set's de veterianario</div><div class="ttdef"><b>Definition:</b> veterinario.cpp:36</div></div>
+<div class="ttc" id="funcionario_8h_html"><div class="ttname"><a href="funcionario_8h.html">funcionario.h</a></div></div>
+<div class="ttc" id="class_veterinario_html_a0de805e30bc7006d2035458f80c18671"><div class="ttname"><a href="class_veterinario.html#a0de805e30bc7006d2035458f80c18671">Veterinario::~Veterinario</a></div><div class="ttdeci">~Veterinario()</div><div class="ttdef"><b>Definition:</b> veterinario.cpp:10</div></div>
+<div class="ttc" id="class_veterinario_html_a2299651d151a812b23e876d3fcb24537"><div class="ttname"><a href="class_veterinario.html#a2299651d151a812b23e876d3fcb24537">Veterinario::listar</a></div><div class="ttdeci">ostream &amp; listar(ostream &amp;os) const</div><div class="ttdoc">sobrecarga de operador de inserção para listagem e para salvar no arquivo</div><div class="ttdef"><b>Definition:</b> veterinario.cpp:12</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.15
+</small></address>
+</body>
+</html>

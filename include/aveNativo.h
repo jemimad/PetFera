@@ -4,7 +4,10 @@
 #include <iostream>
 #include "ave.h"
 #include "animalNativo.h"
-
+/**@file aveNativo.cpp */
+/**@author Carmem Stanie, Italo Luiz e Jemima Dias */
+/**@data 27/06/2019 */
+/**@brief declação da classe aveNativo com herança da classe Ave e AveNativo*/
 class AveNativo : public Ave, public AnimalNativo{
 	protected:
 		ostream& listar_animais(ostream& os) const;

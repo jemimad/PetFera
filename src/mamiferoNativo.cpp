@@ -1,5 +1,5 @@
 #include "mamiferoNativo.h"
-
+/**@brief implementação do construtor e destrutor de mamiferonativo */
 MamiferoNativo::MamiferoNativo(int id, string classe, string classificacao, string nome_cientifico,char sexo, 
 			double tamanho, string dieta, int tem_veterinario, int tem_tratador,
 			string nome_batismo, string cor_pelo, string autorizacao_ibama, string uf_origem):
@@ -8,7 +8,7 @@ MamiferoNativo::MamiferoNativo(int id, string classe, string classificacao, stri
 }
 
 MamiferoNativo::~MamiferoNativo(){}
-
+/**@brief sobrecarga de operador de inserção para listagem e para salvar no arquivo*/
 ostream& MamiferoNativo::listar_animais(ostream& os) const{
 	os << "| ID: " << m_id << 
     " | Classe: " << m_classe << 
@@ -35,7 +35,7 @@ ofstream& MamiferoNativo::salvar_animais(ofstream& out) const{
 
 	return out;
 }
-
+/**@brief metodo get da classe mamiferonativo */
 string MamiferoNativo::getAutorizacaoIbama(){
 	return m_autorizacao_ibama;
 }

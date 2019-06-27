@@ -4,7 +4,10 @@
 #include <iostream>
 #include "mamifero.h"
 #include "animalNativo.h"
-
+/**@file mamiferoNativo.cpp */
+/**@author Carmem Stanie, Italo Luiz e Jemima Dias */
+/**@data 27/06/2019 */
+/**@brief declação da classe mamiferoNativo com herança da classe Mamifero e animal Nativo*/
 class MamiferoNativo : public Mamifero, public AnimalNativo{
 	protected: 
 		ostream& listar_animais(ostream& os) const;

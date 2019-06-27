@@ -3,8 +3,10 @@
 
 #include <iostream>
 #include "ave.h"
-
-
+/**@file aveDomestico.cpp */
+/**@author Carmem Stanie, Italo Luiz e Jemima Dias */
+/**@data 27/06/2019 */
+/**@brief declação da classe aveDomestica com herança da classe ave*/
 class AveDomestico : public Ave{
 	protected:
 		ostream& listar_animais(ostream& os) const;

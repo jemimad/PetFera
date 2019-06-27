@@ -1,13 +1,13 @@
 #include "funcionario.h"
-
+/**@brief Implementação do construtor de funcionario */
 Funcionario::Funcionario(int id, string funcao, string nome, string cpf, short idade, short tipoSanguineo,
 					char fatorRH, string especialidade):m_id(id), m_funcao(funcao), m_nome(nome), m_cpf(cpf),
 					m_idade(idade), m_tipoSanguineo(tipoSanguineo), m_fatorRH(fatorRH),
 					m_especialidade(especialidade){
 }
-
+/**@brief implementação do destrutor de funcionario */
 Funcionario::~Funcionario(){}
-
+/**@brief sobrecarga de operador de inserção para listagem e para salvar no arquivo*/
 ostream& operator<<(ostream& os, const Funcionario& f){
 	return f.listar(os);
 }
@@ -15,7 +15,7 @@ ostream& operator<<(ostream& os, const Funcionario& f){
 ofstream& operator<<(ofstream& out, const Funcionario& f){
 	return f.salvar(out);
 }
-
+/**@brief get's e set's de funcionario */
 void Funcionario::setNome(string nome_){
 	m_nome = nome_;
 }

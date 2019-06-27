@@ -2,7 +2,10 @@
 #define _ANFIBIO_DOMESTICO_
 
 #include "anfibio.h"
-
+/**@file anfibioDomestico.cpp */
+/**@author Carmem Stanie, Italo Luiz e Jemima Dias */
+/**@data 27/06/2019 */
+/**@brief declação da classe anfibioDomestico com herança da classe anfibio */
 class AnfibioDomestico : public Anfibio{
 	protected: 
 		ostream& listar_animais(ostream& os) const;

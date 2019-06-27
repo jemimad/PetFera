@@ -6,7 +6,9 @@
 #include "controlador.h"
 
 using namespace std;
-
+/**@author Carmem Stanie, Italo Luiz e Jemima Dias */
+/**@data 27/06/2019 */
+/**@brief menu de seleção do usuario*/
 void Controlador::exibirMenu(){
 	int opc_Menu_Principal;
 

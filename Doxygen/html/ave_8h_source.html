@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.15"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>PetFera: Código-Fonte de C:/Users/italo/Documents/PetFera/include/ave.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="3a1a9ce28c2d4414d988ccd36daa2011.jpg"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">PetFera
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+   <div id="projectbrief">Final</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.15 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Busca');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Busca');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_f396504afdc959660871b003fa10164d.html">Documents</a></li><li class="navelem"><a class="el" href="dir_e1abb3e446d4a34f9e19dd09b205d23b.html">PetFera</a></li><li class="navelem"><a class="el" href="dir_a7e4a23b4a11e39eb2de20499e0888f0.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">ave.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="ave_8h.html">Vá para a documentação desse arquivo.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef _AVE_</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define _AVE_</span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="animal_8h.html">animal.h</a>&quot;</span></div><div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="class_ave.html">   10</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_ave.html">Ave</a> : <span class="keyword">public</span> <a class="code" href="class_animal.html">Animal</a>{</div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keyword">protected</span>:</div><div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="class_ave.html#af50161e6cef62d136e80b7b1a02b8a4f">   12</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="class_ave.html#af50161e6cef62d136e80b7b1a02b8a4f">m_tamanho_bico_cm</a>;</div><div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="class_ave.html#a60f37ded4c9e9003a744ef0c0708da45">   13</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="class_ave.html#a60f37ded4c9e9003a744ef0c0708da45">m_envergadura_asas</a>;</div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        ostream&amp; <a class="code" href="class_ave.html#ab292e8d87ab6bc04e62a8d07e1bd2d91">listar_animais</a>(ostream&amp; os) <span class="keyword">const</span> = 0;</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        ofstream&amp; <a class="code" href="class_ave.html#af51f0a953157807dfcd61fe8cac81ad6">salvar_animais</a>(ofstream&amp; out) <span class="keyword">const</span> = 0;</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">public</span>:</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <a class="code" href="class_ave.html#a31bc97c3258df566381300c8b9abc73a">Ave</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>, <span class="keywordtype">string</span> classe, <span class="keywordtype">string</span> classificacao, <span class="keywordtype">string</span> nome_cientifico,<span class="keywordtype">char</span> sexo, </div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            <span class="keywordtype">double</span> tamanho, <span class="keywordtype">string</span> dieta, <span class="keywordtype">int</span> tem_veterinario, <span class="keywordtype">int</span> tem_tratador,</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            <span class="keywordtype">string</span> nome_batismo, <span class="keywordtype">double</span> tamanho_bico_cm, <span class="keywordtype">double</span> envergadura_asas);</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <a class="code" href="class_ave.html#a31bc97c3258df566381300c8b9abc73a">Ave</a>();</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <a class="code" href="class_ave.html#ad290be8d6fb95f1cfd24b5f55def7741">~Ave</a>();</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_ave.html#abfba110bfcc64d65e435a177cfdf1edd">setTamanhoBico</a>(<span class="keywordtype">double</span> tamanho_bico_cm_);</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_ave.html#a1592320ee510ecdaf3c37ac260c2aeae">setEnvergaduraAsas</a>(<span class="keywordtype">double</span> envergadura_asas_);</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keywordtype">double</span> <a class="code" href="class_ave.html#a2ff747110c5118515b842351e708a0d0">getTamanhoBico</a>();</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keywordtype">double</span> <a class="code" href="class_ave.html#a2c4997b9909169eea956b4e879578412">getEnvergaduraAsas</a>();</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;};</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#endif</span></div><div class="ttc" id="class_ave_html_abfba110bfcc64d65e435a177cfdf1edd"><div class="ttname"><a href="class_ave.html#abfba110bfcc64d65e435a177cfdf1edd">Ave::setTamanhoBico</a></div><div class="ttdeci">void setTamanhoBico(double tamanho_bico_cm_)</div><div class="ttdoc">Implementação metodos set's e get's de ave.</div><div class="ttdef"><b>Definition:</b> ave.cpp:13</div></div>
+<div class="ttc" id="animal_8h_html"><div class="ttname"><a href="animal_8h.html">animal.h</a></div></div>
+<div class="ttc" id="class_ave_html_ab292e8d87ab6bc04e62a8d07e1bd2d91"><div class="ttname"><a href="class_ave.html#ab292e8d87ab6bc04e62a8d07e1bd2d91">Ave::listar_animais</a></div><div class="ttdeci">ostream &amp; listar_animais(ostream &amp;os) const =0</div></div>
+<div class="ttc" id="class_animal_html"><div class="ttname"><a href="class_animal.html">Animal</a></div><div class="ttdoc">declação da classe animal e de seus metodos</div><div class="ttdef"><b>Definition:</b> animal.h:13</div></div>
+<div class="ttc" id="class_ave_html_af51f0a953157807dfcd61fe8cac81ad6"><div class="ttname"><a href="class_ave.html#af51f0a953157807dfcd61fe8cac81ad6">Ave::salvar_animais</a></div><div class="ttdeci">ofstream &amp; salvar_animais(ofstream &amp;out) const =0</div></div>
+<div class="ttc" id="class_ave_html_a2ff747110c5118515b842351e708a0d0"><div class="ttname"><a href="class_ave.html#a2ff747110c5118515b842351e708a0d0">Ave::getTamanhoBico</a></div><div class="ttdeci">double getTamanhoBico()</div><div class="ttdef"><b>Definition:</b> ave.cpp:21</div></div>
+<div class="ttc" id="class_ave_html_a60f37ded4c9e9003a744ef0c0708da45"><div class="ttname"><a href="class_ave.html#a60f37ded4c9e9003a744ef0c0708da45">Ave::m_envergadura_asas</a></div><div class="ttdeci">double m_envergadura_asas</div><div class="ttdef"><b>Definition:</b> ave.h:13</div></div>
+<div class="ttc" id="class_ave_html_a31bc97c3258df566381300c8b9abc73a"><div class="ttname"><a href="class_ave.html#a31bc97c3258df566381300c8b9abc73a">Ave::Ave</a></div><div class="ttdeci">Ave()</div></div>
+<div class="ttc" id="class_ave_html_a1592320ee510ecdaf3c37ac260c2aeae"><div class="ttname"><a href="class_ave.html#a1592320ee510ecdaf3c37ac260c2aeae">Ave::setEnvergaduraAsas</a></div><div class="ttdeci">void setEnvergaduraAsas(double envergadura_asas_)</div><div class="ttdef"><b>Definition:</b> ave.cpp:17</div></div>
+<div class="ttc" id="class_ave_html_ad290be8d6fb95f1cfd24b5f55def7741"><div class="ttname"><a href="class_ave.html#ad290be8d6fb95f1cfd24b5f55def7741">Ave::~Ave</a></div><div class="ttdeci">~Ave()</div><div class="ttdoc">Implemnetação do destrutor de ave.</div><div class="ttdef"><b>Definition:</b> ave.cpp:11</div></div>
+<div class="ttc" id="class_ave_html_a2c4997b9909169eea956b4e879578412"><div class="ttname"><a href="class_ave.html#a2c4997b9909169eea956b4e879578412">Ave::getEnvergaduraAsas</a></div><div class="ttdeci">double getEnvergaduraAsas()</div><div class="ttdef"><b>Definition:</b> ave.cpp:25</div></div>
+<div class="ttc" id="class_ave_html_af50161e6cef62d136e80b7b1a02b8a4f"><div class="ttname"><a href="class_ave.html#af50161e6cef62d136e80b7b1a02b8a4f">Ave::m_tamanho_bico_cm</a></div><div class="ttdeci">double m_tamanho_bico_cm</div><div class="ttdef"><b>Definition:</b> ave.h:12</div></div>
+<div class="ttc" id="class_ave_html"><div class="ttname"><a href="class_ave.html">Ave</a></div><div class="ttdoc">declação da classe ave com herança da classe Animal</div><div class="ttdef"><b>Definition:</b> ave.h:10</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.15
+</small></address>
+</body>
+</html>

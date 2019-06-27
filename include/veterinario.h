@@ -5,7 +5,10 @@
 using std::string;
 
 #include "funcionario.h"
-
+/**@file veterinario.cpp */
+/**@author Carmem Stanie, Italo Luiz e Jemima Dias */
+/**@data 27/06/2019 */
+/**@brief declação da classe Veterinario com herança da classe Funcionario*/
 class Veterinario : public Funcionario{
 	protected:
 		string m_cmrv;

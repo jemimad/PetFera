@@ -1,5 +1,5 @@
 #include "veterinario.h"
-
+/**@brief implementação do construtor e destrutor da classe veterianario */
 Veterinario::Veterinario(int id, string funcao, string nome, string cpf, short idade, char tipoSanguineo,
 					char fatorRH, string especialidade, string cmrv):
 					Funcionario(id, funcao, nome, cpf, idade, 
@@ -8,7 +8,7 @@ Veterinario::Veterinario(int id, string funcao, string nome, string cpf, short i
 }
 
 Veterinario::~Veterinario(){}
-
+/**@brief sobrecarga de operador de inserção para listagem e para salvar no arquivo*/
 ostream& Veterinario::listar(ostream& os) const{
 	os << "| ID: " << m_id << 
     " | Função: " << m_funcao << 
@@ -32,7 +32,7 @@ ofstream& Veterinario::salvar(ofstream& out) const{
 
 	return out;
 }
-
+/**@brief implementação dos metodos get's e set's de veterianario */
 string Veterinario::getFuncao(){
 	return "Veterinario";
 }

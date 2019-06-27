@@ -5,8 +5,10 @@
 #include <string>
 
 #include "reptil.h"
-
-
+/**@file reptilDomestico.cpp */
+/**@author Carmem Stanie, Italo Luiz e Jemima Dias */
+/**@data 27/06/2019 */
+/**@brief declação da classe ReptilDomestico com herança da classe Reptil*/
 class ReptilDomestico : public Reptil{
 	protected:
 		ostream& listar_animais(ostream& os) const;

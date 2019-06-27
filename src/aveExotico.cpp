@@ -1,14 +1,14 @@
 #include "aveExotico.h"
-
+/**@brief Implementação do construtor de ave Exotico */
 AveExotico::AveExotico(int id, string classe, string classificacao, string nome_cientifico,char sexo, 
 			double tamanho, string dieta, int tem_veterinario, int tem_tratador,
 			string nome_batismo, double tamanho_bico_cm, double envergadura_asas, string autorizacao_ibama, string pais_origem, string cidade_origem): 
 			Ave(id, classe, classificacao, nome_cientifico, sexo, tamanho, dieta, tem_veterinario, tem_tratador, nome_batismo, tamanho_bico_cm, envergadura_asas),
 			AnimalExotico(autorizacao_ibama, pais_origem, cidade_origem){
 }
-
+/**@brief implementação do destrutor de ave Exotico */
 AveExotico::~AveExotico(){}
-
+/**@brief sobrecarga de operador de inserção para listagem e para salvar no arquivo*/
 ostream& AveExotico::listar_animais(ostream& os) const{
 	os << "| ID: " << m_id << 
     " | Classe: " << m_classe << 

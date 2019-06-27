@@ -6,7 +6,10 @@
 #include <fstream>
 
 using namespace std;
-
+/**@file animal.cpp */
+/**@author Carmem Stanie, Italo Luiz e Jemima Dias */
+/**@data 27/06/2019 */
+/**@brief declação da classe animal e de seus metodos*/
 class Animal{
 	protected:
 		int m_id;

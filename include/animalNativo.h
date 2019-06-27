@@ -5,7 +5,10 @@
 #include "animalSilvestre.h"
 
 using namespace std;
-
+/**@file animalNativo.cpp */
+/**@author Carmem Stanie, Italo Luiz e Jemima Dias */
+/**@data 27/06/2019 */
+/**@brief declação da classe animalNativo com herança da classe AnimalSilvestre */
 class AnimalNativo : public AnimalSilvestre{
 	protected:
 		string m_uf_origem;

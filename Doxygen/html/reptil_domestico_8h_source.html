@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.15"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>PetFera: Código-Fonte de C:/Users/italo/Documents/PetFera/include/reptilDomestico.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="3a1a9ce28c2d4414d988ccd36daa2011.jpg"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">PetFera
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+   <div id="projectbrief">Final</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.15 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Busca');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Busca');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_f396504afdc959660871b003fa10164d.html">Documents</a></li><li class="navelem"><a class="el" href="dir_e1abb3e446d4a34f9e19dd09b205d23b.html">PetFera</a></li><li class="navelem"><a class="el" href="dir_a7e4a23b4a11e39eb2de20499e0888f0.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">reptilDomestico.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="reptil_domestico_8h.html">Vá para a documentação desse arquivo.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef _REPTIL_DOMESTICO_</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define _REPTIL_DOMESTICO_</span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="reptil_8h.html">reptil.h</a>&quot;</span></div><div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="class_reptil_domestico.html">   12</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_reptil_domestico.html">ReptilDomestico</a> : <span class="keyword">public</span> <a class="code" href="class_reptil.html">Reptil</a>{</div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keyword">protected</span>:</div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        ostream&amp; <a class="code" href="class_reptil_domestico.html#aa1b796ba5e2c5fc3068dea852c9f8bf4">listar_animais</a>(ostream&amp; os) <span class="keyword">const</span>;</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        ofstream&amp; <a class="code" href="class_reptil_domestico.html#a0537f52056671a17c6dd6a2c7b670fae">salvar_animais</a>(ofstream&amp; out) <span class="keyword">const</span>;</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keyword">public</span>:</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <a class="code" href="class_reptil_domestico.html#abc6a930a37422ff5ffe05b076dac716f">ReptilDomestico</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>, <span class="keywordtype">string</span> classe, <span class="keywordtype">string</span> classificacao, <span class="keywordtype">string</span> nome_cientifico,<span class="keywordtype">char</span> sexo, </div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            <span class="keywordtype">double</span> tamanho, <span class="keywordtype">string</span> dieta, <span class="keywordtype">int</span> tem_veterinario, <span class="keywordtype">int</span> tem_tratador,</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            <span class="keywordtype">string</span> nome_batismo, <span class="keywordtype">bool</span> venenoso, <span class="keywordtype">string</span> tipo_veneno);</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <a class="code" href="class_reptil_domestico.html#abc6a930a37422ff5ffe05b076dac716f">ReptilDomestico</a>();</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <a class="code" href="class_reptil_domestico.html#a3683e55f6b03120c6bdfc0b0e125fead">~ReptilDomestico</a>();</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;};</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#endif</span></div><div class="ttc" id="class_reptil_domestico_html_a0537f52056671a17c6dd6a2c7b670fae"><div class="ttname"><a href="class_reptil_domestico.html#a0537f52056671a17c6dd6a2c7b670fae">ReptilDomestico::salvar_animais</a></div><div class="ttdeci">ofstream &amp; salvar_animais(ofstream &amp;out) const</div><div class="ttdef"><b>Definition:</b> reptilDomestico.cpp:28</div></div>
+<div class="ttc" id="class_reptil_domestico_html_abc6a930a37422ff5ffe05b076dac716f"><div class="ttname"><a href="class_reptil_domestico.html#abc6a930a37422ff5ffe05b076dac716f">ReptilDomestico::ReptilDomestico</a></div><div class="ttdeci">ReptilDomestico()</div></div>
+<div class="ttc" id="class_reptil_domestico_html_a3683e55f6b03120c6bdfc0b0e125fead"><div class="ttname"><a href="class_reptil_domestico.html#a3683e55f6b03120c6bdfc0b0e125fead">ReptilDomestico::~ReptilDomestico</a></div><div class="ttdeci">~ReptilDomestico()</div><div class="ttdef"><b>Definition:</b> reptilDomestico.cpp:9</div></div>
+<div class="ttc" id="class_reptil_domestico_html_aa1b796ba5e2c5fc3068dea852c9f8bf4"><div class="ttname"><a href="class_reptil_domestico.html#aa1b796ba5e2c5fc3068dea852c9f8bf4">ReptilDomestico::listar_animais</a></div><div class="ttdeci">ostream &amp; listar_animais(ostream &amp;os) const</div><div class="ttdoc">sobrecarga de operador de inserção para listagem e para salvar no arquivo</div><div class="ttdef"><b>Definition:</b> reptilDomestico.cpp:11</div></div>
+<div class="ttc" id="class_reptil_domestico_html"><div class="ttname"><a href="class_reptil_domestico.html">ReptilDomestico</a></div><div class="ttdoc">declação da classe ReptilDomestico com herança da classe Reptil</div><div class="ttdef"><b>Definition:</b> reptilDomestico.h:12</div></div>
+<div class="ttc" id="class_reptil_html"><div class="ttname"><a href="class_reptil.html">Reptil</a></div><div class="ttdoc">declação da classe Reptil com herança da classe Animal</div><div class="ttdef"><b>Definition:</b> reptil.h:12</div></div>
+<div class="ttc" id="reptil_8h_html"><div class="ttname"><a href="reptil_8h.html">reptil.h</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.15
+</small></address>
+</body>
+</html>

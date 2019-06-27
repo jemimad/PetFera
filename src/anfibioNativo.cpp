@@ -1,5 +1,5 @@
 #include "anfibioNativo.h"
-
+/**@brief Implementação do construtor de anfibioNativo*/
 AnfibioNativo::AnfibioNativo(int id, string classe, string classificacao, string nome_cientifico,char sexo, 
 			double tamanho, string dieta, int tem_veterinario, int tem_tratador,
 			string nome_batismo, int total_mudas, string autorizacao_ibama, string uf_origem): 
@@ -7,9 +7,9 @@ AnfibioNativo::AnfibioNativo(int id, string classe, string classificacao, string
 			AnimalNativo(autorizacao_ibama, uf_origem){
 }
 
-
+/**@brief Destrutor da classe AnfibioNativo */
 AnfibioNativo::~AnfibioNativo(){}
-
+/**@brief sobrecarga de operador de inserção para listagem e para salvar no arquivo*/
 ostream& AnfibioNativo::listar_animais(ostream& os) const{
 	os << "| ID: " << m_id << 
     " | Classe: " << m_classe << 

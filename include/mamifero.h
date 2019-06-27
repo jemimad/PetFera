@@ -5,7 +5,10 @@
 #include <string>
 
 #include "animal.h"
-
+/**@file mamifero.cpp */
+/**@author Carmem Stanie, Italo Luiz e Jemima Dias */
+/**@data 27/06/2019 */
+/**@brief declação da classe mamifero com herança da classe Animal*/
 class Mamifero : public Animal{
 	protected:
 		string m_cor_pelo;

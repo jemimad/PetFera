@@ -1,5 +1,5 @@
 #include "reptil.h" 
-
+/**@brief implementação do construtor e destrutor de reptil */
 Reptil::Reptil(int id, string classe, string classificacao, string nome_cientifico,char sexo, 
 			double tamanho, string dieta, int tem_veterinario, int tem_tratador,
 			string nome_batismo, bool venenoso, string tipo_veneno): 
@@ -8,7 +8,7 @@ Reptil::Reptil(int id, string classe, string classificacao, string nome_cientifi
 }
 
 Reptil::~Reptil(){}
-
+/**@brief implementação dos get's e set's de reptil */
 void Reptil::setVenenoso(bool venenoso_){
 	m_venenoso = venenoso_;
 }

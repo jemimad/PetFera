@@ -6,7 +6,10 @@
 #include <map>
 
 using namespace std;
-
+/**@file funcionario.cpp */
+/**@author Carmem Stanie, Italo Luiz e Jemima Dias */
+/**@data 27/06/2019 */
+/**@brief declação da classe Funcionario e implementação de seus metodos*/
 class Funcionario{
 	protected:
 		int m_id;

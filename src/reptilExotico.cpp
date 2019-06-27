@@ -1,5 +1,5 @@
 #include "reptilExotico.h"
-
+/**@brief implementação do construtor e destrutor de reptil exotico */
 ReptilExotico::ReptilExotico(int id, string classe, string classificacao, string nome_cientifico,char sexo, 
 			double tamanho, string dieta, int tem_veterinario, int tem_tratador,
 			string nome_batismo, bool venenoso, string tipo_veneno, string autorizacao_ibama, string pais_origem, string cidade_origem): 
@@ -9,7 +9,7 @@ ReptilExotico::ReptilExotico(int id, string classe, string classificacao, string
 }
 
 ReptilExotico::~ReptilExotico(){}
-
+/**@brief sobrecarga de operador de inserção para listagem e para salvar no arquivo*/
 ostream& ReptilExotico::listar_animais(ostream& os) const{
 	os << "| ID: " << m_id << 
     " | Classe: " << m_classe << 

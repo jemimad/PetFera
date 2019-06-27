@@ -3,8 +3,10 @@
 
 #include <iostream>
 #include "animal.h"
-
-
+/**@file ave.cpp */
+/**@author Carmem Stanie, Italo Luiz e Jemima Dias */
+/**@data 27/06/2019 */
+/**@brief declação da classe ave com herança da classe Animal*/
 class Ave : public Animal{
 	protected:
 		double m_tamanho_bico_cm;

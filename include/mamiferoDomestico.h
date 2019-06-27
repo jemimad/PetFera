@@ -3,8 +3,10 @@
 
 #include <iostream>
 #include "mamifero.h"
-
-
+/**@file mamiferoDomestico.cpp */
+/**@author Carmem Stanie, Italo Luiz e Jemima Dias */
+/**@data 27/06/2019 */
+/**@brief declação da classe mamiferoDomestico com herança da classe Mamifero*/
 class MamiferoDomestico : public Mamifero{
 	protected: 
 		ostream& listar_animais(ostream& os) const;

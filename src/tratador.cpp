@@ -1,5 +1,5 @@
 #include "tratador.h"
-
+/**@brief implementação do construtor e destrutor da classe tratador */
 Tratador::Tratador(int id, string funcao, string nome, string cpf, short idade, char tipoSanguineo,
 					char fatorRH, string especialidade, int nivelSeguranca):
 					Funcionario(id, funcao, nome, cpf, idade, 
@@ -8,7 +8,7 @@ Tratador::Tratador(int id, string funcao, string nome, string cpf, short idade, 
 }
 
 Tratador::~Tratador(){}
-
+/**@brief sobrecarga de operador de inserção para listagem e para salvar no arquivo*/
 ostream& Tratador::listar(ostream& os) const{
 	os << "| ID: " << m_id << 
     " | Função: " << m_funcao << 
@@ -32,7 +32,7 @@ ofstream& Tratador::salvar(ofstream& out) const{
 
 	return out;
 }
-
+/**@brief implementação dos metodos get's e set's de tratador */
 string Tratador::getFuncao(){
 	return "Tratador";
 }

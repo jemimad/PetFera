@@ -1,11 +1,11 @@
 #include "animalExotico.h"
-
+/**@brief Construtor da classe animalExotico*/
 AnimalExotico::AnimalExotico(string autorizacao_ibama, string pais_origem, string cidade_origem):
 				AnimalSilvestre(autorizacao_ibama),m_pais_origem(pais_origem),m_cidade_origem(cidade_origem){
 }
-
+/**@brief Destrutor animalExotico */
 AnimalExotico::~AnimalExotico(){}
-
+/**@brief Implementação  de get's e set's da classe animalExotico*/
 void AnimalExotico::setPaisOrigem(string pais_origem){
 	m_pais_origem = pais_origem;
 }

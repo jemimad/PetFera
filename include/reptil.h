@@ -5,7 +5,10 @@
 #include <string>
 
 #include "animal.h"
-
+/**@file reptil.cpp */
+/**@author Carmem Stanie, Italo Luiz e Jemima Dias */
+/**@data 27/06/2019 */
+/**@brief declação da classe Reptil com herança da classe Animal*/
 class Reptil : public Animal{
 	protected:
 		bool m_venenoso;

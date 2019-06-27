@@ -1,14 +1,14 @@
 #include "aveNativo.h"
-
+/**@brief implementação do construtor de avenativo*/
 AveNativo::AveNativo(int id, string classe, string classificacao, string nome_cientifico,char sexo, 
 			double tamanho, string dieta, int tem_veterinario, int tem_tratador,
 			string nome_batismo, double tamanho_bico_cm, double envergadura_asas, string autorizacao_ibama, string uf_origem): 
 			Ave(id, classe, classificacao, nome_cientifico, sexo, tamanho, dieta, tem_veterinario, tem_tratador, nome_batismo, tamanho_bico_cm, envergadura_asas),
 			AnimalNativo(autorizacao_ibama, uf_origem){
 }
-
+/**@brief implementação do destrutor de avenativo */
 AveNativo::~AveNativo(){}
-
+/**@brief sobrecarga de operador de inserção para listagem e para salvar no arquivo*/
 ostream& AveNativo::listar_animais(ostream& os) const{
 	os << "| ID: " << m_id << 
     " | Classe: " << m_classe << 
@@ -36,7 +36,7 @@ ofstream& AveNativo::salvar_animais(ofstream& out) const{
 
 	return out;
 }
-
+/**@brief metodo get de ave nativo */
 string AveNativo::getAutorizacaoIbama(){
 	return m_autorizacao_ibama;
 }

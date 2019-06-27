@@ -2,7 +2,10 @@
 #define _TRATADOR_
 #include <iostream>
 #include "funcionario.h"
-
+/**@file tratador.cpp */
+/**@author Carmem Stanie, Italo Luiz e Jemima Dias */
+/**@data 27/06/2019 */
+/**@brief declação da classe Tratador com herança de funcionario */
 class Tratador : public Funcionario{
 
 	protected:

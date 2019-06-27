@@ -4,7 +4,10 @@
 #include <iostream>
 #include <fstream>
 #include "animal.h"
-
+/**@file anfibio.cpp */
+/**@author Carmem Stanie, Italo Luiz e Jemima Dias */
+/**@data 27/06/2019 */
+/**@brief declação da classe anfibio com herança da classe animal */
 class Anfibio : public Animal{
 	protected:
 		int m_total_mudas;
